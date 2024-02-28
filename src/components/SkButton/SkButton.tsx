@@ -2,6 +2,7 @@
 
 import React from "react";
 import "./SkButton.css"; // Ensure this path is correct
+import { observer } from "mobx-react-lite";
 import { useThemeStore } from '../../contexts/SkThemeContexts'; // Global theme
 import { useButtonTheme } from './SkButtonThemeContext'; // Adjust the import path as necessary
 
@@ -11,9 +12,10 @@ interface ButtonProps {
   primary?: boolean;
 }
 
-const SkButton: React.FC<ButtonProps> = ({ label, onClick, primary = false }) => {
-  const { colors } = useThemeStore(); // Global theme colors
+const SkButton: React.FC<ButtonProps> = observer(({ label, onClick, primary = false }) => {
   const { padding, height, margin, borderRadius, fontSize, transition } = useButtonTheme(); // Button-specific theme
+  const themeStore = useThemeStore();
+  const { colors } = themeStore;
 
   const buttonStyle: React.CSSProperties = {
     display: 'inline-flex',
@@ -25,7 +27,7 @@ const SkButton: React.FC<ButtonProps> = ({ label, onClick, primary = false }) =>
     borderRadius: borderRadius, // This will apply the rounded edges
     fontSize: fontSize,
     transition: transition,
-    backgroundColor: primary ? colors.primary : colors.secondary,
+    backgroundColor: primary ? colors.buttonBackground : colors.secondary, // Use buttonBackground for primary buttons
     color: colors.buttonText,
     border: 'none',
     cursor: 'pointer',
@@ -37,6 +39,6 @@ const SkButton: React.FC<ButtonProps> = ({ label, onClick, primary = false }) =>
       {label}
     </button>
   );
-};
+});
 
 export default SkButton;

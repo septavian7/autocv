@@ -2,8 +2,8 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { observer } from "mobx-react-lite"; // Import observer
 import { useThemeStore } from '../../contexts/SkThemeContexts';
-import { useHoverWindowTheme } from './SkHoverWindowThemeContext';
 import './SkHoverWindow.css';
 import SkButton from '../SkButton/SkButton';
 
@@ -12,21 +12,24 @@ interface SkHoverWindowProps {
   onClose: () => void;
 }
 
-const SkHoverWindow: React.FC<SkHoverWindowProps> = ({ isVisible, onClose }) => {
-  // Global theme, kept for potential future use
-  const { colors } = useThemeStore();
-  // Component-specific theme
-  const { background, padding, borderRadius, boxShadow, textColor, container } = useHoverWindowTheme();
+const SkHoverWindow: React.FC<SkHoverWindowProps> = observer(({ isVisible, onClose }) => {
+  const themeStore = useThemeStore(); // Access the theme store for global theme
+  const { colors } = themeStore; // Destructure for easier access
 
+  // Adjust styles to respond to theme changes
   const hoverWindowStyle: React.CSSProperties = {
-    background: background, // Now using background from component-specific theme
-    padding: padding, // Now using padding from component-specific theme
-    borderRadius: borderRadius, // Now using borderRadius from component-specific theme
-    boxShadow: boxShadow, // Now using boxShadow from component-specific theme
+    background: colors.background, // Use background color from themeStore
+    padding: "20px", // Static style
+    borderRadius: "8px", // Static style
+    boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.1)", // Static style
     overflow: 'auto',
-    color: textColor, // Now using textColor from component-specific theme
-    width: container.width, // Adjusted to use width from component-specific theme
-    height: container.height, // Adjusted to use height from component-specific theme
+    color: colors.text, // Use text color from themeStore
+    width: "80%", // Static style
+    height: "60%", // Static style
+    position: 'fixed',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
   };
 
   const containerStyle: React.CSSProperties = {
@@ -48,6 +51,6 @@ const SkHoverWindow: React.FC<SkHoverWindowProps> = ({ isVisible, onClose }) => 
     </div>,
     document.body
   ) : null;
-};
+});
 
 export default SkHoverWindow;

@@ -2,26 +2,21 @@
 
 import React, { useState } from 'react';
 import './SkHoverBar.css';
-// Import both useTheme and useHoverBarTheme
+import { observer } from "mobx-react-lite";
 import { useThemeStore } from '../../contexts/SkThemeContexts';
-import { useHoverBarTheme } from './SkHoverBarThemeContext'; // Adjust the import path as necessary
 import SkHoverWindow from '../SkHoverWindow/SkHoverWindow';
 import SkButton from '../SkButton/SkButton';
 
-const SkHoverBar: React.FC = () => {
+const SkHoverBar: React.FC = observer(() => {
   const [isModalVisible, setIsModalVisible] = useState(false);
-  // Use both theme hooks
-  const { colors } = useThemeStore(); // Global theme
-  const { background, boxShadow, textColor } = useHoverBarTheme(); // Component-specific theme
+  const themeStore = useThemeStore(); // Access the theme store
+  const { colors } = themeStore; // Destructure for easier access to theme and colors
 
-  // Example of using both themes
-  // Here, we prioritize component-specific theme for styling,
-  // but you could use the global theme for other properties or fallbacks
+  // Adjust hoverBarStyle to conditionally set the background based on the theme
   const hoverBarStyle = {
-    background: background, // From component-specific theme
-    boxShadow: boxShadow, // From component-specific theme
-    color: textColor, // From component-specific theme
-    // You could use something from the global theme here if needed
+    background: colors.hoverBarBackground, // Use SkHoverBar-specific background
+    boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+    color: colors.buttonText,
   };
 
   const handleOpenModal = () => setIsModalVisible(true);
@@ -33,6 +28,6 @@ const SkHoverBar: React.FC = () => {
       <SkHoverWindow isVisible={isModalVisible} onClose={handleCloseModal} />
     </div>
   );
-};
+});
 
 export default SkHoverBar;
