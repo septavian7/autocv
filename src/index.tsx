@@ -3,16 +3,22 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import SkHoverBar from "./components/SkHoverBar/SkHoverBar";
+import { configure } from "mobx";
 
-// Create a new div element that will act as the root for your React app
+configure({
+  enforceActions: "always", // or "observed"
+});
+
 const rootElement = document.createElement("div");
-rootElement.id = "my-extension-root";
+rootElement.id = "Sk0ne-root";
 document.body.appendChild(rootElement);
 
-// Use createRoot to render your React app into the new element
-const root = createRoot(document.getElementById("my-extension-root")!);
-root.render(
-  <React.StrictMode>
-    <SkHoverBar /> // Updated component name
-  </React.StrictMode>,
-);
+const rootElementMounted = document.getElementById("Sk0ne-root");
+if (rootElementMounted) {
+  const root = createRoot(rootElementMounted);
+  root.render(
+    <React.StrictMode>
+      <SkHoverBar />
+    </React.StrictMode>,
+  );
+}
