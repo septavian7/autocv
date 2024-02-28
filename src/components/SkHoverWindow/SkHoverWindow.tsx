@@ -2,7 +2,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { useTheme } from '../../contexts/SkThemeContexts';
+import { useThemeStore } from '../../contexts/SkThemeContexts';
 import { useHoverWindowTheme } from './SkHoverWindowThemeContext';
 import './SkHoverWindow.css';
 import SkButton from '../SkButton/SkButton';
@@ -14,7 +14,7 @@ interface SkHoverWindowProps {
 
 const SkHoverWindow: React.FC<SkHoverWindowProps> = ({ isVisible, onClose }) => {
   // Global theme, kept for potential future use
-  const { colors } = useTheme();
+  const { colors } = useThemeStore();
   // Component-specific theme
   const { background, padding, borderRadius, boxShadow, textColor, container } = useHoverWindowTheme();
 

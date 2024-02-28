@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import './SkHoverBar.css';
 // Import both useTheme and useHoverBarTheme
-import { useTheme } from '../../contexts/SkThemeContexts'; // Adjust the import path as necessary
+import { useThemeStore } from '../../contexts/SkThemeContexts';
 import { useHoverBarTheme } from './SkHoverBarThemeContext'; // Adjust the import path as necessary
 import SkHoverWindow from '../SkHoverWindow/SkHoverWindow';
 import SkButton from '../SkButton/SkButton';
@@ -11,7 +11,7 @@ import SkButton from '../SkButton/SkButton';
 const SkHoverBar: React.FC = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   // Use both theme hooks
-  const { colors } = useTheme(); // Global theme
+  const { colors } = useThemeStore(); // Global theme
   const { background, boxShadow, textColor } = useHoverBarTheme(); // Component-specific theme
 
   // Example of using both themes

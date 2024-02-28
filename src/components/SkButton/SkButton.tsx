@@ -2,7 +2,7 @@
 
 import React from "react";
 import "./SkButton.css"; // Ensure this path is correct
-import { useTheme } from '../../contexts/SkThemeContexts'; // Global theme
+import { useThemeStore } from '../../contexts/SkThemeContexts'; // Global theme
 import { useButtonTheme } from './SkButtonThemeContext'; // Adjust the import path as necessary
 
 interface ButtonProps {
@@ -12,7 +12,7 @@ interface ButtonProps {
 }
 
 const SkButton: React.FC<ButtonProps> = ({ label, onClick, primary = false }) => {
-  const { colors } = useTheme(); // Global theme colors
+  const { colors } = useThemeStore(); // Global theme colors
   const { padding, height, margin, borderRadius, fontSize, transition } = useButtonTheme(); // Button-specific theme
 
   const buttonStyle: React.CSSProperties = {

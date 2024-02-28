@@ -1,34 +1,12 @@
 /* contexts/SkThemeContexts.tsx */
 
-import React, { createContext, useContext, ReactNode } from 'react';
+import React from 'react';
+import { themeStore } from '../state/ThemeStore';
 
-type Color = 'blue' | '#175AE2' | 'gray' | '#8b8b8b' | 'white' | '#FFFFFF';
+const ThemeContext = React.createContext(themeStore);
 
-interface Theme {
-  colors: {
-    primary: Color; // Now using the Color type
-    secondary: Color;
-    buttonText: Color;
-  };
-}
+export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <ThemeContext.Provider value={themeStore}>{children}</ThemeContext.Provider>
+);
 
-const defaultTheme: Theme = {
-  colors: {
-    primary: '#175AE2', // Specific color values
-    secondary: '#8b8b8b',
-    buttonText: 'white',
-  },
-};
-
-const ThemeContext = createContext<Theme>(defaultTheme);
-
-interface ThemeProviderProps {
-  theme?: Theme;
-  children: ReactNode;
-}
-
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ theme = defaultTheme, children }) => {
-  return <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>;
-};
-
-export const useTheme = () => useContext(ThemeContext);
+export const useThemeStore = () => React.useContext(ThemeContext);
