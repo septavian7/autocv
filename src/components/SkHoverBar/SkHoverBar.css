@@ -11,3 +11,13 @@
     justify-content: center;
     z-index: 2147483650; /* high z-index */
   }
+
+  .SkHoverBar.light {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.975) 0%, rgba(255, 255, 255, 0.875) 100%);
+    color: #000; /* Assuming black text for light theme */
+  }
+  
+  .SkHoverBar.dark {
+    background: radial-gradient(circle, rgba(23, 23, 23, 0.975) 0%, rgba(35, 35, 35, 0.875) 100%);
+    color: #fff; /* Assuming white text for dark theme */
+  }

@@ -10,9 +10,10 @@ import SkButton from '../SkButton/SkButton';
 interface SkHoverWindowProps {
   isVisible: boolean;
   onClose: () => void;
+  children?: React.ReactNode; // Allow custom content
 }
 
-const SkHoverWindow: React.FC<SkHoverWindowProps> = observer(({ isVisible, onClose }) => {
+const SkHoverWindow: React.FC<SkHoverWindowProps> = observer(({ isVisible, onClose, children }) => {
   const themeStore = useThemeStore(); // Access the theme store for global theme
   const { colors } = themeStore; // Destructure for easier access
 
@@ -46,7 +47,7 @@ const SkHoverWindow: React.FC<SkHoverWindowProps> = observer(({ isVisible, onClo
   return isVisible ? ReactDOM.createPortal(
     <div style={containerStyle}>
       <div className="SkHoverWindow" style={hoverWindowStyle}>
-        <SkButton label="Close" onClick={onClose} primary={true} />
+        {children ? children : <button onClick={onClose}>Close</button>}
       </div>
     </div>,
     document.body
