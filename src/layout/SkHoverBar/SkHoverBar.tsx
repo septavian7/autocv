@@ -1,12 +1,15 @@
-/* components/SkHoverBar/SkHoverBar.tsx */
+/*
+parent_folder:       
+
+/* SkSettingUser.tsx */
 
 import React, { useState } from 'react';
 import './SkHoverBar.css';
 import { observer } from "mobx-react-lite";
-import { useThemeStore } from '../../contexts/SkThemeContexts';
-import SkHoverWindow from '../SkHoverWindow/SkHoverWindow';
-import SkButton from '../SkButton/SkButton';
-import SettingsContent from '../../domains/SkSettingsUser/SkSettingsUser'; // Adjust import path as needed
+import { useThemeStore } from '../../contexts/SkThemeStoreContexts';
+import SkHoverWindow from '../../templates/SkHoverWindow/SkHoverWindow';
+import SkButton from '../../components/SkButton/SkButton';
+import SettingsContent from '../../features/SkUserSettings/SkUserSettings'; // Adjust import path as needed
 
 const SkHoverBar: React.FC = observer(() => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -32,7 +35,7 @@ const SkHoverBar: React.FC = observer(() => {
       <SkButton label="Settings" onClick={handleSettingsToggle} /> {/* Use the dedicated handler */}
       {isSettingsVisible && (
         <SkHoverWindow isVisible={isSettingsVisible} onClose={toggleSettings}>
-          <SettingsContent onClose={toggleSettings} />
+         {<SettingsContent onClose={toggleSettings} /> }
         </SkHoverWindow>
       )}
       <SkHoverWindow isVisible={isModalVisible} onClose={handleCloseModal}>

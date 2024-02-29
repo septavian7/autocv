@@ -1,11 +1,11 @@
-/* components/SKHoverWindow/SkHoverWindow.tsx */
+/* SkHoverWindow.tsx */
 
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { observer } from "mobx-react-lite"; // Import observer
-import { useThemeStore } from '../../contexts/SkThemeContexts';
+import { useThemeStore } from '../../contexts/SkThemeStoreContexts';
 import './SkHoverWindow.css';
-import SkButton from '../SkButton/SkButton';
+import SkButton from '../../components/SkButton/SkButton';
 
 interface SkHoverWindowProps {
   isVisible: boolean;

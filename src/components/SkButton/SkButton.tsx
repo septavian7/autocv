@@ -3,7 +3,7 @@
 import React from "react";
 import "./SkButton.css"; // Ensure this path is correct
 import { observer } from "mobx-react-lite";
-import { useThemeStore } from '../../contexts/SkThemeContexts'; // Global theme
+import { useThemeStore } from '../../contexts/SkThemeStoreContexts'; // Global theme
 import { useButtonTheme } from './SkButtonThemeContext'; // Adjust the import path as necessary
 
 interface ButtonProps {
