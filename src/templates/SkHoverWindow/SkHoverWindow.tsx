@@ -47,7 +47,6 @@ const SkHoverWindow: React.FC<SkHoverWindowProps> = observer(({ isVisible, onClo
   return isVisible ? ReactDOM.createPortal(
     <div style={containerStyle}>
       <div className="SkHoverWindow" style={hoverWindowStyle}>
-        {children ? children : <button onClick={onClose}>Close</button>}
       </div>
     </div>,
     document.body

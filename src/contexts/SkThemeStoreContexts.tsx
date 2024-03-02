@@ -1,4 +1,8 @@
-/* contexts/SkThemeStoreContexts.tsx */
+/*
+parent_folder:  src/contexts/  
+*/
+
+/* SkThemeStoreContexts.tsx */
 
 import React from 'react';
 import { themeStore } from '../state/SkThemeStore';
@@ -10,3 +14,4 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 );
 
 export const useThemeStore = () => React.useContext(ThemeContext);
+console.log("SkThemeStoreContexts.tsx: useThemeStore");

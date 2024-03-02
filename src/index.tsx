@@ -4,11 +4,10 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { configure } from "mobx";
 import { SkUserStoreProvider } from './contexts/SkUserStoreContexts';
-import { ThemeProvider } from './contexts/SkThemeStoreContexts'; // Assuming you have this context
+import { ThemeProvider } from './SkThemeProvider'; // Ensure this is correctly importing your ThemeProvider
 import SkHoverBar from "./layout/SkHoverBar/SkHoverBar";
-import SkUserSettings from './features/SkUserSettings/SkUserSettings';
 
-// MobX configuration
+// MobX configuration for strict mode
 configure({
   enforceActions: "always", // or "observed"
 });
@@ -25,9 +24,9 @@ if (rootElementMounted) {
   root.render(
     <React.StrictMode>
       <SkUserStoreProvider>
-        <ThemeProvider> {/* Wrap the app with ThemeProvider if you're using theme context */}
+        <ThemeProvider> {/* Wraps your app with the ThemeProvider */}
           <SkHoverBar />
-          <SkUserSettings /> {/* Include SkUserSettings if you want it to be part of the initial UI */}
+          {/* SkUserSettings is now managed within SkHoverBar/SkHoverWindow */}
         </ThemeProvider>
       </SkUserStoreProvider>
     </React.StrictMode>,

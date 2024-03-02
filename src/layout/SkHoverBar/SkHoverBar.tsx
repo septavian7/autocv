@@ -1,48 +1,55 @@
-/*
-parent_folder:       
-
-/* SkSettingUser.tsx */
+// src/layout/SkHoverBar/SkHoverBar.tsx
 
 import React, { useState } from 'react';
-import './SkHoverBar.css';
 import { observer } from "mobx-react-lite";
 import { useThemeStore } from '../../contexts/SkThemeStoreContexts';
-import SkHoverWindow from '../../templates/SkHoverWindow/SkHoverWindow';
 import SkButton from '../../components/SkButton/SkButton';
-import SettingsContent from '../../features/SkUserSettings/SkUserSettings'; // Adjust import path as needed
+import styled from '@emotion/styled';
+import { Theme } from '../../types/theme'; // Adjust the import path to where your Theme interface is defined
 
 const SkHoverBar: React.FC = observer(() => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [isSettingsVisible, setIsSettingsVisible] = useState(false); // State to control settings visibility
-  const themeStore = useThemeStore(); // Access the theme store
+  const [isSettingsPanelVisible, setIsSettingsPanelVisible] = useState(false);
+  const themeStore = useThemeStore(); // Accessing the theme store directly
+  console.log("Current theme:", themeStore.theme); // Log the current theme for debugging
+  console.log("Current theme colors:", themeStore.colors); // Log the current theme colors for debugging
 
-  // Remove inline styles for background and color, as they are now handled by CSS classes
-  const hoverBarClassName = `SkHoverBar ${themeStore.theme}`; // Dynamically set class based on theme
-
-  const handleOpenModal = () => setIsModalVisible(true);
-  const handleCloseModal = () => setIsModalVisible(false);
-  const toggleSettings = () => setIsSettingsVisible(!isSettingsVisible); // Toggle settings visibility
-
-  // Dedicated handler for toggling settings visibility
-  const handleSettingsToggle = () => {
-    console.log("Toggling settings visibility");
-    toggleSettings(); // Call the toggle function
+  // Function to toggle the theme
+  const toggleTheme = () => {
+    themeStore.toggleTheme();
+    console.log("Theme toggled");
   };
 
   return (
-    <div className={hoverBarClassName}> {/* Apply dynamic class name */}
-      <SkButton label="Open Modal" onClick={handleOpenModal} primary={true} />
-      <SkButton label="Settings" onClick={handleSettingsToggle} /> {/* Use the dedicated handler */}
-      {isSettingsVisible && (
-        <SkHoverWindow isVisible={isSettingsVisible} onClose={toggleSettings}>
-         {<SettingsContent onClose={toggleSettings} /> }
-        </SkHoverWindow>
-      )}
-      <SkHoverWindow isVisible={isModalVisible} onClose={handleCloseModal}>
-        {/* Other content for the modal window */}
-      </SkHoverWindow>
-    </div>
+    <SkHoverBarContainer>
+      <SkButton label="Settings" onClick={() => setIsSettingsPanelVisible(!isSettingsPanelVisible)} />
+      <SkButton label="Toggle Theme" onClick={toggleTheme} />
+    </SkHoverBarContainer>
   );
 });
+
+const SkHoverBarContainer = styled.div(({ theme }) => `
+  & *, & *::before, & *::after {
+    box-sizing: border-box; /* Ensures padding and border are included in element's total width and height */
+    margin: 0; /* Resets margin */
+    padding: 0; /* Resets padding */
+    font-family: inherit; /* Inherits font-family from the component */
+    font-size: 100%; /* Resets font size to default */
+    line-height: 1; /* Resets line height to default */
+  }
+
+  /* Component's specific styles */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2147483650; /* High z-index to ensure it stays on top */
+  background: ${theme.hoverBarBackground}; /* Uses theme's hover bar background */
+  color: ${theme.hoverBarTextColor}; /* Uses theme's hover bar text color */
+  box-shadow: ${theme.hoverBarBoxShadow}; /* Uses theme's hover bar box shadow */
+`);
 
 export default SkHoverBar;

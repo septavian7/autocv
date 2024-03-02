@@ -1,52 +1,7 @@
 /*
 ---
-filepath:       src/features/SkUserSettings/SkUserSettings.tsx
+filepath:       ./features/SkUserSettings/SkUserSettings.tsx
 ---
-# Sub-Modules
-
-## User Login
-
-### State 1 — Buttons to open OAuth user login windows
-
-### State 2 — Displays imported user email, first name, last name, and logout button
-
-## User Wokrflow Settings
-
-### Output Formats
-
-#### State 1 — (not displayed until user is logged in)
-
-#### State 2 - Shows Fieldset (Checkboxes)
-
-- "Google Doc" (Checked, Disabled)
-- "PDF" (Checked)
-- "Docx"
-- "txt"
-
-### AI Models
-
-#### State 1 — (not displayed until user is logged in)
-
-#### State 2 - Shows Fieldset (Radio)
-
-- "GPT 3.5 Turbo (Good) (Checked)
-- "GPT 4"
-
-## Dark/Light Theme Settings
-
-### State 1 — (not displayed until user is logged in)
-
-### State 2 - Shows Dark/Light Theme Switch
-
-- ["Dark"] vs ["Light"] (Checked)
-
-## Module Control Buttons
-
-### State 1 — "Close" and "Save" buttons
-
-### State 2 — "Close" and "Save" buttons
-
-*/
 
 /* SkUserSettings.tsx */
 
@@ -85,3 +40,5 @@ const SkUserSettings: React.FC<SkUserSettingsProps> = observer(({ onClose }) => 
     </div>
   );
 });
+
+export { SkUserSettings };
