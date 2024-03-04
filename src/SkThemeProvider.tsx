@@ -2,15 +2,18 @@
 
 import React from 'react';
 import { ThemeProvider as EmotionThemeProvider } from '@emotion/react';
-import { themeStore } from './state/SkThemeStore';
+import { observer } from "mobx-react-lite";
+import { themeStore } from './stores/SkThemeStore';
 
-export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const theme = themeStore.colors; // Get current theme colors
-    console.log("Providing theme:", themeStore.colors);
-  
+export const ThemeProvider: React.FC<{ children: React.ReactNode }> = observer(({ children }) => {
+  // Directly access the theme colors from themeStore
+  const theme = themeStore.colors; // Assuming colors is a computed value or observable that reacts to theme changes
+
+  console.log("Providing theme:", theme);
+
   return (
     <EmotionThemeProvider theme={theme}>
       {children}
     </EmotionThemeProvider>
   );
-};
+});

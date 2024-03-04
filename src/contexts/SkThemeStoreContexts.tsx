@@ -5,7 +5,7 @@ parent_folder:  src/contexts/
 /* SkThemeStoreContexts.tsx */
 
 import React from 'react';
-import { themeStore } from '../state/SkThemeStore';
+import { themeStore } from '../stores/SkThemeStore';
 
 const ThemeContext = React.createContext(themeStore);
 

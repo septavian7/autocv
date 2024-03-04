@@ -1,14 +1,21 @@
 {
     "manifest_version": 3,
-    "name": "My Web Extension",
+    "name": "AutoCV",
     "version": "0.6.0",
-    "description": "A sample Chrome extension.",
+    "description": "Custom resume in seconds.",
     "permissions": ["activeTab"],
+    "icons": {
+      "16": "images/icon-autocv-cr-16.png",
+      "48": "images/icon-autocv-cr-48.png",
+      "128": "images/icon-autocv-cr-128.png",
+      "256": "images/icon-autocv-cr-256.png"
+    },
     "action": {
       "default_icon": {
         "16": "images/icon-autocv-cr-16.png",
         "48": "images/icon-autocv-cr-48.png",
-        "128": "images/icon-autocv-cr-128.png"
+        "128": "images/icon-autocv-cr-128.png",
+        "256": "images/icon-autocv-cr-256.png"
       }
     },
     "content_scripts": [

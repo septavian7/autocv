@@ -3,8 +3,11 @@ import '@emotion/react';
 
 declare module '@emotion/react' {
   export interface Theme {
+    background: string;
+    text: string;
     hoverBarBackground: string;
     hoverBarTextColor: string;
     hoverBarBoxShadow: string;
+    // Add other theme properties as needed
   }
 }

@@ -1,7 +1,7 @@
 // SkUserStoreContexts.tsx
 
 import React, { createContext, useContext } from 'react';
-import { userStore } from '../state/SkUserStore'; // Ensure this path is correct
+import { userStore } from '../stores/SkUserStore'; // Ensure this path is correct
 
 const SkUserStoreContext = createContext(userStore);
 

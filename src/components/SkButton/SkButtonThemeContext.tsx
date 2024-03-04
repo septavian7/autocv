@@ -1,30 +1,33 @@
-/* components/SkButton/SkButtonThemeContext.tsx */
+/* SkButtonThemeContext.tsx */
 
-import React, { createContext, useContext, ReactNode } from 'react';
+import React, { createContext, useContext, ReactNode } from 'react'; // Import React, createContext, useContext, and ReactNode
 
+// Define the ButtonTheme interface
 interface ButtonTheme {
-  // Assuming these properties are still relevant without direct global theme integration here
   padding: string;
   height: string;
   margin: string;
   borderRadius: string;
   fontSize: string;
-  fontSizeMain: string;
   transition: string;
+  iconSize: string;
 }
 
+// Define the defaultButtonTheme
 const defaultButtonTheme: ButtonTheme = {
   padding: '0 15px',
   height: '36px',
-  margin: '0 10px',
+  margin: '0 6px', // Margin between buttons
   borderRadius: '4px',
   fontSize: '13px',
-  fontSizeMain: '14px',
   transition: 'box-shadow 0.2s, background-color 0.2s',
+  iconSize: '20px',
 };
 
+// Create the ButtonThemeContext
 const ButtonThemeContext = createContext<ButtonTheme>(defaultButtonTheme);
 
+// Create the ButtonThemeProvider
 export const ButtonThemeProvider: React.FC<{ theme?: ButtonTheme; children: ReactNode }> = ({
   theme = defaultButtonTheme,
   children,
@@ -32,4 +35,5 @@ export const ButtonThemeProvider: React.FC<{ theme?: ButtonTheme; children: Reac
   return <ButtonThemeContext.Provider value={theme}>{children}</ButtonThemeContext.Provider>;
 };
 
-export const useButtonTheme = () => useContext(ButtonThemeContext);
+// Create the useButtonTheme hook
+export const useButtonTheme = () => useContext(ButtonThemeContext);``

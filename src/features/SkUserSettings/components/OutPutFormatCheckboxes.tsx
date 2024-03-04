@@ -1,7 +1,18 @@
+/* OutputFormatCheckboxes.tsx */
+
 import React from 'react';
+import { observer } from "mobx-react-lite";
 import { useSkUserStore } from '../../../contexts/SkUserStoreContexts';
 
-const OutputFormatCheckboxes: React.FC = () => {
+// Define a mapping from format name to display label
+const formatLabels: { [key: string]: string } = {
+  googleDoc: "Google Doc",
+  pdf: "PDF",
+  docx: "Microsoft Word (.docx)",
+  txt: "Text (.txt)"
+};
+
+const OutputFormatCheckboxes: React.FC = observer(() => { // Wrapped with observer
   const userStore = useSkUserStore();
 
   const handleOutputFormatChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -13,21 +24,22 @@ const OutputFormatCheckboxes: React.FC = () => {
     <fieldset>
       <legend>Output Formats:</legend>
       {Object.entries(userStore.outputFormat).map(([format, isChecked]) => (
-        <div key={format}>
-          <label>
+        <div key={format} style={{ marginBottom: '6px' }}>
+          <label style={{ display: 'flex', alignItems: 'center' }}>
             <input
               type="checkbox"
               name={format}
               checked={isChecked as boolean}
               onChange={handleOutputFormatChange}
-              disabled={format === "googleDoc"} // Google Doc is always checked and disabled
+              disabled={format === "googleDoc"}
+              style={{ marginRight: '8px' }}
             />
-            {format.toUpperCase()}
+            <span>{formatLabels[format] || format.toUpperCase()}</span>
           </label>
         </div>
       ))}
     </fieldset>
   );
-};
+});
 
 export default OutputFormatCheckboxes;

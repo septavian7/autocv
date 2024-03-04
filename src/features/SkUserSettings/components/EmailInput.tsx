@@ -1,7 +1,10 @@
+/* EmailInput.tsx */
+
 import React from 'react';
+import { observer } from "mobx-react-lite";
 import { useSkUserStore } from '../../../contexts/SkUserStoreContexts';
 
-const EmailInput: React.FC = () => {
+const EmailInput: React.FC = observer(() => { // Wrapped with observer
   const userStore = useSkUserStore();
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -10,7 +13,7 @@ const EmailInput: React.FC = () => {
 
   return (
     <div>
-      <label htmlFor="userEmail">User Email:</label>
+      <label htmlFor="userEmail">Email:</label>
       <input
         type="email"
         id="userEmail"
@@ -20,6 +23,6 @@ const EmailInput: React.FC = () => {
       />
     </div>
   );
-};
+});
 
 export default EmailInput;
