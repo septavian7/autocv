@@ -27,9 +27,11 @@ const Container = styled.div`
 
 const HoverWindow = styled.div(({ theme }) => ({
   background: theme.background,
+  backdropFilter: 'blur(15px)',
+  webkitBackdropFilter: 'blur(15px)',
   color: theme.text,
   padding: "20px",
-  borderRadius: "8px",
+  borderRadius: "25px",
   boxShadow: "0 8px 16px rgba(0, 0, 0, 0.1)",
   overflow: 'auto',
   // Updated sizes according to the requirements

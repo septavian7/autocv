@@ -1,7 +1,9 @@
 /* src/features/UserLogin/UserLogin.tsx */
 
 import React, { useState, useEffect } from 'react';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, User } from 'firebase/auth';
+import { observer } from "mobx-react-lite"; // Import observer
+import { userStore } from '../../stores/SkUserStore'; // Import userStore
+import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
 import { signUpUser, signInUser } from '../../services/authService';
 import SkHoverWindow from '../../templates/SkHoverWindow'; // Adjust import path as necessary
@@ -14,7 +16,7 @@ interface Props {
   onClose: () => void;
 }
 
-const UserLogin: React.FC<Props> = ({ isVisible, onClose }) => {
+const UserLoginComponent: React.FC<Props> = ({ isVisible, onClose }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -23,6 +25,12 @@ const UserLogin: React.FC<Props> = ({ isVisible, onClose }) => {
   const [successMessage, setSuccessMessage] = useState(''); // New state for success message
   const [user, setUser] = useState<User | null>(null);
   const [userData, setUserData] = useState<{ firstName?: string, lastName?: string, email?: string } | null>(null);
+
+  // This useEffect reacts to changes in the userStore's properties
+  useEffect(() => {
+    console.log("Current user in store:", userStore.email, userStore.firstName, userStore.lastName);
+    // Optional: Implement actions based on the updated store values here
+  }, [userStore.email, userStore.firstName, userStore.lastName]);
 
   useEffect(() => {
     const auth = getAuth();
@@ -43,27 +51,30 @@ const UserLogin: React.FC<Props> = ({ isVisible, onClose }) => {
     });
   }, []);
 
-// When handling sign up
+// handleSignUp function
 const handleSignUp = async () => {
   const result = await signUpUser(email, password, firstName, lastName);
   if (result.success) {
-    setError(''); // Clear any existing error
-    setSuccessMessage(result.message); // Set success message
+    userStore.setEmail(email); // Assuming you have methods to update these in your store
+    userStore.setFirstName(firstName); // Assuming you have methods to update these in your store
+    userStore.setLastName(lastName); // Assuming you have methods to update these in your store
+    setError('');
+    setSuccessMessage(result.message);
   } else {
     setError(result.message);
-    setSuccessMessage(''); // Clear any existing success message
+    setSuccessMessage('');
   }
 };
 
-// When handling sign in
+// handleSignIn function
 const handleSignIn = async () => {
   const result = await signInUser(email, password);
   if (result.success) {
-    setError(''); // Clear any existing error
-    setSuccessMessage(result.message); // Set success message
+    setError('');
+    setSuccessMessage(result.message);
   } else {
     setError(result.message);
-    setSuccessMessage(''); // Clear any existing success message
+    setSuccessMessage('');
   }
 };
 
@@ -75,8 +86,8 @@ const handleSignIn = async () => {
       <div>
         {user && userData ? (
           <div>
-            <p>Welcome, {userData.firstName} {userData.lastName}</p>
-            <p>Email: {userData.email}</p>
+            <p>Welcome, {userStore.firstName || "User"} {userStore.lastName}</p>
+            <p>Email: {userStore.email || "No email"}</p>
             <SkButton label="Log Out" onClick={onClose} />
           </div>
         ) : (
@@ -96,4 +107,4 @@ const handleSignIn = async () => {
   );
 };
 
-export default UserLogin;
+export default observer(UserLoginComponent);

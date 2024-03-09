@@ -1,4 +1,4 @@
-// src/services/authService.ts
+/* src/services/authService.ts */
 
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
@@ -16,10 +16,10 @@ const signUpUser = async (email: string, password: string, firstName: string, la
       console.log("Account created successfully with additional info");
       return { success: true, message: "Account created successfully." };
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : "An error occurred";
-      console.error("Error creating account:", errorMessage);
-      return { success: false, message: errorMessage };
-    }
+            const errorMessage = error instanceof Error ? error.message : "An error occurred";
+            console.error("Error creating account:", errorMessage);
+            return { success: false, message: errorMessage };
+          }
   };
   
   const signInUser = async (email: string, password: string) => {

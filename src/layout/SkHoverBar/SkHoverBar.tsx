@@ -28,6 +28,33 @@ const SkHoverBar = observer(() => {
     console.log("Theme toggled");
   };
 
+  // Styled component for SkHoverBarContainer
+  const SkHoverBarContainer = styled.div(({ theme }) => `
+    position: fixed;
+    top: 5px; /* Slightly away from the top */
+    left: 1%; /* margin from the left */
+    right: 1%; /* margin from the right */
+    height: 52px; /* Height is kept the same */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 2147483650;
+    background: ${theme.hoverBarBackground};
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 15px; /* Rounded edges */
+    color: ${theme.hoverBarTextColor};
+    box-shadow: ${theme.hoverBarBoxShadow};
+    padding: 0 3%; /* Adding padding to the sides */
+
+    @media (max-width: 600px) and (orientation: portrait) {
+      top: 5px;
+      left: 5%;
+      right: 5%;
+    }
+  `);
+
+
   // Styled component for IconWrapper
   const IconWrapper = styled.div`
     display: inline-flex;
@@ -40,26 +67,6 @@ const SkHoverBar = observer(() => {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Optional: add a subtle shadow
     padding-top: 2px; // Adjust the position of the icon
   `;
-
-  // Styled component for SkHoverBarContainer
-  const SkHoverBarContainer = styled.div(({ theme }) => `
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 52px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* Adjusted for alignment */
-  z-index: 2147483650;
-  background: ${theme.hoverBarBackground};
-  color: ${theme.hoverBarTextColor};
-  box-shadow: ${theme.hoverBarBoxShadow};
-
-  @media (max-width: 600px) and (orientation: portrait) { /* Combining width and orientation */
-    top: 0;
-  }
-  `);
 
   // Styled component for left-aligned items
   const LeftAligned = styled.div`
