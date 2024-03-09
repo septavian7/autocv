@@ -1,35 +1,32 @@
 /* SkHoverBar.tsx */
 
-import React, { useState } from 'react'; // Import React with useState
-import styled from '@emotion/styled'; // Import styled from Emotion
-import { observer } from "mobx-react-lite"; // Import observer from mobx-react-lite
-import { useThemeStore } from '../../contexts/SkThemeStoreContexts'; // Import useThemeStore from SkThemeStoreContexts
-import { SkUserSettings } from '../../features/SkUserSettings/SkUserSettings'; // Adjust path as needed
-import SkButton from '../../components/SkButton/SkButton'; // Import SkButton
-import SettingsIcon from '@mui/icons-material/Settings'; // Import SettingsIcon from mui icons
-import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome'; // Import AutoAwesomeIcon from mui icons
-import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard'; // Import SpaceDashboardIcon from mui icons
-import Contrast from '@mui/icons-material/Contrast'; // Import Contrast from mui icons
-import MotionPhotosAutoIcon from '@mui/icons-material/MotionPhotosAuto'; // Import MotionPhotosAutoIcon from mui icons
+import React, { useState } from 'react';
+import styled from '@emotion/styled';
+import { observer } from "mobx-react-lite";
+import { useThemeStore } from '../../contexts/SkThemeStoreContexts';
+import { SkUserSettings } from '../../features/SkUserSettings/SkUserSettings';
+import SkButton from '../../components/SkButton/SkButton';
+import SettingsIcon from '@mui/icons-material/Settings';
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
+import Contrast from '@mui/icons-material/Contrast';
+import MotionPhotosAutoIcon from '@mui/icons-material/MotionPhotosAuto';
+import AccountCircle from '@mui/icons-material/AccountCircle'; // Import for UserLogin button
+import UserLogin from '../../features/UserLogin/UserLogin'; // Adjust path as necessary
 
-const SkHoverBar: React.FC = observer(() => { // Create a functional component SkHoverBar
-
+const SkHoverBar = observer(() => {
   // const [isSettingsPanelVisible, setIsSettingsPanelVisible] = useState(false);
-  const themeStore = useThemeStore(); // Accessing the theme store directly
+  const [isSettingsVisible, setIsSettingsVisible] = useState(false);
+  const [isUserLoginVisible, setIsUserLoginVisible] = useState(false);
+  const themeStore = useThemeStore();
   console.log("Current theme:", themeStore.theme); // Log the current theme for debugging
   console.log("Current theme colors:", themeStore.colors); // Log the current theme colors for debugging
 
   // Function to toggle the theme
-  const toggleTheme = () => { // Create a function toggleTheme
-    themeStore.toggleTheme(); // Call the toggleTheme function from the theme store
-    console.log("Theme toggled"); // Log that the theme has been toggled
+  const toggleTheme = () => {
+    themeStore.toggleTheme();
+    console.log("Theme toggled");
   };
-
-  // Function to toggle the visibility of the settings panel
-    const [isSettingsPanelVisible, setIsSettingsPanelVisible] = useState(false);
-    const toggleSettingsPanel = () => {
-      setIsSettingsPanelVisible(!isSettingsPanelVisible);
-    };
 
   // Styled component for IconWrapper
   const IconWrapper = styled.div`
@@ -84,35 +81,26 @@ const SkHoverBar: React.FC = observer(() => { // Create a functional component S
   gap: -0px; /* Gap between buttons */
   `;
 
-  // Return the SkHoverBarContainer
   return (
     <SkHoverBarContainer>
       <LeftAligned>
         <IconWrapper>
           <MotionPhotosAutoIcon style={{ fontSize: 36, color: '#175AE2' }} />
         </IconWrapper>
-        <span>AutoCV</span> {/* App Name */}
+        <span>AutoCV</span>
       </LeftAligned>
       <RightAligned>
-        <SkButton icon={<SettingsIcon />} onClick={toggleSettingsPanel} />
+      <SkButton icon={<SettingsIcon />} onClick={() => setIsSettingsVisible(!isSettingsVisible)} />
+      <SkButton icon={<AccountCircle />} onClick={() => setIsUserLoginVisible(!isUserLoginVisible)} />
         <SkButton icon={<Contrast />} onClick={toggleTheme} />
-        <SkButton icon={<SpaceDashboardIcon />} onClick={() => {}} />
-        <SkButton
-          label="Make CV"
-          icon={<AutoAwesomeIcon style={{ marginLeft: '8px' }} />}
-          onClick={() => {}} // Adjust onClick functionality as needed
-          primary={true}
-        />
+        <SkButton icon={<SpaceDashboardIcon />} onClick={() => {}} /> {/* No action on click */}
+        <SkButton label="Make CV" icon={<AutoAwesomeIcon style={{ marginLeft: '8px' }} />} onClick={() => {}} primary={true} />
       </RightAligned>
-      {isSettingsPanelVisible && (
-                <SkUserSettings
-                    isVisible={isSettingsPanelVisible}
-                    onClose={() => setIsSettingsPanelVisible(false)}
-                />
-            )}
+      {/* Conditional Rendering for SkUserSettings and UserLogin within SkHoverWindow */}
+      {isSettingsVisible && <SkUserSettings isVisible={isSettingsVisible} onClose={() => setIsSettingsVisible(false)} />}
+      {isUserLoginVisible && <UserLogin isVisible={isUserLoginVisible} onClose={() => setIsUserLoginVisible(false)} />}
     </SkHoverBarContainer>
   );
-
 });
 
 export default SkHoverBar;

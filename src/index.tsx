@@ -1,15 +1,15 @@
-/* index.tsx */
+/* src/index.tsx */
 
-import React from "react";
+import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
+import './firebaseConfig'; // Ensure Firebase is initialized correctly
 import { configure } from "mobx";
 import { SkUserStoreProvider } from './contexts/SkUserStoreContexts';
-import { ThemeProvider } from './SkThemeProvider'; // Ensure this is correctly importing your ThemeProvider
+import { ThemeProvider } from './SkThemeProvider';
 import SkHoverBar from "./layout/SkHoverBar/SkHoverBar";
 
-// MobX configuration for strict mode
 configure({
-  enforceActions: "always", // or "observed"
+  enforceActions: "always",
 });
 
 // Create a root element for the app
