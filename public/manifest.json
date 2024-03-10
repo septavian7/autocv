@@ -1,28 +1,33 @@
 {
-    "manifest_version": 3,
-    "name": "AutoCV",
-    "version": "0.6.0",
-    "description": "Custom resume in seconds.",
-    "permissions": ["activeTab"],
-    "icons": {
+  "manifest_version": 3,
+  "name": "AutoCV",
+  "version": "0.6.0",
+  "description": "Custom resume in seconds.",
+  "permissions": ["activeTab"],
+  "icons": {
+    "16": "images/icon-autocv-cr-16.png",
+    "48": "images/icon-autocv-cr-48.png",
+    "128": "images/icon-autocv-cr-128.png",
+    "256": "images/icon-autocv-cr-256.png"
+  },
+  "action": {
+    "default_icon": {
       "16": "images/icon-autocv-cr-16.png",
       "48": "images/icon-autocv-cr-48.png",
       "128": "images/icon-autocv-cr-128.png",
       "256": "images/icon-autocv-cr-256.png"
-    },
-    "action": {
-      "default_icon": {
-        "16": "images/icon-autocv-cr-16.png",
-        "48": "images/icon-autocv-cr-48.png",
-        "128": "images/icon-autocv-cr-128.png",
-        "256": "images/icon-autocv-cr-256.png"
-      }
-    },
-    "content_scripts": [
-      {
-        "matches": ["<all_urls>"],
-        "js": ["bundle.js"]
-      }
-    ]
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["bundle.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["fonts/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }
-  

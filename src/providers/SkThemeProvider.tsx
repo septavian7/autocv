@@ -3,7 +3,7 @@
 import React from 'react';
 import { ThemeProvider as EmotionThemeProvider } from '@emotion/react';
 import { observer } from "mobx-react-lite";
-import { themeStore } from './stores/SkThemeStore';
+import { themeStore } from '../stores/SkThemeStore';
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = observer(({ children }) => {
   // Directly access the theme colors from themeStore

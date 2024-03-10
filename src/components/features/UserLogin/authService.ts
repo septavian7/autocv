@@ -2,7 +2,7 @@
 
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
-import { auth, firestore } from '../firebaseConfig'; // Adjust the import path to match your structure
+import { auth, firestore } from '../../../config/firebaseConfig'; // Adjust the import path to match your structure
 
 const signUpUser = async (email: string, password: string, firstName: string, lastName: string) => {
     try {

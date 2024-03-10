@@ -1,4 +1,5 @@
-// webpack.config.mjs
+/* webpack.config.mjs */
+
 import path from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
@@ -12,18 +13,18 @@ export default {
     plugins: [
         new CopyPlugin({
           patterns: [
-            { from: "public", to: "." }, // Assuming your static assets and manifest.json are in a 'public' directory
+            { from: "public", to: "." }, // Static Files
           ],
         }),
       ],
   mode: "development", // 'production' for production builds
-  entry: "./src/index.tsx", // Entry point of your application
+  entry: "./src/index.tsx", // Entry point
   output: {
     path: path.resolve(__dirname, "dist"), // Output directory
     filename: "bundle.js", // Output bundle file name
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"], // Resolve these extensions
+    extensions: [".tsx", ".ts", ".js"],
   },
   module: {
     rules: [

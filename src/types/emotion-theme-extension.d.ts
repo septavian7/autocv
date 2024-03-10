@@ -1,4 +1,5 @@
-// src/types/emotion-theme-extension.d.ts
+/* src/types/emotion-theme-extension.d.ts */
+
 import '@emotion/react';
 
 declare module '@emotion/react' {

@@ -4,7 +4,7 @@ import React, { cloneElement } from 'react'; // Import React and cloneElement
 import styled from '@emotion/styled'; // Import styled from Emotion
 import { observer } from "mobx-react-lite"; // Import observer from mobx-react-lite
 import { useButtonTheme } from './SkButtonThemeContext'; // Import useButtonTheme from SkButtonThemeContext
-import { useThemeStore } from '../../contexts/SkThemeStoreContexts'; // Import useThemeStore from SkThemeStoreContexts
+import { useThemeStore } from '../../../contexts/SkThemeContext'; // Import useThemeStore from SkThemeStoreContexts
 
 // Define the ButtonProps interface
 interface ButtonProps {

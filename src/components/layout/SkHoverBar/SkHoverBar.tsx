@@ -1,18 +1,30 @@
 /* SkHoverBar.tsx */
 
+/* --------- IMPORT --------- */
+
+// Plugins/Tools
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { observer } from "mobx-react-lite";
-import { useThemeStore } from '../../contexts/SkThemeStoreContexts';
-import { SkUserSettings } from '../../features/SkUserSettings/SkUserSettings';
-import SkButton from '../../components/SkButton/SkButton';
+// Icons
 import SettingsIcon from '@mui/icons-material/Settings';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
 import Contrast from '@mui/icons-material/Contrast';
 import MotionPhotosAutoIcon from '@mui/icons-material/MotionPhotosAuto';
 import AccountCircle from '@mui/icons-material/AccountCircle'; // Import for UserLogin button
-import UserLogin from '../../features/UserLogin/UserLogin'; // Adjust path as necessary
+import BedtimeIcon from '@mui/icons-material/Bedtime';
+// Components
+import SkButton from '../../common/SkButton/SkButton';
+import UserLogin from '../../features/UserLogin/SkUserLogin'; // Adjust path as necessary
+import { SkUserSettings } from '../../features/SkUserSettings/SkUserSettings';
+// Stores
+import { visibilityStore } from '../../../stores/SkVisibilityStore'; // Adjust path as necessary
+// Styles
+import { useThemeStore } from '../../../contexts/SkThemeContext';
+import { SkHoverBarContainer, IconWrapper, LeftAligned, RightAligned } from '../../../styles/SkHoverBarStyles';
+
+/* --------- SETUP --------- */
 
 const SkHoverBar = observer(() => {
   // const [isSettingsPanelVisible, setIsSettingsPanelVisible] = useState(false);
@@ -28,73 +40,24 @@ const SkHoverBar = observer(() => {
     console.log("Theme toggled");
   };
 
-  // Styled component for SkHoverBarContainer
-  const SkHoverBarContainer = styled.div(({ theme }) => `
-    position: fixed;
-    top: 5px; /* Slightly away from the top */
-    left: 1%; /* margin from the left */
-    right: 1%; /* margin from the right */
-    height: 52px; /* Height is kept the same */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 2147483650;
-    background: ${theme.hoverBarBackground};
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border-radius: 15px; /* Rounded edges */
-    color: ${theme.hoverBarTextColor};
-    box-shadow: ${theme.hoverBarBoxShadow};
-    padding: 0 3%; /* Adding padding to the sides */
+  // Function to toggle the visibility of the hover bar
+  const toggleHoverBarVisibility = () => {
+    visibilityStore.toggleHoverBar(); // Call the action from the visibility store
+    console.log("Hover bar visibility toggled");
+  };
 
-    @media (max-width: 600px) and (orientation: portrait) {
-      top: 5px;
-      left: 5%;
-      right: 5%;
-    }
-  `);
-
-
-  // Styled component for IconWrapper
-  const IconWrapper = styled.div`
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 42px; // Adjust the size as needed
-    height: 42px; // Adjust the size as needed
-    background-color: white; // Set the background color to white
-    border-radius: 4px; // Adjust for rounded corners
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Optional: add a subtle shadow
-    padding-top: 2px; // Adjust the position of the icon
-  `;
-
-  // Styled component for left-aligned items
-  const LeftAligned = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-left: 10px; /* Add some spacing */
-  & > span {
-    margin-left: 8px; /* Spacing between icon and text */
-  }
-  `;
-
-  // Styled component for right-aligned items
-  const RightAligned = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  margin-right: 10px; /* Add some spacing */
-  gap: -0px; /* Gap between buttons */
-  `;
+/* --------- RENDER --------- */
 
   return (
-    <SkHoverBarContainer>
+    <SkHoverBarContainer style={{ display: visibilityStore.hoverBarVisible ? 'flex' : 'none' }}>
       <LeftAligned>
         <IconWrapper>
           <MotionPhotosAutoIcon style={{ fontSize: 36, color: '#175AE2' }} />
         </IconWrapper>
-        <span>AutoCV</span>
+        <SkButton
+          icon={<BedtimeIcon />}
+          onClick={toggleHoverBarVisibility} // Implement the onClick handler
+        /> {/* Toggles visibility of Hover Bar */}
       </LeftAligned>
       <RightAligned>
       <SkButton icon={<SettingsIcon />} onClick={() => setIsSettingsVisible(!isSettingsVisible)} />

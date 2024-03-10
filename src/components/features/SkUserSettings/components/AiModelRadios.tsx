@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { observer } from "mobx-react-lite";
-import { useSkUserStore } from '../../../contexts/SkUserStoreContexts';
+import { useSkUserStore } from '../../../../contexts/SkUserContext';
 
 const AiModelRadios: React.FC = observer(() => {
   const userStore = useSkUserStore();

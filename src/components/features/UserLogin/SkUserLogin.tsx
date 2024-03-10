@@ -1,15 +1,23 @@
-/* src/features/UserLogin/UserLogin.tsx */
+/* src/features/UserLogin/SkUserLogin.tsx */
 
+/* --------- IMPORT --------- */
+
+// Plugins/Tools
 import React, { useState, useEffect } from 'react';
-import { observer } from "mobx-react-lite"; // Import observer
-import { userStore } from '../../stores/SkUserStore'; // Import userStore
+import { observer } from "mobx-react-lite";
 import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
-import { signUpUser, signInUser } from '../../services/authService';
-import SkHoverWindow from '../../templates/SkHoverWindow'; // Adjust import path as necessary
-import EmailInput from './EmailInput'; // Ensure this path is correct
-import PasswordInput from './PasswordInput'; // Ensure this path is correct
-import SkButton from '../../components/SkButton/SkButton'; // Ensure this path is correct
+// Stores
+import { userStore } from '../../../stores/SkUserStore';
+// Services/Utilities
+import { signUpUser, signInUser } from './authService';
+// Components
+import SkHoverWindow from '../../templates/SkHoverWindow';
+import EmailInput from './EmailInput';
+import PasswordInput from './PasswordInput';
+import SkButton from '../../common/SkButton/SkButton';
+
+/* --------- SETUP --------- */
 
 interface Props {
   isVisible: boolean;
@@ -22,14 +30,12 @@ const UserLoginComponent: React.FC<Props> = ({ isVisible, onClose }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [successMessage, setSuccessMessage] = useState(''); // New state for success message
+  const [successMessage, setSuccessMessage] = useState('');
   const [user, setUser] = useState<User | null>(null);
   const [userData, setUserData] = useState<{ firstName?: string, lastName?: string, email?: string } | null>(null);
 
-  // This useEffect reacts to changes in the userStore's properties
   useEffect(() => {
     console.log("Current user in store:", userStore.email, userStore.firstName, userStore.lastName);
-    // Optional: Implement actions based on the updated store values here
   }, [userStore.email, userStore.firstName, userStore.lastName]);
 
   useEffect(() => {
@@ -55,9 +61,9 @@ const UserLoginComponent: React.FC<Props> = ({ isVisible, onClose }) => {
 const handleSignUp = async () => {
   const result = await signUpUser(email, password, firstName, lastName);
   if (result.success) {
-    userStore.setEmail(email); // Assuming you have methods to update these in your store
-    userStore.setFirstName(firstName); // Assuming you have methods to update these in your store
-    userStore.setLastName(lastName); // Assuming you have methods to update these in your store
+    userStore.setEmail(email);
+    userStore.setFirstName(firstName);
+    userStore.setLastName(lastName);
     setError('');
     setSuccessMessage(result.message);
   } else {
@@ -80,6 +86,8 @@ const handleSignIn = async () => {
 
   // If the component should not be visible, return null or alternatively manage visibility outside of this component
   if (!isVisible) return null;
+
+/* --------- RENDER --------- */
 
   return (
     <SkHoverWindow isVisible={isVisible} onClose={onClose}>
