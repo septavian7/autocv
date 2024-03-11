@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { observer } from "mobx-react-lite";
-import { useSkUserStore } from '../../../contexts/SkUserContext';
+import { useSkUserStore } from '../../../../contexts/SkUserContext';
 
 interface EmailInputProps {
   value: string;

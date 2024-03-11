@@ -3,7 +3,7 @@
   "name": "AutoCV",
   "version": "0.6.0",
   "description": "Custom resume in seconds.",
-  "permissions": ["activeTab"],
+  "permissions": ["activeTab", "storage", "scripting"],
   "icons": {
     "16": "images/icon-autocv-cr-16.png",
     "48": "images/icon-autocv-cr-48.png",
@@ -17,6 +17,9 @@
       "128": "images/icon-autocv-cr-128.png",
       "256": "images/icon-autocv-cr-256.png"
     }
+  },
+  "background": {
+    "service_worker": "background.js"
   },
   "content_scripts": [
     {

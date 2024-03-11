@@ -1,11 +1,8 @@
-/*
-parent_folder:  src/contexts/  
-*/
+/* src/contexts/SkThemeContexts.tsx */
 
-/* SkThemeStoreContexts.tsx */
-
-import React from 'react';
+import React, { useContext } from 'react';
 import { themeStore } from '../stores/SkThemeStore';
+import { getThemeStyles } from '../styles/SkThemeStyles';
 
 const ThemeContext = React.createContext(themeStore);
 
@@ -13,5 +10,11 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   <ThemeContext.Provider value={themeStore}>{children}</ThemeContext.Provider>
 );
 
-export const useThemeStore = () => React.useContext(ThemeContext);
-console.log("SkThemeStoreContexts.tsx: useThemeStore");
+// Existing useThemeStore hook (you can keep it if it's used elsewhere)
+export const useThemeStore = () => useContext(ThemeContext);
+
+// New hook to directly use theme styles
+export const useTheme = () => {
+  const store = useContext(ThemeContext);
+  return getThemeStyles(store.theme); // Return  style object based on  current theme
+};

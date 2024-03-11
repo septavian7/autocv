@@ -16,13 +16,13 @@ import AccountCircle from '@mui/icons-material/AccountCircle'; // Import for Use
 import BedtimeIcon from '@mui/icons-material/Bedtime';
 // Components
 import SkButton from '../../common/SkButton/SkButton';
-import UserLogin from '../../features/UserLogin/SkUserLogin'; // Adjust path as necessary
+import UserLogin from '../../features/SkUserLogin/SkUserLogin'; // Adjust path as necessary
 import { SkUserSettings } from '../../features/SkUserSettings/SkUserSettings';
 // Stores
 import { visibilityStore } from '../../../stores/SkVisibilityStore'; // Adjust path as necessary
 // Styles
 import { useThemeStore } from '../../../contexts/SkThemeContext';
-import { SkHoverBarContainer, IconWrapper, LeftAligned, RightAligned } from '../../../styles/SkHoverBarStyles';
+import { SkHoverBarContainer, /* IconWrapper, */ LeftAligned, RightAligned } from '../../../styles/SkHoverBarStyles';
 
 /* --------- SETUP --------- */
 
@@ -51,9 +51,9 @@ const SkHoverBar = observer(() => {
   return (
     <SkHoverBarContainer style={{ display: visibilityStore.hoverBarVisible ? 'flex' : 'none' }}>
       <LeftAligned>
-        <IconWrapper>
-          <MotionPhotosAutoIcon style={{ fontSize: 36, color: '#175AE2' }} />
-        </IconWrapper>
+{/*         <IconWrapper>
+          <MotionPhotosAutoIcon style={{ fontSize: 34, color: '#175AE2' }} />
+        </IconWrapper> */}
         <SkButton
           icon={<BedtimeIcon />}
           onClick={toggleHoverBarVisibility} // Implement the onClick handler

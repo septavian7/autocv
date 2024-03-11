@@ -9,6 +9,5 @@ declare module '@emotion/react' {
     hoverBarBackground: string;
     hoverBarTextColor: string;
     hoverBarBoxShadow: string;
-    // Add other theme properties as needed
   }
 }

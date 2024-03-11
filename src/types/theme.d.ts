@@ -1,11 +1,26 @@
-// theme.d.ts
+/* src/types/theme.d.ts */
+
+export interface ThemeColors {
+  // General
+  text: string;
+  background: string;
+  
+  // Button
+  buttonPrimaryTextColor: string;
+  buttonSecondaryTextColor: string;
+  buttonPrimaryBackgroundColor: string;
+  buttonSecondaryBackgroundColor: string;
+  hoverPrimaryBackgroundColor: string;
+  hoverSecondaryBackgroundColor: string;
+  hoverTextColor: string;
+
+  // Hover Bar
+  hoverBarBackground: string;
+  hoverBarBoxShadow: string;
+  hoverBarTextColor: string;
+}
 
 export interface Theme {
-    background: string;
-    text: string;
-    hoverBarBackground: string;
-    hoverBarTextColor: string;
-    hoverBarBoxShadow: string;
-    // Add any other theme-related properties here
-  }
-  
+  light: ThemeColors;
+  dark: ThemeColors;
+}

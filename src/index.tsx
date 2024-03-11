@@ -2,14 +2,18 @@
 
 /* --------- IMPORT --------- */
 
+// Plugins, Dependencies
 import React from "react";
 import { createRoot } from "react-dom/client";
-import './config/firebaseConfig'; // Ensure Firebase is initialized correctly
+// Configs
+import './config/firebaseConfig';
 import { configure } from "mobx";
+// Providers, Stores
 import { SkUserStoreProvider } from './contexts/SkUserContext';
 import { ThemeProvider } from './providers/SkThemeProvider';
+// Components, Modules
 import SkHoverBar from "./components/layout/SkHoverBar/SkHoverBar";
-import SkGlobalStyles from "./styles/SkGlobalStyles"; // Import the SkGlobalStyles component
+import SkGlobalStyles from "./styles/SkGlobalStyles";
 
 /* --------- SETUP --------- */
 
@@ -17,26 +21,24 @@ configure({
   enforceActions: "always",
 });
 
-// Create a root element for the app
-const rootElement = document.createElement("div");
-rootElement.id = "Sk0ne-root";
-document.body.appendChild(rootElement);
+let rootElement = document.getElementById("extension-root"); // Look for the dummy host's root element
+if (!rootElement) {
+  // If not found, proceed as usual for the extension
+  rootElement = document.createElement("div");
+  rootElement.id = "Sk0ne-root";
+  document.body.appendChild(rootElement);
+}
 
 /* --------- RENDER --------- */
 
-// Mount the root element and render the app within the context providers
-const rootElementMounted = document.getElementById("Sk0ne-root");
-if (rootElementMounted) {
-  const root = createRoot(rootElementMounted);
-  root.render(
-    <React.StrictMode>
-      <SkUserStoreProvider>
-        <ThemeProvider> {/* Wraps your app with the ThemeProvider */}
-          <SkGlobalStyles /> {/* Apply global styles */}
-          <SkHoverBar />
-          {/* Additional components can be added here and will inherit the global styles */}
-        </ThemeProvider>
-      </SkUserStoreProvider>
-    </React.StrictMode>,
-  );
-}
+const root = createRoot(rootElement); // Directly use the resolved rootElement
+root.render(
+  <React.StrictMode>
+    <SkUserStoreProvider>
+      <ThemeProvider>
+        <SkGlobalStyles />
+        <SkHoverBar />
+      </ThemeProvider>
+    </SkUserStoreProvider>
+  </React.StrictMode>,
+);

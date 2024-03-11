@@ -10,11 +10,11 @@ import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
 // Stores
 import { userStore } from '../../../stores/SkUserStore';
 // Services/Utilities
-import { signUpUser, signInUser } from './authService';
+import { signUpUser, signInUser } from './services/authService';
 // Components
 import SkHoverWindow from '../../templates/SkHoverWindow';
-import EmailInput from './EmailInput';
-import PasswordInput from './PasswordInput';
+import EmailInput from './components/EmailInput';
+import PasswordInput from './components/PasswordInput';
 import SkButton from '../../common/SkButton/SkButton';
 
 /* --------- SETUP --------- */

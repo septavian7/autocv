@@ -1,7 +1,7 @@
-/* SkThemeStore.tsx */
+/* src/stores/SkThemeStore.tsx */
 
 import { makeAutoObservable } from "mobx";
-import { getThemeStyles } from "../styles/SkThemeStyles"; // Import the getThemeStyles function
+import { getThemeStyles } from "../styles/SkThemeStyles";
 
 class ThemeStore {
   theme: "light" | "dark" = "dark";
@@ -15,7 +15,7 @@ class ThemeStore {
   }
 
   get colors() {
-    // Use getThemeStyles to dynamically get the theme styles based on the current theme
+
     return getThemeStyles(this.theme);
   }
 }

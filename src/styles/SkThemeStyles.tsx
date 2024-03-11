@@ -54,14 +54,14 @@ const themes: { [key: string]: ThemeColors } = {
     buttonPrimaryTextColor: 'white',
     buttonSecondaryTextColor: 'white',
     buttonPrimaryBackgroundColor: '#175AE2',
-    buttonSecondaryBackgroundColor: 'black',
+    buttonSecondaryBackgroundColor: 'rgba(0,0,0,0.5)',
     hoverPrimaryBackgroundColor: '#0041C4',
-    hoverSecondaryBackgroundColor: '#6a6a6a',
-    hoverTextColor: '#ffffff',
+    hoverSecondaryBackgroundColor: 'rgba(0,0,0,0.9)',
+    hoverTextColor: 'white',
 
     // Hover Bar
-    hoverBarBackground: 'radial-gradient(circle, rgba(55,55,55,0.7) 0%, rgba(55,55,55,0.6) 100%)',
-    hoverBarBoxShadow: '0 2px 4px rgba(255, 255, 255, 0.1)',
+    hoverBarBackground: 'radial-gradient(circle, rgba(55,55,55,0.7) 0%, rgba(55,55,55,0.8) 100%)',
+    hoverBarBoxShadow: '0 2px 4px rgba(255, 255, 255, 1.0)',
     hoverBarTextColor: '#FFFFFF',
     },
   };
