@@ -1,75 +1,137 @@
-/* SkHoverBar.tsx */
+/* /src/components/layouts/SkHoverBar/SkHoverBar.tsx */
 
 /* --------- IMPORT --------- */
 
 // Plugins/Tools
-import React, { useState } from 'react';
-import styled from '@emotion/styled';
+import React, { useState } from "react";
 import { observer } from "mobx-react-lite";
-// Icons
-import SettingsIcon from '@mui/icons-material/Settings';
-import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
-import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
-import Contrast from '@mui/icons-material/Contrast';
-import MotionPhotosAutoIcon from '@mui/icons-material/MotionPhotosAuto';
-import AccountCircle from '@mui/icons-material/AccountCircle'; // Import for UserLogin button
-import BedtimeIcon from '@mui/icons-material/Bedtime';
+import { useTheme } from "@emotion/react";
+// import styled from "@emotion/styled";
+import { motion } from "framer-motion";
 // Components
-import SkButton from '../../common/SkButton/SkButton';
-import UserLogin from '../../features/SkUserLogin/SkUserLogin'; // Adjust path as necessary
-import { SkUserSettings } from '../../features/SkUserSettings/SkUserSettings';
+import SkButton from "../../common/SkButton/SkButton";
+import SkIcon from "../../common/SkIcon/SkIcon";
+import { SkUserSettings } from "../../features/SkUserSettings/SkUserSettings";
+import { SkToolsMenu } from "../../features/SkToolsMenu/SkToolsMenu";
+import { SkMakeCV } from "../../features/SkMakeCV/SkMakeCV";
 // Stores
-import { visibilityStore } from '../../../stores/SkVisibilityStore'; // Adjust path as necessary
+import { themeStore } from "../../../stores/SkThemeStore";
 // Styles
-import { useThemeStore } from '../../../contexts/SkThemeContext';
-import { SkHoverBarContainer, /* IconWrapper, */ LeftAligned, RightAligned } from '../../../styles/SkHoverBarStyles';
+import {
+  SkHoverBarContainer,
+  LeftAligned,
+  CenterAligned,
+  RightAligned,
+} from "../../../styles/SkHoverBarStyles";
 
 /* --------- SETUP --------- */
 
 const SkHoverBar = observer(() => {
-  // const [isSettingsPanelVisible, setIsSettingsPanelVisible] = useState(false);
-  const [isSettingsVisible, setIsSettingsVisible] = useState(false);
-  const [isUserLoginVisible, setIsUserLoginVisible] = useState(false);
-  const themeStore = useThemeStore();
-  console.log("Current theme:", themeStore.theme); // Log the current theme for debugging
-  console.log("Current theme colors:", themeStore.colors); // Log the current theme colors for debugging
+  const [isMinimized, setIsMinimized] = useState(false);
+  const [isUserSettingsVisible, setIsUserSettingsVisible] = useState(false);
+  const [isToolsMenuVisible, setIsToolsMenuVisible] = useState(false);
+  const [isMakeCVVisible, setIsMakeCVVisible] = useState(false);
 
-  // Function to toggle the theme
-  const toggleTheme = () => {
-    themeStore.toggleTheme();
-    console.log("Theme toggled");
-  };
+  // Define toggle functions
+  const toggleMinimize = () => setIsMinimized(!isMinimized);
+  const toggleTheme = () => themeStore.toggleTheme();
+  const toggleUserSettings = () =>
+    setIsUserSettingsVisible(!isUserSettingsVisible);
+  const toggleToolsMenu = () => setIsToolsMenuVisible(!isToolsMenuVisible);
+  const toggleMakeCV = () => setIsMakeCVVisible(!isMakeCVVisible);
 
-  // Function to toggle the visibility of the hover bar
-  const toggleHoverBarVisibility = () => {
-    visibilityStore.toggleHoverBar(); // Call the action from the visibility store
-    console.log("Hover bar visibility toggled");
-  };
+  /* --------- RENDER  --------- */
 
-/* --------- RENDER --------- */
-
-  return (
-    <SkHoverBarContainer style={{ display: visibilityStore.hoverBarVisible ? 'flex' : 'none' }}>
-      <LeftAligned>
-{/*         <IconWrapper>
-          <MotionPhotosAutoIcon style={{ fontSize: 34, color: '#175AE2' }} />
-        </IconWrapper> */}
+  // Render Minimized
+  if (isMinimized) {
+    return (
+      <SkHoverBarContainer
+        initial={false}
+        animate={{
+          width: "60px",
+          height: "60px",
+          borderRadius: "15px 0 0 15px",
+          clipPath: "inset(0 -100% 0 0)",
+          right: "0",
+          left: "auto",
+          justifyContent: "flex-start",
+          padding: "0 8px",
+        }}
+        transition={{ duration: 0.5 }}
+        onClick={toggleMinimize}
+      >
         <SkButton
-          icon={<BedtimeIcon />}
-          onClick={toggleHoverBarVisibility} // Implement the onClick handler
-        /> {/* Toggles visibility of Hover Bar */}
-      </LeftAligned>
-      <RightAligned>
-      <SkButton icon={<SettingsIcon />} onClick={() => setIsSettingsVisible(!isSettingsVisible)} />
-      <SkButton icon={<AccountCircle />} onClick={() => setIsUserLoginVisible(!isUserLoginVisible)} />
-        <SkButton icon={<Contrast />} onClick={toggleTheme} />
-        <SkButton icon={<SpaceDashboardIcon />} onClick={() => {}} /> {/* No action on click */}
-        <SkButton label="Make CV" icon={<AutoAwesomeIcon style={{ marginLeft: '8px' }} />} onClick={() => {}} primary={true} />
-      </RightAligned>
-      {/* Conditional Rendering for SkUserSettings and UserLogin within SkHoverWindow */}
-      {isSettingsVisible && <SkUserSettings isVisible={isSettingsVisible} onClose={() => setIsSettingsVisible(false)} />}
-      {isUserLoginVisible && <UserLogin isVisible={isUserLoginVisible} onClose={() => setIsUserLoginVisible(false)} />}
-    </SkHoverBarContainer>
+          icon={
+            <SkIcon
+              iconName="motionPhotosAuto"
+              color="#175AE2"
+              fontSize="large"
+            />
+          }
+          onClick={toggleMinimize}
+        />
+      </SkHoverBarContainer>
+    );
+  }
+
+  // Render Expanded
+  return (
+    <>
+      <SkHoverBarContainer
+        initial={false}
+        animate={{
+          width: "calc(100% - 2%)",
+          height: "60px",
+          borderRadius: "15px",
+          clipPath: "none",
+          left: "1%",
+          right: "1%",
+          justifyContent: "space-between",
+        }}
+        transition={{ duration: 0.5 }}
+      >
+        <LeftAligned>
+          <SkButton
+            icon={<SkIcon iconName="motionPhotosAuto" color="#175AE2" />}
+            onClick={toggleMinimize}
+          />
+          <SkButton
+            icon={<SkIcon iconName="contrast" />}
+            onClick={toggleTheme}
+          />
+        </LeftAligned>
+        <CenterAligned>
+          <SkButton
+            label="Make CV"
+            icon={<SkIcon iconName="autoAwesome" />}
+            onClick={toggleMakeCV}
+            primary
+          />
+        </CenterAligned>
+        <RightAligned>
+          <SkButton
+            icon={<SkIcon iconName="settings" />}
+            onClick={toggleUserSettings}
+          />
+          <SkButton
+            icon={<SkIcon iconName="spaceDashboard" />}
+            onClick={toggleToolsMenu}
+          />
+        </RightAligned>
+      </SkHoverBarContainer>
+      {isUserSettingsVisible && (
+        <SkUserSettings
+          isVisible={isUserSettingsVisible}
+          onClose={toggleUserSettings}
+        />
+      )}
+      {isToolsMenuVisible && (
+        <SkToolsMenu isVisible={isToolsMenuVisible} onClose={toggleToolsMenu} />
+      )}
+      {isMakeCVVisible && (
+        <SkMakeCV isVisible={isMakeCVVisible} onClose={toggleMakeCV} />
+      )}
+    </>
   );
 });
 

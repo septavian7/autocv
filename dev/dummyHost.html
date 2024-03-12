@@ -2,12 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=2.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://localhost:8080;">
     <title>AutoDummy</title>
+    <style>
+        .background-image {
+            height: 100vh; /* 100% of the viewport height */
+            background-image: url('images/ios_linkedin.jpg');
+            background-repeat: no-repeat;
+            background-position: center top;
+            background-size: contain; /* Change to 'contain' to ensure the image fits within the div without being cropped */
+            position: fixed; /* Make it cover the whole page */
+            width: 100%; /* Cover the full width */
+            top: 0; /* Align top */
+            left: 0; /* Align left */
+            z-index: -1; /* Ensure it stays behind other content */
+        }
+    </style>
 </head>
 <body>
+    <div class="background-image"></div>
     <div id="extension-root"></div>
 
-    <script src="../dist/bundle.js"></script>
+    <!-- dist bundle  -->
+    <!-- <script src="../dist/bundle.js"></script> -->
+
+    <!-- webpack dev server-->
+    <script src="http://localhost:8080/bundle.js"></script>
 </body>
 </html>
