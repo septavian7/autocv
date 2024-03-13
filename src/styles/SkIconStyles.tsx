@@ -9,3 +9,14 @@ export const SmallIcon = styled.span`
 export const LargeIcon = styled.span`
   font-size: 32px;
 `;
+
+interface IconWrapperProps {
+  hasLabel: boolean;
+}
+
+export const IconWrapper = styled.div<IconWrapperProps>(({ hasLabel }) => ({
+  display: "flex",
+  alignItems: "center",
+  fontSize: "25px",
+  marginLeft: hasLabel ? "8px" : "0",
+}));

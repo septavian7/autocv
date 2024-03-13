@@ -3,7 +3,11 @@
 /* --------- IMPORT --------- */
 // Plugins/Tools
 import React from "react";
-import { SmallIcon, LargeIcon } from "../../../styles/SkIconStyles";
+import {
+  SmallIcon,
+  LargeIcon,
+  IconWrapper,
+} from "../../../styles/SkIconStyles";
 
 // Icons (Main)
 import MotionPhotosAutoIcon from "@mui/icons-material/MotionPhotosAuto"; // AutoCV App Icon
@@ -49,6 +53,7 @@ interface SkIconProps {
   fontSize?: "inherit" | "default" | "small" | "large";
   color?: string;
   style?: React.CSSProperties;
+  hasLabel?: boolean;
 }
 
 // Setup SkIcon
@@ -57,6 +62,7 @@ const SkIcon: React.FC<SkIconProps> = ({
   fontSize = "default",
   color = "inherit",
   style,
+  hasLabel = false,
 }) => {
   const IconComponent = iconComponents[iconName];
   let StyledIcon = (
@@ -69,7 +75,7 @@ const SkIcon: React.FC<SkIconProps> = ({
     StyledIcon = <LargeIcon>{StyledIcon}</LargeIcon>;
   }
 
-  return StyledIcon;
+  return <IconWrapper hasLabel={hasLabel}>{StyledIcon}</IconWrapper>;
 };
 
 /* --------- EXPORT --------- */

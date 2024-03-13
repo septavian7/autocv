@@ -10,7 +10,7 @@ import { useTheme } from "@emotion/react";
 import { motion } from "framer-motion";
 // Components
 import SkButton from "../../common/SkButton/SkButton";
-import SkIcon from "../../common/SkIcon/SkIcon";
+import SkIcon, { IconName } from "../../common/SkIcon/SkIcon";
 import { SkUserSettings } from "../../features/SkUserSettings/SkUserSettings";
 import { SkToolsMenu } from "../../features/SkToolsMenu/SkToolsMenu";
 import { SkMakeCV } from "../../features/SkMakeCV/SkMakeCV";
@@ -40,6 +40,12 @@ const SkHoverBar = observer(() => {
   const toggleToolsMenu = () => setIsToolsMenuVisible(!isToolsMenuVisible);
   const toggleMakeCV = () => setIsMakeCVVisible(!isMakeCVVisible);
 
+  const minimizeIcon: IconName = "motionPhotosAuto";
+  const themeIcon: IconName = "contrast";
+  const makeCVIcon: IconName = "autoAwesome";
+  const settingsIcon: IconName = "settings";
+  const toolsIcon: IconName = "spaceDashboard";
+
   /* --------- RENDER  --------- */
 
   // Render Minimized
@@ -60,16 +66,7 @@ const SkHoverBar = observer(() => {
         transition={{ duration: 0.5 }}
         onClick={toggleMinimize}
       >
-        <SkButton
-          icon={
-            <SkIcon
-              iconName="motionPhotosAuto"
-              color="#175AE2"
-              fontSize="large"
-            />
-          }
-          onClick={toggleMinimize}
-        />
+        <SkButton icon={minimizeIcon} onClick={toggleMinimize} />
       </SkHoverBarContainer>
     );
   }
@@ -91,32 +88,20 @@ const SkHoverBar = observer(() => {
         transition={{ duration: 0.5 }}
       >
         <LeftAligned>
-          <SkButton
-            icon={<SkIcon iconName="motionPhotosAuto" color="#175AE2" />}
-            onClick={toggleMinimize}
-          />
-          <SkButton
-            icon={<SkIcon iconName="contrast" />}
-            onClick={toggleTheme}
-          />
+          <SkButton icon={minimizeIcon} onClick={toggleMinimize} />
+          <SkButton icon={themeIcon} onClick={toggleTheme} />
         </LeftAligned>
         <CenterAligned>
           <SkButton
             label="Make CV"
-            icon={<SkIcon iconName="autoAwesome" />}
+            icon={makeCVIcon}
             onClick={toggleMakeCV}
             primary
           />
         </CenterAligned>
         <RightAligned>
-          <SkButton
-            icon={<SkIcon iconName="settings" />}
-            onClick={toggleUserSettings}
-          />
-          <SkButton
-            icon={<SkIcon iconName="spaceDashboard" />}
-            onClick={toggleToolsMenu}
-          />
+          <SkButton icon={settingsIcon} onClick={toggleUserSettings} />
+          <SkButton icon={toolsIcon} onClick={toggleToolsMenu} />
         </RightAligned>
       </SkHoverBarContainer>
       {isUserSettingsVisible && (

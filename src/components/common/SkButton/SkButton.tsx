@@ -2,19 +2,19 @@
 
 // Imports
 import React from "react";
-import { StyledButton, IconWrapper } from "../../../styles/SkButtonStyles";
+import { StyledButton } from "../../../styles/SkButtonStyles";
 import { observer } from "mobx-react-lite";
 import { useTheme } from "../../../contexts/SkThemeContext";
 import { ButtonProps } from "../../../types/components";
+import SkIcon from "../SkIcon/SkIcon";
 
 // Button component
 const SkButton: React.FC<ButtonProps> = observer(
   ({ label, onClick, primary = false, icon }) => {
-    const themeStyles = useTheme(); // Assuming this fetches theme-specific styles
+    const themeStyles = useTheme();
 
-    // Wrapping the icon with IconWrapper
     const iconWithStyles = icon ? (
-      <IconWrapper hasLabel={!!label}>{React.cloneElement(icon)}</IconWrapper>
+      <SkIcon iconName={icon} hasLabel={!!label} />
     ) : null;
 
     // Render button
