@@ -4,6 +4,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import SkMenuItemIcon from "./SkMenuItemIcon";
 import { IconName } from "../SkIcon/SkIcon";
+import SkToggleSwitch from "../SkToggle/SkToggleSwitch";
 
 interface MenuItemProps {
   iconName?: IconName;
@@ -11,21 +12,18 @@ interface MenuItemProps {
   onClick?: () => void;
   iconColor?: string;
   iconFontSize?: "inherit" | "default" | "small" | "large";
-  children?: React.ReactNode;
+  isChecked?: boolean; // Is toggle switched checked?
+  onToggleChange?: (checked: boolean) => void; // Callback when toggle switch state changes
 }
 
 const MenuItemContainer = styled.div`
   display: flex;
   align-items: center;
-  cursor: pointer;
-  padding: 10px;
-  &:hover {
-    background-color: #f0f0f0;
-  }
+  // [To Do] Add styles for menu item container
 `;
 
 const Label = styled.span`
-  margin-left: 10px;
+  // [To Do] Add styles for label
 `;
 
 const MenuItem: React.FC<MenuItemProps> = ({
@@ -34,7 +32,8 @@ const MenuItem: React.FC<MenuItemProps> = ({
   onClick,
   iconColor,
   iconFontSize,
-  children,
+  isChecked,
+  onToggleChange,
 }) => {
   return (
     <MenuItemContainer onClick={onClick}>
@@ -46,7 +45,12 @@ const MenuItem: React.FC<MenuItemProps> = ({
         />
       )}
       <Label>{label}</Label>
-      {children}
+      {typeof isChecked === "boolean" && onToggleChange && (
+        <SkToggleSwitch
+          checked={isChecked}
+          onChange={(e) => onToggleChange(e.target.checked)}
+        />
+      )}
     </MenuItemContainer>
   );
 };

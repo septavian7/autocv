@@ -16,10 +16,8 @@ interface SkMakeCVProps {
 /* --------- RENDER --------- */
 
 const SkMakeCV: React.FC<SkMakeCVProps> = observer(({ isVisible, onClose }) => {
-  // Simply display a SkHoverWindow with some dummy text
   return isVisible ? (
     <SkHoverWindow isVisible={isVisible} onClose={onClose}>
-      {/* Simplified content */}
       <div style={{ padding: "20px" }}>
         <h2 style={{ fontSize: "24px", textAlign: "center", margin: "20px 0" }}>
           Simplified Make CV

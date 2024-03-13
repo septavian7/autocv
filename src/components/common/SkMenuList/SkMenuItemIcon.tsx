@@ -1,13 +1,13 @@
 /* components/common/SkMenuList/SkMenuItemIcon.tsx */
 
-import React from 'react';
-import styled from '@emotion/styled';
-import SkIcon, { IconName } from '../SkIcon/SkIcon'; // Adjust the import path as needed
+import React from "react";
+import styled from "@emotion/styled";
+import SkIcon, { IconName } from "../SkIcon/SkIcon"; // Adjust the import path as needed
 
 interface SkMenuItemIconProps {
   iconName: IconName;
   color?: string;
-  fontSize?: 'inherit' | 'default' | 'small' | 'large';
+  fontSize?: "inherit" | "default" | "small" | "large";
 }
 
 const IconContainer = styled.div`
@@ -22,7 +22,11 @@ const IconContainer = styled.div`
   }
 `;
 
-const SkMenuItemIcon: React.FC<SkMenuItemIconProps> = ({ iconName, fontSize, color }) => {
+const SkMenuItemIcon: React.FC<SkMenuItemIconProps> = ({
+  iconName,
+  fontSize,
+  color,
+}) => {
   return (
     <IconContainer>
       <SkIcon iconName={iconName} fontSize={fontSize} color={color} />

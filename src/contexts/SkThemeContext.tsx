@@ -1,12 +1,14 @@
 /* src/contexts/SkThemeContexts.tsx */
 
-import React, { useContext } from 'react';
-import { themeStore } from '../stores/SkThemeStore';
-import { getThemeStyles } from '../styles/SkThemeStyles';
+import React, { useContext } from "react";
+import { themeStore } from "../stores/SkThemeStore";
+import { getThemeStyles } from "../styles/SkThemeStyles";
 
 const ThemeContext = React.createContext(themeStore);
 
-export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => (
   <ThemeContext.Provider value={themeStore}>{children}</ThemeContext.Provider>
 );
 

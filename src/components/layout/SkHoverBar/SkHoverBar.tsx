@@ -5,12 +5,9 @@
 // Plugins/Tools
 import React, { useState } from "react";
 import { observer } from "mobx-react-lite";
-import { useTheme } from "@emotion/react";
-// import styled from "@emotion/styled";
-import { motion } from "framer-motion";
 // Components
 import SkButton from "../../common/SkButton/SkButton";
-import SkIcon, { IconName } from "../../common/SkIcon/SkIcon";
+import { IconName } from "../../common/SkIcon/SkIcon";
 import { SkUserSettings } from "../../features/SkUserSettings/SkUserSettings";
 import { SkToolsMenu } from "../../features/SkToolsMenu/SkToolsMenu";
 import { SkMakeCV } from "../../features/SkMakeCV/SkMakeCV";
