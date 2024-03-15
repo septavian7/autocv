@@ -3,7 +3,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-// You might extend this interface if you plan to accept more props for various styles
+// [To Do] Extend button props/styles
 interface StyledButtonProps {
   // Theme-dependent props
   backgroundColor: string;

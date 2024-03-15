@@ -1,27 +1,11 @@
-/* /src/components/layouts/SkHoverBar/SkHoverBar.tsx */
-
-/* --------- IMPORT --------- */
-
-// Plugins/Tools
 import React, { useState } from "react";
 import { observer } from "mobx-react-lite";
-// Components
 import SkButton from "../../common/SkButton/SkButton";
-import { IconName } from "../../common/SkIcon/SkIcon";
 import { SkUserSettings } from "../../features/SkUserSettings/SkUserSettings";
 import { SkToolsMenu } from "../../features/SkToolsMenu/SkToolsMenu";
 import { SkMakeCV } from "../../features/SkMakeCV/SkMakeCV";
-// Stores
 import { themeStore } from "../../../stores/SkThemeStore";
-// Styles
-import {
-  SkHoverBarContainer,
-  LeftAligned,
-  CenterAligned,
-  RightAligned,
-} from "../../../styles/SkHoverBarStyles";
-
-/* --------- SETUP --------- */
+import { motion } from "framer-motion";
 
 const SkHoverBar = observer(() => {
   const [isMinimized, setIsMinimized] = useState(false);
@@ -37,70 +21,53 @@ const SkHoverBar = observer(() => {
   const toggleToolsMenu = () => setIsToolsMenuVisible(!isToolsMenuVisible);
   const toggleMakeCV = () => setIsMakeCVVisible(!isMakeCVVisible);
 
-  const minimizeIcon: IconName = "motionPhotosAuto";
-  const themeIcon: IconName = "contrast";
-  const makeCVIcon: IconName = "autoAwesome";
-  const settingsIcon: IconName = "settings";
-  const toolsIcon: IconName = "spaceDashboard";
+  // Framer Motion animation variants
+  const animationVariants = {
+    expanded: {
+      width: "90vw",
+      x: "calc(50vw - 45vw)", // Center the hover bar by adjusting its X position based on its width
+      transition: { type: "tween", duration: 0.5 },
+    },
+    minimized: {
+      width: "60px",
+      x: "calc(100vw - 60px)", // Moves the hover bar to stick out 60px from the right edge
+      transition: { type: "tween", duration: 0.5 },
+    },
+  };
 
-  /* --------- RENDER  --------- */
-
-  // Render Minimized
-  if (isMinimized) {
-    return (
-      <SkHoverBarContainer
-        initial={false}
-        animate={{
-          width: "60px",
-          height: "60px",
-          borderRadius: "15px 0 0 15px",
-          clipPath: "inset(0 -100% 0 0)",
-          right: "0",
-          left: "auto",
-          justifyContent: "flex-start",
-          padding: "0 8px",
-        }}
-        transition={{ duration: 0.5 }}
-        onClick={toggleMinimize}
-      >
-        <SkButton icon={minimizeIcon} onClick={toggleMinimize} />
-      </SkHoverBarContainer>
-    );
-  }
-
-  // Render Expanded
   return (
     <>
-      <SkHoverBarContainer
-        initial={false}
-        animate={{
-          width: "calc(100% - 2%)",
-          height: "60px",
-          borderRadius: "15px",
-          clipPath: "none",
-          left: "1%",
-          right: "1%",
+      <motion.div
+        initial="expanded"
+        animate={isMinimized ? "minimized" : "expanded"}
+        variants={animationVariants}
+        transition={{ type: "tween", duration: 0.5 }}
+        style={{
+          position: "fixed",
+          bottom: "70px",
+          display: "flex",
+          alignItems: "center",
           justifyContent: "space-between",
+          zIndex: 1100,
+          background: "#fff", // Example background color, replace with your theme or style
+          // Add other necessary styles here
         }}
-        transition={{ duration: 0.5 }}
+        onClick={toggleMinimize}
       >
-        <LeftAligned>
-          <SkButton icon={minimizeIcon} onClick={toggleMinimize} />
-          <SkButton icon={themeIcon} onClick={toggleTheme} />
-        </LeftAligned>
-        <CenterAligned>
-          <SkButton
-            label="Make CV"
-            icon={makeCVIcon}
-            onClick={toggleMakeCV}
-            primary
-          />
-        </CenterAligned>
-        <RightAligned>
-          <SkButton icon={settingsIcon} onClick={toggleUserSettings} />
-          <SkButton icon={toolsIcon} onClick={toggleToolsMenu} />
-        </RightAligned>
-      </SkHoverBarContainer>
+        <SkButton icon={"motionPhotosAuto"} onClick={toggleMinimize} />
+        {!isMinimized && (
+          <>
+            <SkButton
+              label="Make CV"
+              icon={"autoAwesome"}
+              onClick={toggleMakeCV}
+              primary
+            />
+            <SkButton icon={"settings"} onClick={toggleUserSettings} />
+            <SkButton icon={"spaceDashboard"} onClick={toggleToolsMenu} />
+          </>
+        )}
+      </motion.div>
       {isUserSettingsVisible && (
         <SkUserSettings
           isVisible={isUserSettingsVisible}

@@ -4,7 +4,7 @@ export interface ThemeColors {
   // General
   text: string;
   background: string;
-  
+
   // Button
   buttonPrimaryTextColor: string;
   buttonSecondaryTextColor: string;

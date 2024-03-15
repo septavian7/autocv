@@ -1,7 +1,7 @@
 /* src/styles/SkHoverWindowStyles.tsx */
 
-import React from 'react';
-import styled from '@emotion/styled';
+import React from "react";
+import styled from "@emotion/styled";
 
 export const Container = styled.div`
   position: fixed;
@@ -12,8 +12,13 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2147483647; // High z-index to ensure it appears above most elements
-  background: rgba(0, 0, 0, 0.25); // Semi-transparent background for the overlay
+  z-index: 1000; // High z-index to ensure it appears above most elements
+  background: rgba(
+    0,
+    0,
+    0,
+    0.25
+  ); // Semi-transparent background for the overlay
 `;
 
 export const HoverWindow = styled.div`

@@ -15,7 +15,6 @@ class ThemeStore {
   }
 
   get colors() {
-
     return getThemeStyles(this.theme);
   }
 }

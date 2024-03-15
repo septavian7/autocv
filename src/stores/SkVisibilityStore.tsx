@@ -1,3 +1,5 @@
+/* src/stores/SkVisibilityStore.tsx */
+
 import { makeAutoObservable } from "mobx";
 
 class VisibilityStore {

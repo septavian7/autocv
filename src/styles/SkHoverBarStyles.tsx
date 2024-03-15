@@ -1,22 +1,29 @@
 /* src/styles/SkHoverBarStyles.tsx */
 
-// import React from "react";
 import styled from "@emotion/styled";
 import { motion } from "framer-motion";
 
-// Hover Bar Container
-export const SkHoverBarContainer = styled(motion.div)`
+type SkHoverBarContainerProps = {
+  minimized: boolean;
+};
+
+export const SkHoverBarContainer = styled(motion.div)<SkHoverBarContainerProps>`
   position: fixed;
   bottom: 70px;
   display: flex;
   align-items: center;
-  z-index: 2147483650;
+  z-index: 1100;
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   background: ${({ theme }) => theme.hoverBarBackground};
   color: ${({ theme }) => theme.hoverBarTextColor};
   box-shadow: ${({ theme }) => theme.hoverBarBoxShadow};
-  overflow: hidden; // Hide the overflowing content
+  overflow: hidden;
+  width: ${({ minimized }) => (minimized ? "60px" : "90vw")};
+  right: ${({ minimized }) => (minimized ? "0" : "auto")};
+  left: ${({ minimized }) => (minimized ? "auto" : "50%")};
+  transform: ${({ minimized }) =>
+    minimized ? "translateX(0)" : "translateX(-50%)"};
 `;
 
 // Left Aligned Content
