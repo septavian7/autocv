@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings UI</title>
+<style>
+
+.body {
+  background-color: #000;
+}
+  .settings-container {
+    background-color: #000;
+    color: white;
+    font-family: sans-serif;
+  }
+
+  .settings-header {
+    font-size: 32px;
+    font-weight: bold;
+    padding: 20px 20px 10px;
+  }
+
+  .search-input {
+  padding: 0 20px; /* Padding to match the settings container padding */
+}
+
+  .search-input input {
+    width: calc(100% - 60px);
+    background-color: #1c1c1e;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 20px;
+    border: none;
+    color: white;
+  }
+
+.profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: 1px solid #2c2c2e;
+}
+
+.profile-left {
+  flex-shrink: 0; /* Ensures that the profile picture does not shrink */
+}
+
+.profile-center {
+  flex-grow: 1; /* Allows the center content to take up the remaining space */
+  padding-left: 10px; /* Adds some space between the picture and the text */
+}
+
+.profile-right {
+  /* Styling for the right arrow, if needed */
+}
+
+.profile-picture {
+  background-color: #ccc; /* Placeholder color, replace with actual image */
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+}
+
+.profile-name {
+  font-size: 20px;
+  margin: 0;
+}
+
+.profile-subheader {
+  font-size: 16px;
+  color: #8e8e93;
+  margin: 0;
+}
+
+  .promotion-container {
+    background-color: #0a84ff;
+    color: white;
+    padding: 15px;
+    margin: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .setting-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #2c2c2e;
+  }
+
+  .setting-icon {
+    font-size: 24px;
+    margin-right: 10px;
+  }
+
+  .toggle-switch {
+    position: relative;
+    width: 50px;
+    height: 30px;
+    background-color: grey;
+    border-radius: 15px;
+    cursor: pointer;
+  }
+
+  .toggle-switch:before {
+    content: '';
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: white;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s;
+  }
+
+  .toggle-switch.active:before {
+    transform: translateX(20px);
+  }
+
+  .link-arrow {
+  color: #8e8e93;
+  margin-right: 10px;
+  font-size: 24px;
+}
+
+.sub-text {
+  font-size: 16px;
+  color: #8e8e93;
+}
+
+</style>
+</head>
+<body class="body">
+
+<div class="settings-container">
+
+  <div class="settings-header">
+    Settings
+  </div>
+
+  <div class="search-input">
+    <input type="text" placeholder="Search" />
+  </div>
+
+  <div class="profile-container">
+    <div class="profile-left">
+      <div class="profile-picture"></div>
+    </div>
+    <div class="profile-center">
+      <div class="profile-name">Kevin Schofield</div>
+      <div class="profile-subheader">Apple ID, iCloud, Media & Purchases</div>
+    </div>
+    <div class="profile-right">
+      <div class="link-arrow">&gt;</div> <!-- This should be replaced with the actual arrow icon -->
+    </div>
+  </div>
+  
+  
+
+  <div class="promotion-container">
+    Apple News+ Free for 3 Months
+  </div>
+
+  <div class="setting-item">
+    <div style="display: flex; align-items: center;">
+      <div class="setting-icon">📶</div> <!-- Replace with an appropriate icon -->
+      <div>
+        Wi-Fi
+        <div class="sub-text">Family Maison</div> <!-- New sub-text for Wi-Fi -->
+      </div>
+    </div>
+    <div class="link-arrow">></div> <!-- New link arrow, style this with CSS -->
+  </div>
+  
+
+  <!-- Insert the setting items for Wi-Fi, Bluetooth, Cellular, Personal Hotspot, VPN, etc. here -->
+
+  <div class="setting-item">
+    <div style="display: flex; align-items: center;">
+      <div class="setting-icon">📶</div> <!-- Replace with an appropriate icon -->
+      <div>
+        Wi-Fi
+        <div class="sub-text">Family Maison</div> <!-- New sub-text for Wi-Fi -->
+      </div>
+    </div>
+    <div class="link-arrow">></div> <!-- New link arrow, style this with CSS -->
+  </div>
+  
+
+  <div class="setting-item">
+    <div style="display: flex; align-items: center;">
+      <div class="setting-icon">🔵</div> <!-- Replace with an appropriate icon -->
+      Bluetooth
+    </div>
+    <div class="toggle-switch"></div>
+  </div>
+
+  <div class="setting-item">
+    <div style="display: flex; align-items: center;">
+      <div class="setting-icon">📱</div> <!-- Replace with an appropriate icon -->
+      Cellular
+    </div>
+    <div class="link-arrow">></div> <!-- New link arrow -->
+  </div>  
+
+  <div class="setting-item">
+    <div style="display: flex; align-items: center;">
+      <div class="setting-icon">🔗</div> <!-- Replace with an appropriate icon -->
+      Personal Hotspot
+    </div>
+    <div class="toggle-switch"></div>
+  </div>
+
+  <div class="setting-item">
+    <div style="display: flex; align-items: center;">
+      <div class="setting-icon">🔒</div> <!-- Replace with an appropriate icon -->
+      VPN
+    </div>
+    <div class="toggle-switch"></div> <!-- Existing toggle switch -->
+  </div>  
+
+</div>
+
+</body>
+</html>

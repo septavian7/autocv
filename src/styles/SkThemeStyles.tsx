@@ -1,20 +1,6 @@
 /* src/styles/SkThemeStyles.tsx */
 
-// Types for theme colors
-type ThemeColors = {
-  text: string;
-  background: string;
-  buttonPrimaryTextColor: string;
-  buttonSecondaryTextColor: string;
-  buttonPrimaryBackgroundColor: string;
-  buttonSecondaryBackgroundColor: string;
-  hoverPrimaryBackgroundColor: string;
-  hoverSecondaryBackgroundColor: string;
-  hoverTextColor: string;
-  hoverBarBackground: string;
-  hoverBarBoxShadow: string;
-  hoverBarTextColor: string;
-};
+import { ThemeColors } from "../types/theme"; // Assuming relative paths are correct
 
 // Define light and dark themes
 const themes: { [key: string]: ThemeColors } = {
@@ -56,7 +42,7 @@ const themes: { [key: string]: ThemeColors } = {
     buttonPrimaryTextColor: "white",
     buttonSecondaryTextColor: "white",
     buttonPrimaryBackgroundColor: "#175AE2",
-    buttonSecondaryBackgroundColor: "rgba(0,0,0,0.5)",
+    buttonSecondaryBackgroundColor: "rgba(0,0,0,0.9)",
     hoverPrimaryBackgroundColor: "#0041C4",
     hoverSecondaryBackgroundColor: "rgba(0,0,0,0.9)",
     hoverTextColor: "white",

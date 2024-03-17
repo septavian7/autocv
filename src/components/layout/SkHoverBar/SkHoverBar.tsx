@@ -1,84 +1,76 @@
-import React, { useState } from "react";
+/* src/components/layouts/SkHoverBar/SkHoverBar.tsx */
+
+/* --------- IMPORT --------- */
+
+import React from "react";
 import { observer } from "mobx-react-lite";
+import { useTheme } from "@emotion/react";
+import { themeStore, visibilityStore } from "../../../stores";
 import SkButton from "../../common/SkButton/SkButton";
 import { SkUserSettings } from "../../features/SkUserSettings/SkUserSettings";
 import { SkToolsMenu } from "../../features/SkToolsMenu/SkToolsMenu";
 import { SkMakeCV } from "../../features/SkMakeCV/SkMakeCV";
-import { themeStore } from "../../../stores/SkThemeStore";
-import { motion } from "framer-motion";
+import {
+  SkHoverBarContainer,
+  SkPsuedoHoverBar,
+  LeftAligned,
+  CenterAligned,
+  RightAligned,
+} from "../../../styles/SkHoverBarStyles";
+
+/* ------ SETUP/RENDER ------ */
 
 const SkHoverBar = observer(() => {
-  const [isMinimized, setIsMinimized] = useState(false);
-  const [isUserSettingsVisible, setIsUserSettingsVisible] = useState(false);
-  const [isToolsMenuVisible, setIsToolsMenuVisible] = useState(false);
-  const [isMakeCVVisible, setIsMakeCVVisible] = useState(false);
+  const theme = useTheme();
 
-  // Define toggle functions
-  const toggleMinimize = () => setIsMinimized(!isMinimized);
+  // No need for local state, using MobX store state directly
+  const toggleMinimize = () => visibilityStore.toggleHoverBar();
   const toggleTheme = () => themeStore.toggleTheme();
-  const toggleUserSettings = () =>
-    setIsUserSettingsVisible(!isUserSettingsVisible);
-  const toggleToolsMenu = () => setIsToolsMenuVisible(!isToolsMenuVisible);
-  const toggleMakeCV = () => setIsMakeCVVisible(!isMakeCVVisible);
-
-  // Framer Motion animation variants
-  const animationVariants = {
-    expanded: {
-      width: "90vw",
-      x: "calc(50vw - 45vw)", // Center the hover bar by adjusting its X position based on its width
-      transition: { type: "tween", duration: 0.5 },
-    },
-    minimized: {
-      width: "60px",
-      x: "calc(100vw - 60px)", // Moves the hover bar to stick out 60px from the right edge
-      transition: { type: "tween", duration: 0.5 },
-    },
-  };
+  const toggleUserSettings = () => visibilityStore.toggleUserSettingsVisible();
+  const toggleToolsMenu = () => visibilityStore.toggleToolsMenuVisible();
+  const toggleMakeCV = () => visibilityStore.toggleMakeCVVisible();
 
   return (
     <>
-      <motion.div
-        initial="expanded"
-        animate={isMinimized ? "minimized" : "expanded"}
-        variants={animationVariants}
-        transition={{ type: "tween", duration: 0.5 }}
-        style={{
-          position: "fixed",
-          bottom: "70px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          zIndex: 1100,
-          background: "#fff", // Example background color, replace with your theme or style
-          // Add other necessary styles here
-        }}
-        onClick={toggleMinimize}
-      >
-        <SkButton icon={"motionPhotosAuto"} onClick={toggleMinimize} />
-        {!isMinimized && (
-          <>
-            <SkButton
-              label="Make CV"
-              icon={"autoAwesome"}
-              onClick={toggleMakeCV}
-              primary
-            />
-            <SkButton icon={"settings"} onClick={toggleUserSettings} />
-            <SkButton icon={"spaceDashboard"} onClick={toggleToolsMenu} />
-          </>
-        )}
-      </motion.div>
-      {isUserSettingsVisible && (
+      <SkPsuedoHoverBar />
+      <SkHoverBarContainer minimized={!visibilityStore.hoverBarVisible}>
+        <LeftAligned>
+          <SkButton icon="motionPhotosAuto" onClick={toggleMinimize} />
+          {visibilityStore.hoverBarVisible && (
+            <>
+              <CenterAligned>
+                <SkButton
+                  label="Make CV"
+                  icon="autoAwesome"
+                  onClick={toggleMakeCV}
+                  primary
+                />
+              </CenterAligned>
+              <RightAligned>
+                <SkButton icon="settings" onClick={toggleUserSettings} />
+                <SkButton icon="spaceDashboard" onClick={toggleToolsMenu} />
+              </RightAligned>
+            </>
+          )}
+        </LeftAligned>
+      </SkHoverBarContainer>
+      {visibilityStore.isUserSettingsVisible && (
         <SkUserSettings
-          isVisible={isUserSettingsVisible}
+          isVisible={visibilityStore.isUserSettingsVisible}
           onClose={toggleUserSettings}
         />
       )}
-      {isToolsMenuVisible && (
-        <SkToolsMenu isVisible={isToolsMenuVisible} onClose={toggleToolsMenu} />
+      {visibilityStore.isToolsMenuVisible && (
+        <SkToolsMenu
+          isVisible={visibilityStore.isToolsMenuVisible}
+          onClose={toggleToolsMenu}
+        />
       )}
-      {isMakeCVVisible && (
-        <SkMakeCV isVisible={isMakeCVVisible} onClose={toggleMakeCV} />
+      {visibilityStore.isMakeCVVisible && (
+        <SkMakeCV
+          isVisible={visibilityStore.isMakeCVVisible}
+          onClose={toggleMakeCV}
+        />
       )}
     </>
   );

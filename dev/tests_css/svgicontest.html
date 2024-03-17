@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gradient Test Page</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+  }
+
+  .outer-container {
+    width: 360px;
+    height: 360px;
+    background: linear-gradient(to right top, #bbdefb, #ffffff);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 10px 10px 30px rgba(0,0,0,0.5);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .outer-container::after {
+    content: '';
+    position: flex;
+    inset: 0;
+    box-shadow: inset 0 20px 30px rgba(0,0,0,0.2);
+  }
+
+  .inner-container {
+    width: 320px;
+    height: 320px;
+    background-image: linear-gradient(to bottom, #09bbfe 0%, #001f62 100%);
+    border-radius: 50%;
+    display: flex;
+  }
+
+.svg-container {
+    position: flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="outer-container">
+    <div class="inner-container">
+        <div class="svg-container">
+            <img src="ram_0314_blue-stencil-b.svg" alt="Ram SVG" style="width:150%; height:150%;  mix-blend-mode: lighten; filter:invert(100%);">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+

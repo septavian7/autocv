@@ -45,5 +45,5 @@ const SkButton: React.FC<ButtonProps> = observer(
   },
 );
 
-//Export
+// Export
 export default SkButton;
