@@ -16,7 +16,7 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { AnimatePresence, motion } from "framer-motion";
-// import { Button } from "react-native-elements";
+import { Button } from "react-native-elements";
 
 /* --------- STYLES --------- */
 
@@ -82,7 +82,6 @@ const ButtonContainerCenterRight = styled(motion.div)`
   align-items: center;
   position: relative;
   display: flex;
-  flex-wrap: wrap;
   overflow: visible;
 `;
 
@@ -114,9 +113,6 @@ const ToggleButton = styled(motion.button)<ToggleButtonProps>`
   z-index: 1000;
   overflow: visible;
   position: fixed;
-  flex-basis: 100px;
-  flex-grow: 0;
-  order: 1;
 `;
 
 const ToggleButtonText = styled(motion.span)``;
@@ -135,9 +131,7 @@ const MenuButton = styled(motion.button)<ToggleButtonProps>`
   overflow: hidden;
   margin: 5px;
   position: fixed;
-  flex-basis: 60px;
-  flex-grow: 0;
-  order: 2;
+  /*   display: none; */
 `;
 
 const MenuButtonText = styled(motion.span)``;
@@ -156,14 +150,7 @@ const SettingsButton = styled(motion.button)<ToggleButtonProps>`
   overflow: hidden;
   margin: 5px;
   position: fixed;
-  flex-basis: 60px;
-  flex-grow: 0;
-  order: 3;
-  display: ${({ $isExpanded }) => ($isExpanded ? "flex" : "none")};
-
-  @media (max-width: 550px) {
-    display: none;
-  }
+  /*   display: none; */
 `;
 
 const SettingsButtonText = styled(motion.span)``;
@@ -195,6 +182,8 @@ const FramerMotionTest: React.FC = () => {
   const toggleExpanded = () => {
     setIsExpanded(!isExpanded);
   };
+
+  /* --------- RENDER --------- */
 
   return (
     <OuterContainer>
@@ -245,31 +234,20 @@ const FramerMotionTest: React.FC = () => {
             >
               <MenuButtonText>M</MenuButtonText>
             </MenuButton>
-            <AnimatePresence>
-              {isExpanded && (
-                <SettingsButton
-                  key="settingsButton"
-                  initial={{
-                    width: "60px",
-                    transform: "translate(115px)",
-                    opacity: 1,
-                  }}
-                  animate={{
-                    width: isExpanded ? "60px" : "60px",
-                    transform: isExpanded
-                      ? "translateX(115px)"
-                      : "translateX(60px)",
-                    opacity: 1,
-                  }}
-                  exit={{ opacity: 0 }}
-                  onClick={toggleExpanded}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
-                  $isExpanded={isExpanded}
-                >
-                  <SettingsButtonText>S</SettingsButtonText>
-                </SettingsButton>
-              )}
-            </AnimatePresence>
+            <SettingsButton
+              onClick={toggleExpanded}
+              initial={false}
+              animate={{
+                width: isExpanded ? "60px" : "60px",
+                transform: isExpanded
+                  ? "translateX(115px)"
+                  : "translateX(125px)",
+              }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              $isExpanded={isExpanded}
+            >
+              <SettingsButtonText>S</SettingsButtonText>
+            </SettingsButton>
           </ButtonContainerCenterRight>
           <ButtonContainerRight
             initial={false}
