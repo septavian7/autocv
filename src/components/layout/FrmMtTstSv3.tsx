@@ -16,7 +16,6 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { AnimatePresence, motion } from "framer-motion";
-import { Button } from "react-native-elements";
 
 /* --------- STYLES --------- */
 
@@ -30,7 +29,7 @@ const OuterContainer = styled(motion.div)`
   display: flex;
   justify-content: right;
   overflow: hidden;
-  width: 100vw;
+  width: 90vw;
   height: 60px;
 `;
 
@@ -42,7 +41,7 @@ const HoverBarContainer = styled(motion.div)`
   align-items: center;
   justify-content: right;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.05);
 `;
 
 const InnerContainerLeft = styled(motion.div)`
@@ -59,16 +58,16 @@ const InnerContainerRight = styled(motion.div)`
   position: flex-end;
   display: flex;
   align-items: center;
-  /*   justify-content: center; */
+  justify-content: left;
   overflow: visible;
   height: 100%;
   /*   width: 50%; */
-  background-color: rgba(0, 255, 0, 0);
+  background-color: rgba(0, 255, 0, 0.1);
 `;
 
 const ButtonContainerCenter = styled(motion.div)`
   height: 100%;
-  background-color: rgba(200, 0, 200, 0);
+  background-color: rgba(0, 0, 200, 0.1);
   align-items: center;
   justify-content: left;
   position: relative;
@@ -78,21 +77,22 @@ const ButtonContainerCenter = styled(motion.div)`
 
 const ButtonContainerCenterRight = styled(motion.div)`
   height: 100%;
-  background-color: rgba(0, 200, 200, 0);
+  background-color: rgba(0, 200, 200, 0.1);
   align-items: center;
   position: relative;
   display: flex;
+  justify-content: flex-center;
   overflow: visible;
 `;
 
 const ButtonContainerRight = styled(motion.div)`
   height: 100%;
-  background-color: rgba(200, 200, 0, 0);
+  background-color: rgba(200, 0, 0, 0.1);
   align-items: center;
   justify-content: right;
   position: relative;
   display: flex;
-  overflow: hidden;
+  overflow: visible;
 `;
 
 interface ToggleButtonProps {
@@ -112,13 +112,13 @@ const ToggleButton = styled(motion.button)<ToggleButtonProps>`
   align-items: center;
   z-index: 1000;
   overflow: visible;
-  position: fixed;
+  /*   position: absolute; */
 `;
 
 const ToggleButtonText = styled(motion.span)``;
 
 const MenuButton = styled(motion.button)<ToggleButtonProps>`
-  background-color: rgba(255, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   color: white;
   border: none;
   border-radius: 15px;
@@ -128,29 +128,27 @@ const MenuButton = styled(motion.button)<ToggleButtonProps>`
   justify-content: center;
   align-items: center;
   z-index: 900;
-  overflow: hidden;
-  margin: 5px;
-  position: fixed;
-  /*   display: none; */
+  overflow: visible;
+  /*   position: absolute; */
+  display: none;
 `;
 
 const MenuButtonText = styled(motion.span)``;
 
 const ToggleButtonSm = styled(motion.button)<ToggleButtonProps>`
-  background-color: rgba(0, 0, 255, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   color: white;
   border: none;
   border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
-  height: 66.7%;
+  height: 50%;
   justify-content: center;
   align-items: center;
   z-index: 900;
-  overflow: hidden;
-  margin-right: 20px;
-  position: absolute;
-  /*   display: none; */
+  overflow: visible;
+  /*   position: absolute; */
+  display: none;
 `;
 
 const ToggleButtonSmText = styled(motion.span)``;
@@ -178,79 +176,48 @@ const FramerMotionTest: React.FC = () => {
         <InnerContainerRight
           initial={false}
           animate={{
-            width: isExpanded ? "calc(50% + 1px)" : "calc(0.1% + 60px)",
+            width: isExpanded ? "calc(50% - 1px)" : "calc(1% + 70px)",
           }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
         >
-          <ButtonContainerCenterRight
+          <ToggleButton
+            onClick={toggleExpanded}
             initial={false}
             animate={{
-              width: isExpanded ? "calc(75% + 0px)" : "calc(99.9% + 0px)",
+              width: isExpanded ? "100px" : "100px",
+              transform: isExpanded
+                ? "translateX(calc(0% - 50px))"
+                : "translateX(calc(0% - 50px))",
             }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
+            $isExpanded={isExpanded}
           >
-            <ToggleButton
-              onClick={toggleExpanded}
-              initial={false}
-              animate={{
-                width: isExpanded ? "100px" : "60px",
-                transform: isExpanded
-                  ? "translateX(calc(0% + -50px))"
-                  : "translateX(calc(0% + -10px))",
-              }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
-              $isExpanded={isExpanded}
-            >
-              <ToggleButtonText>X</ToggleButtonText>
-            </ToggleButton>
-            <MenuButton
-              onClick={toggleExpanded}
-              initial={false}
-              animate={{
-                width: isExpanded ? "60px" : "60px",
-                transform: isExpanded ? "translateX(50px)" : "translateX(60px)",
-              }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
-              $isExpanded={isExpanded}
-            >
-              <MenuButtonText>M</MenuButtonText>
-            </MenuButton>
-          </ButtonContainerCenterRight>
-          <ButtonContainerRight
+            <ToggleButtonText>X</ToggleButtonText>
+          </ToggleButton>
+          {/*           <MenuButton
+            onClick={toggleExpanded}
             initial={false}
             animate={{
-              width: isExpanded ? "calc(25% + 0px)" : "calc(0.1% + 0px)",
+              width: isExpanded ? "60px" : "60px",
               transform: isExpanded ? "translateX(0px)" : "translateX(0px)",
             }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
+            $isExpanded={isExpanded}
           >
-            {/*             <MenuButton
-              onClick={toggleExpanded}
-              initial={false}
-              animate={{
-                width: isExpanded ? "60px" : "60px",
-                transform: isExpanded ? "translateX(0px)" : "translateX(0px)",
-              }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
-              $isExpanded={isExpanded}
-            >
-              <MenuButtonText></MenuButtonText>
-            </MenuButton> */}
-            <ToggleButtonSm
-              onClick={toggleExpanded}
-              initial={false}
-              animate={{
-                width: isExpanded ? "40px" : "40px",
-                transform: isExpanded
-                  ? "translateX(10px)"
-                  : "translateX(100px)",
-              }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
-              $isExpanded={isExpanded}
-            >
-              <ToggleButtonSmText>X</ToggleButtonSmText>
-            </ToggleButtonSm>
-          </ButtonContainerRight>
+            <MenuButtonText>X</MenuButtonText>
+          </MenuButton>
+          <ToggleButtonSm
+            onClick={toggleExpanded}
+            initial={false}
+            animate={{
+              width: isExpanded ? "30px" : "30px",
+              transform: isExpanded ? "translateX(0px)" : "translateX(0px)",
+            }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            $isExpanded={isExpanded}
+          >
+            <ToggleButtonSmText>X</ToggleButtonSmText>
+          </ToggleButtonSm> */}
         </InnerContainerRight>
       </HoverBarContainer>
     </OuterContainer>
