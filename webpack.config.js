@@ -20,10 +20,13 @@ export default {
     }),
   ],
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development', // Adjusted for environmental checks
-  entry: "./src/index.tsx",
+  entry: {
+    main: "./src/index.tsx",
+    test: "./public/test.tsx",
+  },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
+    filename: "[name].bundle.js",
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
