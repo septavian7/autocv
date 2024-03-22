@@ -1,8 +1,9 @@
 /* src/types/components.d.ts */
 
-import { IconName } from "../components/common/SkIcon/SkIcon"; // Adjust the import path as necessary
+import { IconName } from "../components/common/SkIcon/SkIcon";
+import { MotionProps } from "framer-motion";
 
-export interface ButtonProps {
+export interface ButtonProps extends MotionProps {
   label?: string;
   onClick: () => void;
   primary?: boolean;
