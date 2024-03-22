@@ -16,7 +16,7 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { AnimatePresence, motion } from "framer-motion";
-// import { Button } from "react-native-elements";
+import useViewportWidth from "../../hooks/useViewportWidth";
 
 /* --------- STYLES --------- */
 
@@ -142,7 +142,12 @@ const MenuButton = styled(motion.button)<ToggleButtonProps>`
 
 const MenuButtonText = styled(motion.span)``;
 
-const SettingsButton = styled(motion.button)<ToggleButtonProps>`
+interface SettingsButtonProps {
+  $isExpanded: boolean;
+  viewportWidth: number;
+}
+
+const SettingsButton = styled(motion.button)<SettingsButtonProps>`
   background-color: rgba(255, 0, 0, 0.5);
   color: white;
   border: none;
@@ -159,11 +164,12 @@ const SettingsButton = styled(motion.button)<ToggleButtonProps>`
   flex-basis: 60px;
   flex-grow: 0;
   order: 3;
-  display: ${({ $isExpanded }) => ($isExpanded ? "flex" : "none")};
+  display: ${({ $isExpanded, viewportWidth }) =>
+    $isExpanded && viewportWidth > 550 ? "flex" : "none"};
 
-  @media (max-width: 550px) {
-    display: none;
-  }
+  // @media (max-width: 550px) {
+  //   display: none;
+  // }
 `;
 
 const SettingsButtonText = styled(motion.span)``;
@@ -191,6 +197,7 @@ const ToggleButtonSmText = styled(motion.span)``;
 
 const FramerMotionTest: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(true);
+  const viewportWidth = useViewportWidth();
 
   const toggleExpanded = () => {
     setIsExpanded(!isExpanded);
@@ -246,7 +253,7 @@ const FramerMotionTest: React.FC = () => {
               <MenuButtonText>M</MenuButtonText>
             </MenuButton>
             <AnimatePresence>
-              {isExpanded && (
+              {isExpanded && viewportWidth > 550 && (
                 <SettingsButton
                   key="settingsButton"
                   initial={{
@@ -263,8 +270,9 @@ const FramerMotionTest: React.FC = () => {
                   }}
                   exit={{ opacity: 0 }}
                   onClick={toggleExpanded}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
                   $isExpanded={isExpanded}
+                  viewportWidth={viewportWidth}
                 >
                   <SettingsButtonText>S</SettingsButtonText>
                 </SettingsButton>
