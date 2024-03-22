@@ -17,6 +17,6 @@ interface IconWrapperProps {
 export const IconWrapper = styled.div<IconWrapperProps>(({ hasLabel }) => ({
   display: "flex",
   alignItems: "center",
-  fontSize: "25px",
+  fontSize: "32px",
   marginLeft: hasLabel ? "8px" : "0",
 }));

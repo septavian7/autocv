@@ -1,54 +1,71 @@
 /* src/styles/SkButtonStyles.tsx */
 
-import React from "react";
 import styled from "@emotion/styled";
 
-// [To Do] Extend button props/styles
+// Button Props
 interface StyledButtonProps {
-  // Theme-dependent props
-  backgroundColor: string;
+  background: string; // Changed from backgroundColor to background
   color: string;
   hoverBackgroundColor: string;
   hoverTextColor: string;
 }
 
-// Default structural styles
+// Styled Button
 export const StyledButton = styled.button<StyledButtonProps>(
-  ({ backgroundColor, color, hoverBackgroundColor, hoverTextColor }) => ({
+  ({ background, color, hoverBackgroundColor, hoverTextColor }) => ({
+    // Display
     display: "inline-flex",
     alignItems: "center",
     justifyContent: "center",
-    padding: "0 15px",
-    height: "40px",
+
+    // Box Model
+    padding: "0 10px",
+    height: "44px",
     margin: "0 6px",
-    borderRadius: "4px",
-    fontSize: "13px",
-    backgroundColor,
+    borderRadius: "10px",
+
+    // Text
+    fontSize: "16px",
     color,
-    border: "none",
-    cursor: "pointer",
     textTransform: "none",
+
+    // Background
+    background,
+
+    // Borders
+    border: "none",
+
+    // Other
+    cursor: "pointer",
+
+    // Transitions
     transition: "box-shadow 0.2s, background-color 0.2s",
+
+    // Pseudo-classes
     "&:hover": {
       backgroundColor: hoverBackgroundColor,
       color: hoverTextColor,
     },
+
+    // Child Selectors
     "& > span + span": {
       marginLeft: "8px",
     },
   }),
 );
 
+// Icon Wrapper Props
 interface IconWrapperProps {
-  hasLabel: boolean; // Explicitly declaring the custom prop
+  hasLabel: boolean;
 }
 
+// Icon Wrapper
 export const IconWrapper = styled.div<IconWrapperProps>(({ hasLabel }) => ({
   fontSize: "25px",
   marginLeft: hasLabel ? "8px" : "0",
-  // Add more styles as needed
 }));
 
+// Icon Style Function
 export const getIconStyle = (hasLabel: boolean) => ({
   fontSize: "25px",
   marginLeft: hasLabel ? "8px" : "0",

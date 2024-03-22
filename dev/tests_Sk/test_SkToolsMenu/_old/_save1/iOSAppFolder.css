@@ -1,0 +1,119 @@
+/* Background */
+.body-background {
+    background: linear-gradient(to bottom, #000, #1e1e1e); /* Placeholder gradient */
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+    font-family: Sen, sans-serif;
+  }
+
+  /* Material Symbols Font */
+  .material-symbols-outlined {
+    font-size: 48px !important;
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
+  }
+  
+  /* Outer Container */
+  .outer-container {
+    box-sizing: border-box;
+    backdrop-filter: blur(15px);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display:flexbox
+  }
+
+  /* App Folder Container */
+  .app-folder-container {
+    /* Main */    
+    display:flexbox;
+    width: 370px;
+    height: 410px;
+    padding: 0px;
+    border-radius: 11%;
+    /* Backdrop */
+    backdrop-filter: blur(60px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Placeholder shadow effect */
+    background: linear-gradient(-30deg, 
+        rgba(0, 0, 0, 0.036), 
+        rgba(110, 110, 110, 0.2), 
+        rgba(99, 99, 99, 0.26), 
+        rgba(0, 0, 0, 0.124)
+    ); /* 4-color gradient with medium gray, consistent opacity, subtle brightness variation, and no saturation */
+    max-width: 500px; /* Adjust based on actual max-width required */
+    margin: auto;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .outer-app-folder-container {
+/*     width: 100%; */
+    justify-content: center;
+    display:flexbox;
+}
+  
+  /* Outer App Container */
+  .outer-app-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px; /* Space between rows of apps */
+    padding: 38px;
+  }
+  
+  /* Outer App Icon Container */
+  .app-icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .app-icon-container:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Inner App Icon Containers */
+  #icon-container-1,
+  #icon-container-2,
+  #icon-container-3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 14px; /* iOS style rounded corners */
+    width: 74px; /* Adjust size as needed */
+    height: 74px; /* Adjust size as needed */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Placeholder shadow effect */
+  }
+  
+  #icon-container-1 {
+    background: #e0e0e0; /* Placeholder color */
+  }
+  
+  #icon-container-2 {
+    background: linear-gradient(135deg, #6e48aa, #9d50bb); /* Placeholder gradient */
+  }
+  
+  #icon-container-3 {
+    background: linear-gradient(135deg, #fc4a1a, #f7b733); /* Placeholder gradient */
+  }
+  
+  /* App Text */
+  .app-text {
+    margin-top: 8px; /* Space between icon and text label */
+    font-family: Sen, sans-serif;
+    font-size: 14px; /* Adjust as needed */
+    color: white;
+    text-align: center;
+    letter-spacing: .05em;
+  }
+  

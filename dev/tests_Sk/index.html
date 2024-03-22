@@ -1,0 +1,79 @@
+<!-- /dev/index.html -->
+<!-- "DummyDex" -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://localhost:8080;">
+    <title>DummyDex</title>
+    <style>
+        /* The device with borders */
+        .smartphone {
+            position: relative;
+          width: 400px; /* Adjust as needed */
+          height: 800px; /* Adjust as needed */
+          margin: auto;
+          border: 16px black solid;
+          border-top-width: 60px;
+          border-bottom-width: 60px;
+          border-radius: 36px;
+          box-shadow: 0 0 10px #000; /* Optional: Adds a shadow for more depth */
+        }
+
+        /* The horizontal line on the top of the device */
+        .smartphone:before {
+          content: '';
+          display: block;
+          width: 60px;
+          height: 5px;
+          position: absolute;
+          top: -30px;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background: #333;
+          border-radius: 10px;
+        }
+
+        /* The circle on the bottom of the device */
+        .smartphone:after {
+          content: '';
+          display: block;
+          width: 35px;
+          height: 35px;
+          position: absolute;
+          left: 50%;
+          bottom: -65px;
+          transform: translate(-50%, -50%);
+          background: #333;
+          border-radius: 50%;
+        }
+
+        /* The screen (or content) of the device */
+        .smartphone .content {
+          width: 100%;
+          height: 100%;
+          background: white;
+        }
+
+        iframe {
+          width: 100%;
+          height: 100%;
+          border: none; /* Removes the default border around an iframe */
+        }
+    </style>
+</head>
+<body>
+
+<div class="smartphone">
+  <div class="content">
+      <iframe src="dummyHost.html" style="width:100%; height:100%;"></iframe>
+      <!-- <iframe src="tests_iOS/test_iOSAppFolder/iOSAppFolder.html" style="width:100%; height:100%;"></iframe> -->
+      <!-- <iframe src="tests_iOS/test_iOSSettings/iOSSettings.html" style="width:100%; height:100%;"></iframe>
+  </div>
+
+</div>
+
+</body>
+</html>

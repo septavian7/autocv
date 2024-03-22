@@ -6,77 +6,89 @@ type SkHoverBarContainerProps = {
   minimized: boolean;
 };
 
+// SkHoverBarContainer
 export const SkHoverBarContainer = styled.div<SkHoverBarContainerProps>`
+  /* Positioning */
   position: fixed;
   bottom: 110px;
+  right: 0;
   z-index: 1100;
-  overflow: hidden;
 
-  /* Styles */
-  /*   backdrop-filter: blur(15px);
+  /* Box Model */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: ${({ minimized }) => (minimized ? "76px" : "100vw")};
+  overflow: hidden;
+  box-sizing: border-box;
+  padding-left: ${({ minimized }) => (minimized ? "0" : "0%")};
+  padding-right: ${({ minimized }) => (minimized ? "0" : "0%")};
+
+  /* Styling */ /* Disabled for invisible container */
+  /* backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px); */
   /*   background: ${({ theme }) => theme.hoverBarBackground}; */
   color: ${({ theme }) => theme.hoverBarTextColor};
-  /*   box-shadow: ${({ theme }) => theme.hoverBarBoxShadow}; */
-  border-radius: 10px;
+  /* box-shadow: ${({ theme }) => theme.hoverBarBoxShadow}; */
+  /*   border-radius: 10px; */
 
-  /* Width and alignment */
-  width: ${({ minimized }) => (minimized ? "60px" : "100vw")};
-  right: 0%;
-  padding-left: ${({ minimized }) => (minimized ? "0" : "0%")};
-  padding-right: ${({ minimized }) => (minimized ? "0" : "0%")};
-  box-sizing: border-box;
-
-  /* Transition */
-  transform: ${({ minimized }) =>
-    minimized ? "none" : "translateX(0%)"}; /* Adjust for padding */
+  /* Transitions */
+  transform: ${({ minimized }) => (minimized ? "none" : "translateX(0%)")};
   transition:
     transform 0.5s ease-in-out,
     width 0.5s ease-in-out;
 `;
 
+// SkPsuedoHoverBar
 export const SkPsuedoHoverBar = styled.div`
+  /* Positioning */
   position: fixed;
-  bottom: 124px; /* Adjust positioning as needed to align with SkHoverBarContainer */
+  bottom: 124px;
   right: 0%;
   left: 0%;
-  width: 100vw; /* Or match to SkHoverBarContainer's logic for minimized state */
-  height: 10px; /* New height */
+  z-index: 900;
+
+  /* Box Model */
+  width: 100vw;
+  height: 10px;
+
+  /* Styling */
   backdrop-filter: blur(5px);
-  pointer-events: none;
   -webkit-backdrop-filter: blur(15px);
-  background: ${({ theme }) =>
-    theme.hoverBarBackground}; /* Example theme usage */
+  background: ${({ theme }) => theme.hoverBarBackground};
   color: ${({ theme }) => theme.hoverBarTextColor};
   box-shadow: ${({ theme }) => theme.hoverBarBoxShadow};
   border-radius: 0px;
-  z-index: 900; /* Ensure it's below the functional container if they overlap */
+  pointer-events: none;
+
+  /* Transitions */
   transition: all 0.5s ease-in-out;
 `;
 
-// Left Aligned Content
+// Alignment Styles
 export const LeftAligned = styled.div`
+  /* Display */
   display: flex;
   align-items: center;
 
+  /* Box Model */
   margin-left: 10px;
-  & > span {
-    margin-left: 8px;
-  }
   gap: 0px;
 `;
 
-// Center Aligned Content
 export const CenterAligned = styled.div`
+  /* Display */
   display: flex;
   align-items: center;
   justify-content: center;
   flex-grow: 1;
 `;
 
-// Right Aligned Content
 export const RightAligned = styled.div`
+  /* Display */
   display: flex;
+
+  /* Box Model */
   margin-right: 10px;
   gap: 0px;
 `;

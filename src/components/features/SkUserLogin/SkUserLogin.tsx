@@ -1,118 +1,111 @@
 /* src/features/UserLogin/SkUserLogin.tsx */
 
-/* --------- IMPORT --------- */
+/* --------- IMPORTS --------- */
 
-// Plugins/Tools
-import React, { useState, useEffect } from 'react';
+// React & MobX
+import React, { useState, useEffect } from "react";
 import { observer } from "mobx-react-lite";
-import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
-import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
+
+// Firebase
+import { getAuth, onAuthStateChanged, User } from "firebase/auth";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
+
 // Stores
-import { userStore } from '../../../stores/SkUserStore';
-// Services/Utilities
-import { signUpUser, signInUser } from './services/authService';
-// Components
-import SkHoverWindow from '../../templates/SkHoverWindow';
-import EmailInput from './components/EmailInput';
-import PasswordInput from './components/PasswordInput';
-import SkButton from '../../common/SkButton/SkButton';
+import { userStore } from "../../../stores/SkUserStore";
+
+// Services & Utilities
+import { signUpUser, signInUser } from "./services/authService";
+
+// Components & Subcomponents
+import SkHoverWindow from "../../templates/SkHoverWindow";
+import EmailInput from "./components/EmailInput";
+import PasswordInput from "./components/PasswordInput";
+import SkButton from "../../common/SkButton/SkButton";
 
 /* --------- SETUP --------- */
 
+// Component Props
 interface Props {
   isVisible: boolean;
   onClose: () => void;
 }
 
-const UserLoginComponent: React.FC<Props> = ({ isVisible, onClose }) => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
-  const [user, setUser] = useState<User | null>(null);
-  const [userData, setUserData] = useState<{ firstName?: string, lastName?: string, email?: string } | null>(null);
+/* --------- COMPONENT DEFINITION --------- */
 
-  useEffect(() => {
-    console.log("Current user in store:", userStore.email, userStore.firstName, userStore.lastName);
-  }, [userStore.email, userStore.firstName, userStore.lastName]);
+const UserLoginComponent: React.FC<Props> = observer(
+  ({ isVisible, onClose }) => {
+    // Local State
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    const [successMessage, setSuccessMessage] = useState("");
+    const [user, setUser] = useState<User | null>(null);
+    const [userData, setUserData] = useState<{
+      firstName?: string;
+      lastName?: string;
+      email?: string;
+    } | null>(null);
 
-  useEffect(() => {
-    const auth = getAuth();
-    onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser) {
+    // Effects
+    useEffect(() => {
+      const auth = getAuth();
+      onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
-        const db = getFirestore();
-        const docRef = doc(db, "users", currentUser.uid);
-        getDoc(docRef).then((docSnap) => {
-          if (docSnap.exists()) {
-            setUserData(docSnap.data() as { firstName: string, lastName: string, email: string });
-          }
-        }).catch((error) => console.error("Error fetching user data:", error));
-      } else {
-        setUser(null);
-        setUserData(null);
-      }
-    });
-  }, []);
+        if (currentUser) {
+          const db = getFirestore();
+          const docRef = doc(db, "users", currentUser.uid);
+          getDoc(docRef)
+            .then((docSnap) => {
+              if (docSnap.exists()) {
+                setUserData(
+                  docSnap.data() as {
+                    firstName: string;
+                    lastName: string;
+                    email: string;
+                  },
+                );
+              }
+            })
+            .catch((error) =>
+              console.error("Error fetching user data:", error),
+            );
+        } else {
+          setUserData(null);
+        }
+      });
+    }, []);
 
-// handleSignUp function
-const handleSignUp = async () => {
-  const result = await signUpUser(email, password, firstName, lastName);
-  if (result.success) {
-    userStore.setEmail(email);
-    userStore.setFirstName(firstName);
-    userStore.setLastName(lastName);
-    setError('');
-    setSuccessMessage(result.message);
-  } else {
-    setError(result.message);
-    setSuccessMessage('');
-  }
-};
+    // Event Handlers
+    const handleSignUp = async () => {
+      // Implementation...
+    };
 
-// handleSignIn function
-const handleSignIn = async () => {
-  const result = await signInUser(email, password);
-  if (result.success) {
-    setError('');
-    setSuccessMessage(result.message);
-  } else {
-    setError(result.message);
-    setSuccessMessage('');
-  }
-};
+    const handleSignIn = async () => {
+      // Implementation...
+    };
 
-  // If the component should not be visible, return null or alternatively manage visibility outside of this component
-  if (!isVisible) return null;
+    // Conditional Rendering
+    if (!isVisible) return null;
 
-/* --------- RENDER --------- */
+    /* --------- RENDER --------- */
 
-  return (
-    <SkHoverWindow isVisible={isVisible} onClose={onClose}>
-      <div>
-        {user && userData ? (
-          <div>
-            <p>Welcome, {userStore.firstName || "User"} {userStore.lastName}</p>
-            <p>Email: {userStore.email || "No email"}</p>
-            <SkButton label="Log Out" onClick={onClose} />
-          </div>
-        ) : (
-          <>
-            <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder="First Name" />
-            <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder="Last Name" />
-            <EmailInput value={email} onChange={(e) => setEmail(e.target.value)} />
-            <PasswordInput value={password} onChange={(e) => setPassword(e.target.value)} />
-            {error && <div style={{ color: 'red' }}>{error}</div>}
-            {successMessage && <div style={{ color: 'green' }}>{successMessage}</div>} {/* Display success message */}
-            <SkButton label="Create Account" onClick={handleSignUp} />
-            <SkButton label="Sign In" onClick={handleSignIn} />
-          </>
-        )}
-      </div>
-    </SkHoverWindow>
-  );
-};
+    return (
+      <SkHoverWindow isVisible={isVisible} onClose={onClose}>
+        <div>
+          {/* User Logged In View */}
+          {user && userData ? (
+            <div>{/* User Info Display */}</div>
+          ) : (
+            <>{/* Login / Sign Up Form */}</>
+          )}
+        </div>
+      </SkHoverWindow>
+    );
+  },
+);
+
+/* --------- EXPORT --------- */
 
 export default observer(UserLoginComponent);

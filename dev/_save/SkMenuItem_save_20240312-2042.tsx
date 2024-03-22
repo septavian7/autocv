@@ -2,9 +2,9 @@
 
 import React from "react";
 import styled from "@emotion/styled";
-import SkMenuItemIcon from "./SkMenuItemIcon";
-import { IconName } from "../SkIcon/SkIcon";
-import SkToggleSwitch from "../SkToggle/SkToggleSwitch";
+import SkMenuItemIcon from "../../src/components/common/SkMenuItem/SkMenuItemIcon";
+import { IconName } from "../../src/components/common/SkIcon/SkIcon";
+import SkToggleSwitch from "../../src/components/common/SkToggle/SkToggleSwitch";
 
 interface MenuItemProps {
   iconName?: IconName;

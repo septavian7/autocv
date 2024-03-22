@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Make UI</title>
+<style>
+
+.body {
+/*   background-image: url('ios_linkedin.jpg'); background-size: 450px 900px; background-position: center; height: 100vh;
+ */}
+
+/* Outer Container */
+ .outer-container {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  backdrop-filter: blur(3px);
+  background-color: #0c1b2b6f;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.settings-container {
+    display:flexbox;
+    width: 360px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border-radius: 36px;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(
+      -30deg,
+      rgba(0, 0, 0, 0.05),
+      rgba(110, 110, 110, 0.2),
+      rgba(99, 99, 99, 0.25),
+      rgba(0, 0, 0, 0.1)
+    );
+  }
+
+.section-container {
+    font-family: Sen, sans-serif;
+    color: white;
+    background-color: #1c1c1ee2;
+    margin: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+
+}
+
+/* Individual item container to give spacing between items */
+.item-container {
+  padding: 20px;
+  border-bottom: 1px solid #2c2c2e;
+}
+
+/* Remove the bottom border for the last item */
+.item-container:last-child {
+  border-bottom: none;
+}
+
+  .promotion-container {
+    font-family: Sen, sans-serif;
+    background-color: #0a84ff;
+    color: white;
+    padding: 15px;
+    margin: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .setting-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px;
+    border-bottom: 1px solid #2c2c2e;
+    height: 26px;
+  }
+
+  .setting-item-large {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px;
+    border-bottom: 1px solid #2c2c2e;
+    height: 52px;
+  }
+
+  .setting-icon {
+    font-size: 24px;
+    margin-right: 10px;
+    padding: 10px;;
+  }
+
+  .toggle-switch {
+    position: relative;
+    width: 50px;
+    height: 30px;
+    background-color: grey;
+    border-radius: 15px;
+    cursor: pointer;
+  }
+
+  .toggle-switch:before {
+    content: '';
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: white;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s;
+  }
+
+  .toggle-switch.active:before {
+    transform: translateX(20px);
+  }
+
+  .link-arrow {
+  color: #8e8e9398;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.sub-text {
+  font-size: 12px;
+  color: #8e8e93;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+</style>
+
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sen">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body class="body">
+
+<div class="outer-container">
+  <div class="app-folder-container">
+
+    <div class="settings-container">
+
+      
+      <div class="settings-header">
+
+      </div>
+
+      <!-- Search Bar -->
+      <!--
+      <div class="search-input">
+        <input type="text" placeholder="Search" />
+      </div>
+      -->
+
+
+    <!-- Make Settings Section -->
+    <div class="section-container">
+
+      <!-- Make Resume -->
+      <div class="setting-item">
+        <div style="display: flex; align-items: center;">
+          <div class="setting-icon material-symbols-outlined">info</div> <!-- Replace with an appropriate icon -->
+          <div>
+            Make Resume
+          </div>
+        </div>
+        <div class="toggle-switch"></div>
+      </div>
+
+      <!-- Make Job Profile -->
+      <div class="setting-item">
+        <div style="display: flex; align-items: center;">
+          <div class="setting-icon material-symbols-outlined">contact_page</div> <!-- Replace with an appropriate icon -->
+          <div>
+            Make Job Profile
+          </div>
+        </div>
+        <div class="toggle-switch"></div>
+      </div>
+
+      <!-- Make Cover Letter -->
+      <div class="setting-item">
+        <div style="display: flex; align-items: center;">
+          <div class="setting-icon material-symbols-outlined">contact_page</div> <!-- Replace with an appropriate icon -->
+          <div>
+            Make Cover Letter
+          </div>
+        </div>
+        <div class="toggle-switch"></div>
+      </div>
+
+      <!-- Make Company Profile -->
+      <div class="setting-item">
+        <div style="display: flex; align-items: center;">
+          <div class="setting-icon material-symbols-outlined">contact_page</div> <!-- Replace with an appropriate icon -->
+          <div>
+            Make Company Profile
+          </div>
+        </div>
+        <div class="toggle-switch"></div>
+      </div>
+
+      <!-- Make Ideal Resume -->
+      <div class="setting-item">
+        <div style="display: flex; align-items: center;">
+          <div class="setting-icon material-symbols-outlined">contact_page</div> <!-- Replace with an appropriate icon -->
+          <div>
+            Make "Ideal" Resume
+          </div>
+        </div>
+        <div class="toggle-switch"></div>
+      </div>
+
+      <!-- Make Interview Prep -->
+      <div class="setting-item">
+        <div style="display: flex; align-items: center;">
+          <div class="setting-icon material-symbols-outlined">contact_page</div> <!-- Replace with an appropriate icon -->
+          <div>
+            Make Interview Prep
+          </div>
+        </div>
+        <div class="toggle-switch"></div>
+      </div>
+      
+    </div>
+
+    <!-- User Settings Section -->
+    <div class="section-container">
+
+      <!-- Output Formats -->
+      <div class="setting-item">
+        <div style="display: flex; align-items: center;">
+          <div class="setting-icon material-symbols-outlined">description</div>
+          Output Formats
+        </div>
+        <div class="link-arrow">></div>
+      </div>  
+
+      
+
+      <!-- AI Model -->
+      <div class="setting-item">
+        <div style="display: flex; align-items: center;">
+          <div class="setting-icon material-symbols-outlined">smart_toy</div>
+          AI Model
+        </div>
+        <div class="link-arrow">></div>
+      </div> 
+      
+    </div>
+
+      <!-- One-Click -->
+    <div class="section-container">
+      <div class="setting-item-large">
+        <div style="display: flex; align-items: center;">
+          <div class="setting-icon material-symbols-outlined">description</div>
+          <div>
+            1-Click Mode
+          </div>
+        </div>
+        <div class="toggle-switch"></div>      </div>
+
+          </div>
+
+    <div class="promotion-container">
+      Make
+    </div>
+    
+  </div> 
+
+
+
+  </div>
+
+</div>
+
+</div>
+
+</body>
+</html>

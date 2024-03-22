@@ -15,6 +15,7 @@ export default {
       patterns: [
         { from: "public", to: "." }, // Always include Static Files
         { from: "dev", to: "dev" }, // Always include /dev/ folder
+        { from: "src/assets/icons", to: "assets/icons" }, // New pattern for SVGs
       ],
     }),
   ],
@@ -42,6 +43,10 @@ export default {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
       },
     ],
   },

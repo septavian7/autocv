@@ -1,20 +1,24 @@
 /* src/component/features/SkUserSettings/SkUserSettings.tsx */
 
-/* --------- IMPORT --------- */
+/* --------- IMPORTS --------- */
 
-import React, { useState } from "react";
+// React & MobX
+import React from "react";
 import { observer } from "mobx-react-lite";
+
+// Components
 import SkHoverWindow from "../../templates/SkHoverWindow";
 import SkMenuItemAutoHide from "./components/SkMenuItemAutoHide";
 
 /* --------- SETUP --------- */
 
+// Props Interface
 interface SkUserSettingsProps {
   isVisible: boolean;
   onClose: () => void;
 }
 
-/* --------- RENDER --------- */
+/* --------- COMPONENT DEFINITION --------- */
 
 const SkUserSettings: React.FC<SkUserSettingsProps> = observer(
   ({ isVisible, onClose }) => {
@@ -26,13 +30,14 @@ const SkUserSettings: React.FC<SkUserSettingsProps> = observer(
           >
             User Settings
           </h2>
-          {/* SkMenuItemAutoHide used without toggle functionality */}
           <SkMenuItemAutoHide />
-          {/* Additional settings components */}
+          {/* Placeholder for additional settings components */}
         </div>
       </SkHoverWindow>
     ) : null;
   },
 );
+
+/* --------- EXPORT --------- */
 
 export { SkUserSettings };

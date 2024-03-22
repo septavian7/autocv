@@ -1,29 +1,41 @@
 /* src/components/common/SkButton/SkButton.tsx */
 
-// Imports
+/* --------- IMPORTS --------- */
+
 import React from "react";
-import { StyledButton } from "../../../styles/SkButtonStyles";
 import { observer } from "mobx-react-lite";
-import { useTheme } from "../../../contexts/SkThemeContext";
+import { useTheme } from "@emotion/react";
+import { StyledButton } from "../../../styles/SkButtonStyles";
 import { ButtonProps } from "../../../types/components";
 import SkIcon from "../SkIcon/SkIcon";
 
-// Button component
+/* --------- COMPONENT DEFINITION --------- */
+
 const SkButton: React.FC<ButtonProps> = observer(
-  ({ label, onClick, primary = false, icon }) => {
+  ({ label, onClick, primary = false, icon, imgSrc, imgAlt, imgStyle }) => {
     const themeStyles = useTheme();
 
     const iconWithStyles = icon ? (
       <SkIcon iconName={icon} hasLabel={!!label} />
     ) : null;
 
-    // Render button
+    const imgWithStyles = imgSrc ? (
+      <img
+        src={imgSrc}
+        alt={imgAlt || "Button image"}
+        style={{
+          ...imgStyle,
+          alignSelf: "center", // Ensure the image is centered vertically
+        }}
+      />
+    ) : null;
+
     return (
       <StyledButton
-        backgroundColor={
+        background={
           primary
-            ? themeStyles.buttonPrimaryBackgroundColor
-            : themeStyles.buttonSecondaryBackgroundColor
+            ? themeStyles.buttonPrimaryBackground
+            : themeStyles.buttonSecondaryBackground
         }
         color={
           primary
@@ -32,18 +44,23 @@ const SkButton: React.FC<ButtonProps> = observer(
         }
         hoverBackgroundColor={
           primary
-            ? themeStyles.hoverPrimaryBackgroundColor
-            : themeStyles.hoverSecondaryBackgroundColor
+            ? themeStyles.hoverPrimaryBackground
+            : themeStyles.hoverSecondaryBackground
         }
         hoverTextColor={themeStyles.hoverTextColor}
         onClick={onClick}
       >
+        {/* The 'imgWithStyles' is rendered here, applying any custom styles passed via 'imgStyle' */}
+        {imgWithStyles}
+        {/* Label is conditionally rendered */}
         {label && <span>{label}</span>}
+        {/* 'iconWithStyles' is rendered if an icon is provided */}
         {iconWithStyles}
       </StyledButton>
     );
   },
 );
 
-// Export
+/* --------- EXPORT --------- */
+
 export default SkButton;

@@ -1,34 +1,38 @@
 /* src/components/templates/SkHoverWindow.tsx */
 
-/* --------- IMPORT --------- */
+/* --------- IMPORTS --------- */
 
+// React & Libraries
 import React from "react";
 import ReactDOM from "react-dom";
 import { observer } from "mobx-react-lite";
-import { useThemeStore } from "../../contexts/SkThemeContext";
+
+// Hooks
+import { useTheme } from "@emotion/react";
+
+// Styles
 import { Container, HoverWindow } from "../../styles/SkHoverWindowStyles";
 
 /* --------- SETUP --------- */
 
+// Props Interface
 interface SkHoverWindowProps {
   isVisible: boolean;
   onClose: () => void;
   children?: React.ReactNode;
 }
 
-/* -------- RENDER -------- */
+/* --------- COMPONENT DEFINITION --------- */
 
 const SkHoverWindow: React.FC<SkHoverWindowProps> = observer(
   ({ isVisible, onClose, children }) => {
-    const themeStore = useThemeStore();
+    // Theme can be utilized here for future enhancements
+    const theme = useTheme();
 
     return isVisible
       ? ReactDOM.createPortal(
           <Container onClick={onClose}>
-            <HoverWindow
-              theme={themeStore.colors}
-              onClick={(e) => e.stopPropagation()}
-            >
+            <HoverWindow onClick={(e) => e.stopPropagation()}>
               {children}
             </HoverWindow>
           </Container>,
@@ -37,5 +41,7 @@ const SkHoverWindow: React.FC<SkHoverWindowProps> = observer(
       : null;
   },
 );
+
+/* --------- EXPORT --------- */
 
 export default SkHoverWindow;

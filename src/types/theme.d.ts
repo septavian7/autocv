@@ -3,15 +3,18 @@
 export interface ThemeColors {
   // General
   text: string;
-  background: string;
+  hoverWindowBackground: string;
+
+  // Menu Section Container
+  menuSectionBackground: string;
 
   // Button
   buttonPrimaryTextColor: string;
   buttonSecondaryTextColor: string;
-  buttonPrimaryBackgroundColor: string;
-  buttonSecondaryBackgroundColor: string;
-  hoverPrimaryBackgroundColor: string;
-  hoverSecondaryBackgroundColor: string;
+  buttonPrimaryBackground: string;
+  buttonSecondaryBackground: string;
+  hoverPrimaryBackground: string;
+  hoverSecondaryBackground: string;
   hoverTextColor: string;
 
   // Hover Bar

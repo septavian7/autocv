@@ -1,53 +1,62 @@
 /* src/components/common/SkIcon/SkIcon.tsx */
 
-/* --------- IMPORT --------- */
-// Plugins/Tools
+/* --------- IMPORTS --------- */
+
+// React
 import React from "react";
+
+// Styled Components
 import {
   SmallIcon,
   LargeIcon,
   IconWrapper,
 } from "../../../styles/SkIconStyles";
 
-// Icons (Main)
-import MotionPhotosAutoIcon from "@mui/icons-material/MotionPhotosAuto"; // AutoCV App Icon
-import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome"; // Make CV
-import SettingsIcon from "@mui/icons-material/Settings"; // Settings
-import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard"; // Tools Menu
-import Contrast from "@mui/icons-material/Contrast"; // Color Theme (Light/Dark)
+// MUI Icons
+// Main Icons
+import MotionPhotosAutoIcon from "@mui/icons-material/MotionPhotosAuto";
+import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
+import SettingsIcon from "@mui/icons-material/Settings";
+import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
+import Contrast from "@mui/icons-material/Contrast";
 
-// Icons (Toggle Visibility)
+// Visibility Toggle Icons
 import BedtimeIcon from "@mui/icons-material/Bedtime";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import PowerSettingsNew from "@mui/icons-material/PowerSettingsNew";
 
-// Icons (Profile/Account)
+// Profile/Account Icons
 import AccountCircle from "@mui/icons-material/AccountCircle";
 
-/* --- SETUP ICON IMPORTS --- */
+// Custom SVG Icons
+import IconRamStencilCircleWhite from "./IconRamStencilCircleWhite";
+
+/* --------- ICON MAPPING --------- */
 
 export const iconComponents = {
-  // Icons (Main)
-  motionPhotosAuto: MotionPhotosAutoIcon, // AutoCV App Icon
-  autoAwesome: AutoAwesomeIcon, // Make CV
-  settings: SettingsIcon, // Settings
-  spaceDashboard: SpaceDashboardIcon, // Tools Menu
-  contrast: Contrast, // Color Theme (Light/Dark)
+  // Main
+  motionPhotosAuto: MotionPhotosAutoIcon,
+  autoAwesome: AutoAwesomeIcon,
+  settings: SettingsIcon,
+  spaceDashboard: SpaceDashboardIcon,
+  contrast: Contrast,
 
-  // Icons (Toggle Visibility)
-  bedtimeIcon: BedtimeIcon,
+  // Toggle Visibility
+  bedtime: BedtimeIcon,
   visibility: VisibilityIcon,
   visibilityoff: VisibilityOffIcon,
   powerSettingsNew: PowerSettingsNew,
 
-  // Icons (Profile/Account)
+  // Profile/Account
   accountCircle: AccountCircle,
+
+  // Custom Icons
+  ramStencilCircleWhite: IconRamStencilCircleWhite,
 };
 
-/* --- SETUP ICON EXPORTS --- */
+/* --------- COMPONENT DEFINITION --------- */
 
-// Setup Props
 interface SkIconProps {
   iconName: keyof typeof iconComponents;
   fontSize?: "inherit" | "default" | "small" | "large";
@@ -56,7 +65,6 @@ interface SkIconProps {
   hasLabel?: boolean;
 }
 
-// Setup SkIcon
 const SkIcon: React.FC<SkIconProps> = ({
   iconName,
   fontSize = "default",
@@ -78,8 +86,7 @@ const SkIcon: React.FC<SkIconProps> = ({
   return <IconWrapper hasLabel={hasLabel}>{StyledIcon}</IconWrapper>;
 };
 
-/* --------- EXPORT --------- */
+/* --------- EXPORTS --------- */
 
 export type IconName = keyof typeof iconComponents;
-
 export default SkIcon;

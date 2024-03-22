@@ -1,15 +1,23 @@
-/* src/components/layouts/SkHoverBar/SkHoverBar.tsx */
+/* src/components/layout/SkHoverBar/SkHoverBar.tsx */
 
-/* --------- IMPORT --------- */
+/* --------- IMPORTS --------- */
 
+// React and Libraries
 import React from "react";
 import { observer } from "mobx-react-lite";
 import { useTheme } from "@emotion/react";
+
+// Stores
 import { themeStore, visibilityStore } from "../../../stores";
-import SkButton from "../../common/SkButton/SkButton";
-import { SkUserSettings } from "../../features/SkUserSettings/SkUserSettings";
-import { SkToolsMenu } from "../../features/SkToolsMenu/SkToolsMenu";
-import { SkMakeCV } from "../../features/SkMakeCV/SkMakeCV";
+
+// Button Components
+import SkHoverBarButtonMakeCV from "./components/SkHoverBarButtonMakeCV";
+import SkHoverBarButtonTheme from "./components/SkHoverBarButtonTheme";
+import SkHoverBarButtonSettings from "./components/SkHoverBarButtonSettings";
+import SkHoverBarButtonTools from "./components/SkHoverBarButtonTools";
+import SkHoverBarButtonMinimize from "./components/SkHoverBarButtonMinimize";
+
+// Styles
 import {
   SkHoverBarContainer,
   SkPsuedoHoverBar,
@@ -18,62 +26,33 @@ import {
   RightAligned,
 } from "../../../styles/SkHoverBarStyles";
 
-/* ------ SETUP/RENDER ------ */
+/* --------- COMPONENT DEFINITION --------- */
 
 const SkHoverBar = observer(() => {
-  const theme = useTheme();
-
-  // No need for local state, using MobX store state directly
-  const toggleMinimize = () => visibilityStore.toggleHoverBar();
-  const toggleTheme = () => themeStore.toggleTheme();
-  const toggleUserSettings = () => visibilityStore.toggleUserSettingsVisible();
-  const toggleToolsMenu = () => visibilityStore.toggleToolsMenuVisible();
-  const toggleMakeCV = () => visibilityStore.toggleMakeCVVisible();
+  const theme = useTheme(); // Utilize theme here if needed for future implementation
 
   return (
     <>
-      <SkPsuedoHoverBar />
+      {/*       <SkPsuedoHoverBar /> */}
       <SkHoverBarContainer minimized={!visibilityStore.hoverBarVisible}>
         <LeftAligned>
-          <SkButton icon="motionPhotosAuto" onClick={toggleMinimize} />
-          {visibilityStore.hoverBarVisible && (
-            <>
-              <CenterAligned>
-                <SkButton
-                  label="Make CV"
-                  icon="autoAwesome"
-                  onClick={toggleMakeCV}
-                  primary
-                />
-              </CenterAligned>
-              <RightAligned>
-                <SkButton icon="settings" onClick={toggleUserSettings} />
-                <SkButton icon="spaceDashboard" onClick={toggleToolsMenu} />
-              </RightAligned>
-            </>
-          )}
+          {/* Potential place for additional left-aligned buttons */}
         </LeftAligned>
+        <CenterAligned>
+          <SkHoverBarButtonMinimize />
+          <SkHoverBarButtonTheme />
+          <SkHoverBarButtonMakeCV />
+          <SkHoverBarButtonSettings />
+          <SkHoverBarButtonTools />
+        </CenterAligned>
+        <RightAligned>
+          {/* Potential place for additional right-aligned buttons */}
+        </RightAligned>
       </SkHoverBarContainer>
-      {visibilityStore.isUserSettingsVisible && (
-        <SkUserSettings
-          isVisible={visibilityStore.isUserSettingsVisible}
-          onClose={toggleUserSettings}
-        />
-      )}
-      {visibilityStore.isToolsMenuVisible && (
-        <SkToolsMenu
-          isVisible={visibilityStore.isToolsMenuVisible}
-          onClose={toggleToolsMenu}
-        />
-      )}
-      {visibilityStore.isMakeCVVisible && (
-        <SkMakeCV
-          isVisible={visibilityStore.isMakeCVVisible}
-          onClose={toggleMakeCV}
-        />
-      )}
     </>
   );
 });
+
+/* --------- EXPORT --------- */
 
 export default SkHoverBar;

@@ -1,11 +1,12 @@
 /* src/stores/SkVisibilityStore.tsx */
 
+// Imports
 import { makeAutoObservable } from "mobx";
 
-// Define the visibility store
+// Store Declaration
 class VisibilityStore {
-  hoverBarVisible: boolean = true; // Default to visible
-  userSettingsVisible: boolean = false; // Initial state
+  // State
+  hoverBarVisible: boolean = true;
   isUserSettingsVisible: boolean = false;
   isToolsMenuVisible: boolean = false;
   isMakeCVVisible: boolean = false;
@@ -15,10 +16,9 @@ class VisibilityStore {
     makeAutoObservable(this);
   }
 
-  /* ----------------- METHODS ----------------- */
-
+  // Actions
   toggleUserSettingsVisible() {
-    this.userSettingsVisible = !this.userSettingsVisible;
+    this.isUserSettingsVisible = !this.isUserSettingsVisible;
   }
 
   toggleToolsMenuVisible = () => {
@@ -34,4 +34,5 @@ class VisibilityStore {
   }
 }
 
+// Export
 export const visibilityStore = new VisibilityStore();

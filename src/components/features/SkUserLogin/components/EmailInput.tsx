@@ -1,27 +1,36 @@
 /* src/features/SkUserSettings/components/EmailInput.tsx */
 
-import React from 'react';
+/* --------- IMPORTS --------- */
+
+import React from "react";
 import { observer } from "mobx-react-lite";
-import { useSkUserStore } from '../../../../contexts/SkUserContext';
+
+/* --------- PROPS INTERFACE --------- */
 
 interface EmailInputProps {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const EmailInput: React.FC<EmailInputProps> = observer(({ value, onChange }) => {
-  return (
-    <div>
-      <label htmlFor="userEmail">Email:</label>
-      <input
-        type="email"
-        id="userEmail"
-        name="email"
-        value={value}
-        onChange={onChange}
-      />
-    </div>
-  );
-});
+/* --------- COMPONENT DEFINITION --------- */
+
+const EmailInput: React.FC<EmailInputProps> = observer(
+  ({ value, onChange }) => {
+    return (
+      <div>
+        <label htmlFor="userEmail">Email:</label>
+        <input
+          type="email"
+          id="userEmail"
+          name="email"
+          value={value}
+          onChange={onChange}
+        />
+      </div>
+    );
+  },
+);
+
+/* --------- EXPORT --------- */
 
 export default EmailInput;
