@@ -1,9 +1,12 @@
 /* src/styles/SkHoverBarStyles.tsx */
 
 import styled from "@emotion/styled";
+// import { motion } from "framer-motion";
+// import { Theme } from "../types/theme";
 
 type SkHoverBarContainerProps = {
   minimized: boolean;
+  // theme: Theme;
 };
 
 // SkHoverBarContainer
@@ -37,6 +40,44 @@ export const SkHoverBarContainer = styled.div<SkHoverBarContainerProps>`
   transition:
     transform 0.5s ease-in-out,
     width 0.5s ease-in-out;
+`;
+
+// ExpandedHoverBar
+// export const ExpandedHoverBar = styled(motion.div)`
+export const ExpandedHoverBar = styled.div`
+  /* Box Model */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+
+  /* Styling */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  background: ${({ theme }) => theme.hoverBarExpandedBackground};
+  color: ${({ theme }) => theme.hoverBarTextColor};
+  box-shadow: ${({ theme }) => theme.hoverBarExpandedBoxShadow};
+  border-radius: 10px;
+`;
+
+// MinimizedHoverBar
+// export const MinimizedHoverBar = styled(motion.div)`
+export const MinimizedHoverBar = styled.div`
+  /* Box Model */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 76px;
+  padding: 10px;
+
+  /* Styling */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  background: ${({ theme }) => theme.hoverBarMinimizedBackground};
+  color: ${({ theme }) => theme.hoverBarTextColor};
+  box-shadow: ${({ theme }) => theme.hoverBarMinimizedBoxShadow};
+  border-radius: 50%;
 `;
 
 // SkPsuedoHoverBar

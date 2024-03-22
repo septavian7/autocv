@@ -1,6 +1,6 @@
 /* src/styles/SkThemeStyles.tsx */
 
-import { ThemeColors } from "../types/theme"; // Assuming relative paths are correct
+import { ThemeColors } from "../types/theme";
 
 // Define light and dark themes
 const themes: { [key: string]: ThemeColors } = {
@@ -32,6 +32,14 @@ const themes: { [key: string]: ThemeColors } = {
       "radial-gradient(circle, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.6) 100%)",
     hoverBarBoxShadow: "0 2px 4px rgba(0, 0, 0, 0.5)",
     hoverBarTextColor: "#000000",
+    // New optional properties for expanded state
+    hoverBarExpandedBackground:
+      "radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.7) 100%)",
+    hoverBarExpandedBoxShadow: "0 4px 6px rgba(0, 0, 0, 0.3)",
+    // New optional properties for minimized state
+    hoverBarMinimizedBackground:
+      "radial-gradient(circle, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.5) 100%)",
+    hoverBarMinimizedBoxShadow: "0 1px 2px rgba(0, 0, 0, 0.2)",
   },
 
   /* ----------------- DARK THEME ----------------- */
@@ -62,6 +70,14 @@ const themes: { [key: string]: ThemeColors } = {
       "radial-gradient(circle, rgba(55,55,55,0.7) 0%, rgba(55,55,55,0.8) 100%)",
     hoverBarBoxShadow: "0 2px 4px rgba(0, 0, 0, 0.5)",
     hoverBarTextColor: "#FFFFFF",
+    // New optional properties for expanded state
+    hoverBarExpandedBackground:
+      "radial-gradient(circle, rgba(55,55,55,0.8) 0%, rgba(55,55,55,0.9) 100%)",
+    hoverBarExpandedBoxShadow: "0 4px 6px rgba(0, 0, 0, 0.7)",
+    // New optional properties for minimized state
+    hoverBarMinimizedBackground:
+      "radial-gradient(circle, rgba(55,55,55,0.6) 0%, rgba(55,55,55,0.7) 100%)",
+    hoverBarMinimizedBoxShadow: "0 1px 2px rgba(0, 0, 0, 0.3)",
   },
 };
 

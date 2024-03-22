@@ -21,6 +21,12 @@ export interface ThemeColors {
   hoverBarBackground: string;
   hoverBarBoxShadow: string;
   hoverBarTextColor: string;
+  // New optional properties for expanded state
+  hoverBarExpandedBackground?: string;
+  hoverBarExpandedBoxShadow?: string;
+  // New optional properties for minimized state
+  hoverBarMinimizedBackground?: string;
+  hoverBarMinimizedBoxShadow?: string;
 }
 
 export interface Theme {
