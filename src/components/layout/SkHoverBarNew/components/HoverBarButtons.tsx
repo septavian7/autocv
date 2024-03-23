@@ -1,6 +1,7 @@
 /* src/components/layout/SkHoverBarNew/components/HoverBarButtons.tsx */
 
 import React from "react";
+import { AnimatePresence } from "framer-motion";
 import {
   HoverBarButtonMain,
   HoverBarButtonMainText,
@@ -13,7 +14,11 @@ import {
   HoverBarButtonMinimize,
   HoverBarButtonMinimizeText,
 } from "./HoverBarButtonMinimize";
-import { HoverBarButtonSettingsAnimated } from "./HoverBarButtonSettingsAnimated";
+import {
+  HoverBarButtonSettings,
+  HoverBarButtonSettingsText,
+} from "./HoverBarButtonSettings";
+import { HoverBarButtonAnimations } from "../animations/HoverBarButtonAnimations";
 import {
   HoverBarButtonMainAnimationProps,
   HoverBarButtonMenuAnimationProps,
@@ -65,11 +70,25 @@ export const HoverBarButtons: React.FC<HoverBarButtonsProps> = ({
         <HoverBarButtonMenuText>M</HoverBarButtonMenuText>
       </HoverBarButtonMenu>
       {viewportWidth !== undefined && (
-        <HoverBarButtonSettingsAnimated
-          isExpanded={isExpanded}
-          viewportWidth={viewportWidth}
-          toggleExpanded={toggleExpanded}
-        />
+        <AnimatePresence mode="wait">
+          <HoverBarButtonSettings
+            key="settingsButton"
+            initial={HoverBarButtonAnimations.HoverBarButtonSettings.initial}
+            animate={HoverBarButtonAnimations.HoverBarButtonSettings.animate(
+              isExpanded,
+              viewportWidth,
+            )}
+            exit={HoverBarButtonAnimations.HoverBarButtonSettings.exit}
+            onClick={toggleExpanded}
+            transition={
+              HoverBarButtonAnimations.HoverBarButtonSettings.transition
+            }
+            $isExpanded={isExpanded}
+            $viewportWidth={viewportWidth}
+          >
+            <HoverBarButtonSettingsText>S</HoverBarButtonSettingsText>
+          </HoverBarButtonSettings>
+        </AnimatePresence>
       )}
     </>
   );
