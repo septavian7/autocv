@@ -4,16 +4,7 @@ import React from "react";
 import { observer } from "mobx-react-lite";
 
 // Importing modularized components
-import {
-  ToggleButton,
-  ToggleButtonText,
-} from "./components/HoverBarButtonMain";
-import { MenuButton, MenuButtonText } from "./components/HoverBarButtonMenu";
-import {
-  ToggleButtonSm,
-  ToggleButtonSmText,
-} from "./components/HoverBarButtonMinimize";
-import { HoverBarButtonSettingsAnimated } from "./components/HoverBarButtonSettingsAnimated";
+import { HoverBarButtons, HoverBarButtonSm } from "./HoverBarButtons";
 import {
   OuterContainer,
   HoverbarContainer,
@@ -22,9 +13,13 @@ import {
   ButtonContainerRight,
 } from "./components/HoverBarContainers";
 
-// Importing animation configurations
-import { hoverBarContainerAnimations } from "./animations/HoverBarContainerAnimations";
-import { hoverbarButtonAnimations } from "./animations/HoverBarButtonAnimations";
+// Importing animation props
+import {
+  hoverbarContainerAnimationProps,
+  innerContainerRightAnimationProps,
+  buttonContainerCenterRightAnimationProps,
+  buttonContainerRightAnimationProps,
+} from "./HoverBarContainerAnimationProps";
 
 // Importing state management
 import { useHoverBarState } from "./HoverBarState";
@@ -35,76 +30,33 @@ const SkHoverBarNew: React.FC = observer(() => {
   return (
     <OuterContainer>
       <HoverbarContainer
-        initial={hoverBarContainerAnimations.initial}
-        animate={hoverBarContainerAnimations.animate(isExpanded)}
-        transition={hoverBarContainerAnimations.transition}
+        {...hoverbarContainerAnimationProps}
+        animate={hoverbarContainerAnimationProps.animate(isExpanded)}
       >
         <InnerContainerRight
-          initial={hoverBarContainerAnimations.innerContainerRight.initial}
-          animate={hoverBarContainerAnimations.innerContainerRight.animate(
-            isExpanded,
-          )}
-          transition={
-            hoverBarContainerAnimations.innerContainerRight.transition
-          }
+          {...innerContainerRightAnimationProps}
+          animate={innerContainerRightAnimationProps.animate(isExpanded)}
         >
           <ButtonContainerCenterRight
-            initial={
-              hoverBarContainerAnimations.buttonContainerCenterRight.initial
-            }
-            animate={hoverBarContainerAnimations.buttonContainerCenterRight.animate(
+            {...buttonContainerCenterRightAnimationProps}
+            animate={buttonContainerCenterRightAnimationProps.animate(
               isExpanded,
             )}
-            transition={
-              hoverBarContainerAnimations.buttonContainerCenterRight.transition
-            }
           >
-            <ToggleButton
-              onClick={toggleExpanded}
-              initial={hoverbarButtonAnimations.toggleButton.initial}
-              animate={hoverbarButtonAnimations.toggleButton.animate(
-                isExpanded,
-              )}
-              transition={hoverbarButtonAnimations.toggleButton.transition}
-              $isExpanded={isExpanded}
-            >
-              <ToggleButtonText>X</ToggleButtonText>
-            </ToggleButton>
-            <MenuButton
-              onClick={toggleExpanded}
-              initial={hoverbarButtonAnimations.menuButton.initial}
-              animate={hoverbarButtonAnimations.menuButton.animate(isExpanded)}
-              transition={hoverbarButtonAnimations.menuButton.transition}
-              $isExpanded={isExpanded}
-            >
-              <MenuButtonText>M</MenuButtonText>
-            </MenuButton>
-            <HoverBarButtonSettingsAnimated
+            <HoverBarButtons
               isExpanded={isExpanded}
               viewportWidth={viewportWidth}
               toggleExpanded={toggleExpanded}
             />
           </ButtonContainerCenterRight>
           <ButtonContainerRight
-            initial={hoverBarContainerAnimations.buttonContainerRight.initial}
-            animate={hoverBarContainerAnimations.buttonContainerRight.animate(
-              isExpanded,
-            )}
-            transition={
-              hoverBarContainerAnimations.buttonContainerRight.transition
-            }
+            {...buttonContainerRightAnimationProps}
+            animate={buttonContainerRightAnimationProps.animate(isExpanded)}
           >
-            <ToggleButtonSm
-              onClick={toggleExpanded}
-              initial={hoverbarButtonAnimations.toggleButtonSm.initial}
-              animate={hoverbarButtonAnimations.toggleButtonSm.animate(
-                isExpanded,
-              )}
-              transition={hoverbarButtonAnimations.toggleButtonSm.transition}
-              $isExpanded={isExpanded}
-            >
-              <ToggleButtonSmText>X</ToggleButtonSmText>
-            </ToggleButtonSm>
+            <HoverBarButtonSm
+              isExpanded={isExpanded}
+              toggleExpanded={toggleExpanded}
+            />
           </ButtonContainerRight>
         </InnerContainerRight>
       </HoverbarContainer>
