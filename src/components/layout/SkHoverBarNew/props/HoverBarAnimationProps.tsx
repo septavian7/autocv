@@ -1,4 +1,4 @@
-/* src/components/layout/SkHoverBarNew/animations/HoverBarAnimationProps.tsx */
+/* src/components/layout/SkHoverBarNew/props/HoverBarAnimationProps.tsx */
 
 import { Transition, Variant } from "framer-motion";
 import { HoverBarButtonAnimations } from "../animations/HoverBarButtonAnimations";

@@ -1,4 +1,4 @@
-/* src/components/layout/SkHoverBarNew/HoverBarUtils.tsx */
+/* src/components/layout/SkHoverBarNew/utils/HoverBarUtils.tsx */
 
 export const toggleExpanded = (
   isExpanded: boolean,

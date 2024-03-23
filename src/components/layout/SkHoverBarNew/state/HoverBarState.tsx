@@ -1,4 +1,4 @@
-/* src/components/layout/SkHoverBarNew/HoverBarState.tsx */
+/* src/components/layout/SkHoverBarNew/state/HoverBarState.tsx */
 
 import { useState, useEffect } from "react";
 import { visibilityStore } from "../../../../stores/SkVisibilityStore";
