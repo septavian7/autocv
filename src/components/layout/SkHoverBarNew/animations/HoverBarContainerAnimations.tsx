@@ -1,8 +1,8 @@
-/* src/components/layout/FramerMotionTest/animations/HoverBarAnimations.tsx */
+/* src/components/layout/FramerMotionTest/animations/HoverBarContainerAnimations.tsx */
 
 import React from "react";
 
-export const hoverBarAnimations = {
+export const hoverBarContainerAnimations = {
   /* Hoverbar Container */
   initial: false,
   animate: (isExpanded: boolean) => ({

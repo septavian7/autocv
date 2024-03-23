@@ -1,4 +1,4 @@
-// src/components/layout/FramerMotionTest/FramerMotionTest.tsx
+/* src/components/layout/FramerMotionTest/FramerMotionTest.tsx */
 
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
@@ -7,26 +7,29 @@ import { observer } from "mobx-react-lite";
 import { visibilityStore } from "../../../stores/SkVisibilityStore";
 
 // Importing modularized components
-import { ToggleButton, ToggleButtonText } from "./components/ToggleButton";
-import { MenuButton, MenuButtonText } from "./components/MenuButton";
+import {
+  ToggleButton,
+  ToggleButtonText,
+} from "./components/HoverBarButtonMain";
+import { MenuButton, MenuButtonText } from "./components/HoverBarButtonMenu";
 import {
   SettingsButton,
   SettingsButtonText,
-} from "./components/SettingsButton";
+} from "./components/HoverBarButtonSettings";
 import {
   ToggleButtonSm,
   ToggleButtonSmText,
-} from "./components/ToggleButtonSm";
+} from "./components/HoverBarButtonMinimize";
 import {
   OuterContainer,
   HoverbarContainer,
   InnerContainerRight,
   ButtonContainerCenterRight,
   ButtonContainerRight,
-} from "./components/HoverbarContainers";
+} from "./components/HoverBarContainers";
 
 // Importing animation configurations
-import { hoverBarAnimations } from "./animations/HoverBarContainerAnimations";
+import { hoverBarContainerAnimations } from "./animations/HoverBarContainerAnimations";
 import { hoverbarButtonAnimations } from "./animations/HoverBarButtonAnimations";
 
 const FramerMotionTest: React.FC = observer(() => {
@@ -50,22 +53,28 @@ const FramerMotionTest: React.FC = observer(() => {
   return (
     <OuterContainer>
       <HoverbarContainer
-        initial={hoverBarAnimations.initial}
-        animate={hoverBarAnimations.animate(isExpanded)}
-        transition={hoverBarAnimations.transition}
+        initial={hoverBarContainerAnimations.initial}
+        animate={hoverBarContainerAnimations.animate(isExpanded)}
+        transition={hoverBarContainerAnimations.transition}
       >
         <InnerContainerRight
-          initial={hoverBarAnimations.innerContainerRight.initial}
-          animate={hoverBarAnimations.innerContainerRight.animate(isExpanded)}
-          transition={hoverBarAnimations.innerContainerRight.transition}
+          initial={hoverBarContainerAnimations.innerContainerRight.initial}
+          animate={hoverBarContainerAnimations.innerContainerRight.animate(
+            isExpanded,
+          )}
+          transition={
+            hoverBarContainerAnimations.innerContainerRight.transition
+          }
         >
           <ButtonContainerCenterRight
-            initial={hoverBarAnimations.buttonContainerCenterRight.initial}
-            animate={hoverBarAnimations.buttonContainerCenterRight.animate(
+            initial={
+              hoverBarContainerAnimations.buttonContainerCenterRight.initial
+            }
+            animate={hoverBarContainerAnimations.buttonContainerCenterRight.animate(
               isExpanded,
             )}
             transition={
-              hoverBarAnimations.buttonContainerCenterRight.transition
+              hoverBarContainerAnimations.buttonContainerCenterRight.transition
             }
           >
             <ToggleButton
@@ -107,11 +116,13 @@ const FramerMotionTest: React.FC = observer(() => {
             </AnimatePresence>
           </ButtonContainerCenterRight>
           <ButtonContainerRight
-            initial={hoverBarAnimations.buttonContainerRight.initial}
-            animate={hoverBarAnimations.buttonContainerRight.animate(
+            initial={hoverBarContainerAnimations.buttonContainerRight.initial}
+            animate={hoverBarContainerAnimations.buttonContainerRight.animate(
               isExpanded,
             )}
-            transition={hoverBarAnimations.buttonContainerRight.transition}
+            transition={
+              hoverBarContainerAnimations.buttonContainerRight.transition
+            }
           >
             <ToggleButtonSm
               onClick={toggleExpanded}

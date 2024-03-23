@@ -1,4 +1,4 @@
-/* src/components/layout/FramerMotionTest/components/HoverbarContainers.tsx */
+/* src/components/layout/FramerMotionTest/components/HoverBarContainers.tsx */
 
 import styled from "@emotion/styled";
 import { motion } from "framer-motion";
@@ -51,9 +51,7 @@ export const InnerContainerRight = styled(motion.div)`
   position: flex-end;
   display: flex;
   align-items: center;
-  /*   justify-content: center; */
   overflow: visible;
   height: 100%;
-  /*   width: 50%; */
   background-color: rgba(0, 255, 0, 0);
 `;

@@ -3,7 +3,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { ThemeProvider } from "../src/providers/SkThemeProvider";
-import FramerMotionTest from "../src/components/layout/FramerMotionTest/FramerMotionTest";
+import FramerMotionTest from "../src/components/layout/SkHoverBarNew/SkHoverBarNew";
 
 const rootElement = document.getElementById("test-root");
 if (rootElement) {
