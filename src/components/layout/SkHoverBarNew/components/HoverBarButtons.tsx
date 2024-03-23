@@ -1,4 +1,4 @@
-/* src/components/layout/SkHoverBarNew/HoverBarButtons.tsx */
+/* src/components/layout/SkHoverBarNew/components/HoverBarButtons.tsx */
 
 import React from "react";
 import {
@@ -22,20 +22,30 @@ import {
 
 interface HoverBarButtonsProps {
   isExpanded: boolean;
-  viewportWidth: number;
+  viewportWidth?: number;
   toggleExpanded: () => void;
-}
-
-interface HoverBarButtonSmProps {
-  isExpanded: boolean;
-  toggleExpanded: () => void;
+  isMobile?: boolean;
 }
 
 export const HoverBarButtons: React.FC<HoverBarButtonsProps> = ({
   isExpanded,
   viewportWidth,
   toggleExpanded,
+  isMobile = false,
 }) => {
+  if (isMobile) {
+    return (
+      <HoverBarButtonMinimize
+        onClick={toggleExpanded}
+        {...HoverBarButtonMinimizeAnimationProps}
+        animate={HoverBarButtonMinimizeAnimationProps.animate(isExpanded)}
+        $isExpanded={isExpanded}
+      >
+        <HoverBarButtonMinimizeText>X</HoverBarButtonMinimizeText>
+      </HoverBarButtonMinimize>
+    );
+  }
+
   return (
     <>
       <HoverBarButtonMain
@@ -54,27 +64,13 @@ export const HoverBarButtons: React.FC<HoverBarButtonsProps> = ({
       >
         <HoverBarButtonMenuText>M</HoverBarButtonMenuText>
       </HoverBarButtonMenu>
-      <HoverBarButtonSettingsAnimated
-        isExpanded={isExpanded}
-        viewportWidth={viewportWidth}
-        toggleExpanded={toggleExpanded}
-      />
+      {viewportWidth !== undefined && (
+        <HoverBarButtonSettingsAnimated
+          isExpanded={isExpanded}
+          viewportWidth={viewportWidth}
+          toggleExpanded={toggleExpanded}
+        />
+      )}
     </>
-  );
-};
-
-export const HoverBarButtonSm: React.FC<HoverBarButtonSmProps> = ({
-  isExpanded,
-  toggleExpanded,
-}) => {
-  return (
-    <HoverBarButtonMinimize
-      onClick={toggleExpanded}
-      {...HoverBarButtonMinimizeAnimationProps}
-      animate={HoverBarButtonMinimizeAnimationProps.animate(isExpanded)}
-      $isExpanded={isExpanded}
-    >
-      <HoverBarButtonMinimizeText>X</HoverBarButtonMinimizeText>
-    </HoverBarButtonMinimize>
   );
 };

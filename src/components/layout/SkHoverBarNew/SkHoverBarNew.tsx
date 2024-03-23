@@ -4,10 +4,7 @@ import React from "react";
 import { observer } from "mobx-react-lite";
 
 // Importing modularized components
-import {
-  HoverBarButtons,
-  HoverBarButtonSm,
-} from "./components/HoverBarButtons";
+import { HoverBarButtons } from "./components/HoverBarButtons";
 import {
   HoverBarOuterOuterContainer,
   HoverBarOuterContainer,
@@ -60,9 +57,10 @@ const SkHoverBarNew: React.FC = observer(() => {
               isExpanded,
             )}
           >
-            <HoverBarButtonSm
+            <HoverBarButtons
               isExpanded={isExpanded}
               toggleExpanded={toggleExpanded}
+              isMobile
             />
           </HoverBarButtonContainerFarRight>
         </HoverBarInnerContainerRight>
