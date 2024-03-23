@@ -1,6 +1,6 @@
 // src/components/layout/FramerMotionTest/FramerMotionTest.tsx
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import { AnimatePresence, motion } from "framer-motion";
 import { observer } from "mobx-react-lite";
@@ -44,6 +44,16 @@ const FramerMotionTest: React.FC = observer(() => {
   const [isExpanded, setIsExpanded] = useState(true);
   const { viewportWidth } = visibilityStore;
 
+  useEffect(() => {
+    // Initialize the event listener when the component mounts
+    window.addEventListener("resize", visibilityStore.handleResize);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      visibilityStore.dispose();
+    };
+  }, []);
+
   const toggleExpanded = () => {
     setIsExpanded(!isExpanded);
   };
@@ -85,21 +95,22 @@ const FramerMotionTest: React.FC = observer(() => {
             >
               <MenuButtonText>M</MenuButtonText>
             </MenuButton>
-            <AnimatePresence>
-              {isExpanded && viewportWidth > 550 && (
-                <SettingsButton
-                  key="settingsButton"
-                  initial={buttonAnimations.settingsButton.initial}
-                  animate={buttonAnimations.settingsButton.animate(isExpanded)}
-                  exit={buttonAnimations.settingsButton.exit}
-                  onClick={toggleExpanded}
-                  transition={buttonAnimations.settingsButton.transition}
-                  $isExpanded={isExpanded}
-                  viewportWidth={viewportWidth}
-                >
-                  <SettingsButtonText>S</SettingsButtonText>
-                </SettingsButton>
-              )}
+            <AnimatePresence mode="wait">
+              <SettingsButton
+                key="settingsButton"
+                initial={buttonAnimations.settingsButton.initial}
+                animate={buttonAnimations.settingsButton.animate(
+                  isExpanded,
+                  viewportWidth,
+                )}
+                exit={buttonAnimations.settingsButton.exit}
+                onClick={toggleExpanded}
+                transition={buttonAnimations.settingsButton.transition}
+                $isExpanded={isExpanded}
+                $viewportWidth={viewportWidth}
+              >
+                <SettingsButtonText>S</SettingsButtonText>
+              </SettingsButton>
             </AnimatePresence>
           </ButtonContainerCenterRight>
           <ButtonContainerRight

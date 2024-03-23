@@ -27,10 +27,10 @@ export const buttonAnimations = {
       transform: "translate(115px)",
       opacity: 1,
     },
-    animate: (isExpanded: boolean) => ({
+    animate: (isExpanded: boolean, viewportWidth: number) => ({
       width: isExpanded ? "60px" : "60px",
       transform: isExpanded ? "translateX(115px)" : "translateX(60px)",
-      opacity: 1,
+      opacity: viewportWidth >= 550 ? 1 : 0,
     }),
     exit: { opacity: 0 },
     transition: { duration: 0.3, ease: "easeInOut" },

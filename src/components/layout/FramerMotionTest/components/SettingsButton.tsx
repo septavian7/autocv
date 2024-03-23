@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export const SettingsButton = styled(motion.button)<{
   $isExpanded: boolean;
-  viewportWidth: number;
+  $viewportWidth: number;
 }>`
   background-color: rgba(255, 0, 0, 0.5);
   color: white;
@@ -23,8 +23,8 @@ export const SettingsButton = styled(motion.button)<{
   flex-basis: 60px;
   flex-grow: 0;
   order: 3;
-  display: ${({ $isExpanded, viewportWidth }) =>
-    $isExpanded && viewportWidth > 550 ? "flex" : "none"};
+  display: flex;
+  opacity: 1;
 
   // @media (max-width: 550px) {
   //   display: none;
