@@ -3,7 +3,7 @@
 import styled from "@emotion/styled";
 import { motion } from "framer-motion";
 
-export const OuterContainer = styled(motion.div)`
+export const HoverBarOuterOuterContainer = styled(motion.div)`
   position: fixed;
   bottom: 100px;
   left: 50%;
@@ -18,7 +18,7 @@ export const OuterContainer = styled(motion.div)`
   height: 60px;
 `;
 
-export const HoverbarContainer = styled(motion.div)`
+export const HoverBarOuterContainer = styled(motion.div)`
   position: relative;
   border-radius: 10px;
   display: flex;
@@ -28,7 +28,16 @@ export const HoverbarContainer = styled(motion.div)`
   background-color: rgba(0, 0, 0, 0);
 `;
 
-export const ButtonContainerCenterRight = styled(motion.div)`
+export const HoverBarInnerContainerRight = styled(motion.div)`
+  position: flex-end;
+  display: flex;
+  align-items: center;
+  overflow: visible;
+  height: 100%;
+  background-color: rgba(0, 255, 0, 0);
+`;
+
+export const HoverBarButtonContainerCenterRight = styled(motion.div)`
   height: 100%;
   background-color: rgba(0, 200, 200, 0);
   align-items: center;
@@ -38,7 +47,7 @@ export const ButtonContainerCenterRight = styled(motion.div)`
   overflow: visible;
 `;
 
-export const ButtonContainerRight = styled(motion.div)`
+export const HoverBarButtonContainerFarRight = styled(motion.div)`
   height: 100%;
   background-color: rgba(200, 200, 0, 0);
   align-items: center;
@@ -46,13 +55,4 @@ export const ButtonContainerRight = styled(motion.div)`
   position: relative;
   display: flex;
   overflow: hidden;
-`;
-
-export const InnerContainerRight = styled(motion.div)`
-  position: flex-end;
-  display: flex;
-  align-items: center;
-  overflow: visible;
-  height: 100%;
-  background-color: rgba(0, 255, 0, 0);
 `;

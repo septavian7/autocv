@@ -1,31 +1,39 @@
 /* src/components/layout/SkHoverBarNew/HoverBarContainerAnimationProps.tsx */
 
-import { hoverBarContainerAnimations } from "../animations/HoverBarContainerAnimations";
+import { HoverBarContainerAnimations } from "../animations/HoverBarContainerAnimations";
 
-export const hoverbarContainerAnimationProps = {
-  initial: hoverBarContainerAnimations.initial,
+export const HoverBarContainerAnimationProps = {
+  initial: HoverBarContainerAnimations.initial,
   animate: (isExpanded: boolean) =>
-    hoverBarContainerAnimations.animate(isExpanded),
-  transition: hoverBarContainerAnimations.transition,
+    HoverBarContainerAnimations.animate(isExpanded),
+  transition: HoverBarContainerAnimations.transition,
 };
 
-export const innerContainerRightAnimationProps = {
-  initial: hoverBarContainerAnimations.innerContainerRight.initial,
+export const HoverBarInnerContainerRightAnimationProps = {
+  initial: HoverBarContainerAnimations.HoverBarInnerContainerRight.initial,
   animate: (isExpanded: boolean) =>
-    hoverBarContainerAnimations.innerContainerRight.animate(isExpanded),
-  transition: hoverBarContainerAnimations.innerContainerRight.transition,
+    HoverBarContainerAnimations.HoverBarInnerContainerRight.animate(isExpanded),
+  transition:
+    HoverBarContainerAnimations.HoverBarInnerContainerRight.transition,
 };
 
-export const buttonContainerCenterRightAnimationProps = {
-  initial: hoverBarContainerAnimations.buttonContainerCenterRight.initial,
+export const HoverBarButtonContainerCenterRightAnimationProps = {
+  initial:
+    HoverBarContainerAnimations.HoverBarButtonContainerCenterRight.initial,
   animate: (isExpanded: boolean) =>
-    hoverBarContainerAnimations.buttonContainerCenterRight.animate(isExpanded),
-  transition: hoverBarContainerAnimations.buttonContainerCenterRight.transition,
+    HoverBarContainerAnimations.HoverBarButtonContainerCenterRight.animate(
+      isExpanded,
+    ),
+  transition:
+    HoverBarContainerAnimations.HoverBarButtonContainerCenterRight.transition,
 };
 
-export const buttonContainerRightAnimationProps = {
-  initial: hoverBarContainerAnimations.buttonContainerRight.initial,
+export const HoverBarButtonContainerFarRightAnimationProps = {
+  initial: HoverBarContainerAnimations.HoverBarButtonContainerRight.initial,
   animate: (isExpanded: boolean) =>
-    hoverBarContainerAnimations.buttonContainerRight.animate(isExpanded),
-  transition: hoverBarContainerAnimations.buttonContainerRight.transition,
+    HoverBarContainerAnimations.HoverBarButtonContainerRight.animate(
+      isExpanded,
+    ),
+  transition:
+    HoverBarContainerAnimations.HoverBarButtonContainerRight.transition,
 };

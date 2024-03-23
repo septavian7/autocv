@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { visibilityStore } from "../../../../stores/SkVisibilityStore";
 import { toggleExpanded } from "../utils/HoverBarUtils";
 
-export const useHoverBarState = () => {
+export const UseHoverBarState = () => {
   const [isExpanded, setIsExpanded] = useState(true);
   const { viewportWidth, handleResize } = visibilityStore;
 

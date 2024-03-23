@@ -3,7 +3,9 @@
 import styled from "@emotion/styled";
 import { motion } from "framer-motion";
 
-export const ToggleButtonSm = styled(motion.button)<{ $isExpanded: boolean }>`
+export const HoverBarButtonMinimize = styled(motion.button)<{
+  $isExpanded: boolean;
+}>`
   background-color: rgba(0, 0, 255, 0.5);
   color: white;
   border: none;
@@ -19,4 +21,4 @@ export const ToggleButtonSm = styled(motion.button)<{ $isExpanded: boolean }>`
   position: absolute;
 `;
 
-export const ToggleButtonSmText = styled(motion.span)``;
+export const HoverBarButtonMinimizeText = styled(motion.span)``;

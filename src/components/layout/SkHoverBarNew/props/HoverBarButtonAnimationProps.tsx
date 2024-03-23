@@ -1,24 +1,24 @@
 /* src/components/layout/SkHoverBarNew/HoverBarButtonAnimationProps.tsx */
 
-import { hoverbarButtonAnimations } from "../animations/HoverBarButtonAnimations";
+import { HoverBarButtonAnimations } from "../animations/HoverBarButtonAnimations";
 
-export const toggleButtonAnimationProps = {
-  initial: hoverbarButtonAnimations.toggleButton.initial,
+export const HoverBarButtonMainAnimationProps = {
+  initial: HoverBarButtonAnimations.hoverBarButtonMain.initial,
   animate: (isExpanded: boolean) =>
-    hoverbarButtonAnimations.toggleButton.animate(isExpanded),
-  transition: hoverbarButtonAnimations.toggleButton.transition,
+    HoverBarButtonAnimations.hoverBarButtonMain.animate(isExpanded),
+  transition: HoverBarButtonAnimations.hoverBarButtonMain.transition,
 };
 
-export const menuButtonAnimationProps = {
-  initial: hoverbarButtonAnimations.menuButton.initial,
+export const HoverBarButtonMenuAnimationProps = {
+  initial: HoverBarButtonAnimations.HoverBarButtonMenu.initial,
   animate: (isExpanded: boolean) =>
-    hoverbarButtonAnimations.menuButton.animate(isExpanded),
-  transition: hoverbarButtonAnimations.menuButton.transition,
+    HoverBarButtonAnimations.HoverBarButtonMenu.animate(isExpanded),
+  transition: HoverBarButtonAnimations.HoverBarButtonMenu.transition,
 };
 
-export const toggleButtonSmAnimationProps = {
-  initial: hoverbarButtonAnimations.toggleButtonSm.initial,
+export const HoverBarButtonMinimizeAnimationProps = {
+  initial: HoverBarButtonAnimations.HoverBarButtonMinimize.initial,
   animate: (isExpanded: boolean) =>
-    hoverbarButtonAnimations.toggleButtonSm.animate(isExpanded),
-  transition: hoverbarButtonAnimations.toggleButtonSm.transition,
+    HoverBarButtonAnimations.HoverBarButtonMinimize.animate(isExpanded),
+  transition: HoverBarButtonAnimations.HoverBarButtonMinimize.transition,
 };

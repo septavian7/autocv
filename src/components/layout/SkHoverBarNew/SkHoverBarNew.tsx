@@ -9,40 +9,42 @@ import {
   HoverBarButtonSm,
 } from "./components/HoverBarButtons";
 import {
-  OuterContainer,
-  HoverbarContainer,
-  InnerContainerRight,
-  ButtonContainerCenterRight,
-  ButtonContainerRight,
+  HoverBarOuterOuterContainer,
+  HoverBarOuterContainer,
+  HoverBarInnerContainerRight,
+  HoverBarButtonContainerCenterRight,
+  HoverBarButtonContainerFarRight,
 } from "./components/HoverBarContainers";
 
 // Importing animation props
 import {
-  hoverbarContainerAnimationProps,
-  innerContainerRightAnimationProps,
-  buttonContainerCenterRightAnimationProps,
-  buttonContainerRightAnimationProps,
+  HoverBarContainerAnimationProps,
+  HoverBarInnerContainerRightAnimationProps,
+  HoverBarButtonContainerCenterRightAnimationProps,
+  HoverBarButtonContainerFarRightAnimationProps,
 } from "./props/HoverBarContainerAnimationProps";
 
 // Importing state management
-import { useHoverBarState } from "./state/HoverBarState";
+import { UseHoverBarState } from "./state/HoverBarState";
 
 const SkHoverBarNew: React.FC = observer(() => {
-  const { isExpanded, viewportWidth, toggleExpanded } = useHoverBarState();
+  const { isExpanded, viewportWidth, toggleExpanded } = UseHoverBarState();
 
   return (
-    <OuterContainer>
-      <HoverbarContainer
-        {...hoverbarContainerAnimationProps}
-        animate={hoverbarContainerAnimationProps.animate(isExpanded)}
+    <HoverBarOuterOuterContainer>
+      <HoverBarOuterContainer
+        {...HoverBarContainerAnimationProps}
+        animate={HoverBarContainerAnimationProps.animate(isExpanded)}
       >
-        <InnerContainerRight
-          {...innerContainerRightAnimationProps}
-          animate={innerContainerRightAnimationProps.animate(isExpanded)}
+        <HoverBarInnerContainerRight
+          {...HoverBarInnerContainerRightAnimationProps}
+          animate={HoverBarInnerContainerRightAnimationProps.animate(
+            isExpanded,
+          )}
         >
-          <ButtonContainerCenterRight
-            {...buttonContainerCenterRightAnimationProps}
-            animate={buttonContainerCenterRightAnimationProps.animate(
+          <HoverBarButtonContainerCenterRight
+            {...HoverBarButtonContainerCenterRightAnimationProps}
+            animate={HoverBarButtonContainerCenterRightAnimationProps.animate(
               isExpanded,
             )}
           >
@@ -51,19 +53,21 @@ const SkHoverBarNew: React.FC = observer(() => {
               viewportWidth={viewportWidth}
               toggleExpanded={toggleExpanded}
             />
-          </ButtonContainerCenterRight>
-          <ButtonContainerRight
-            {...buttonContainerRightAnimationProps}
-            animate={buttonContainerRightAnimationProps.animate(isExpanded)}
+          </HoverBarButtonContainerCenterRight>
+          <HoverBarButtonContainerFarRight
+            {...HoverBarButtonContainerFarRightAnimationProps}
+            animate={HoverBarButtonContainerFarRightAnimationProps.animate(
+              isExpanded,
+            )}
           >
             <HoverBarButtonSm
               isExpanded={isExpanded}
               toggleExpanded={toggleExpanded}
             />
-          </ButtonContainerRight>
-        </InnerContainerRight>
-      </HoverbarContainer>
-    </OuterContainer>
+          </HoverBarButtonContainerFarRight>
+        </HoverBarInnerContainerRight>
+      </HoverBarOuterContainer>
+    </HoverBarOuterOuterContainer>
   );
 });
 

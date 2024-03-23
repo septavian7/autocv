@@ -3,7 +3,7 @@
 import styled from "@emotion/styled";
 import { motion } from "framer-motion";
 
-export const SettingsButton = styled(motion.button)<{
+export const HoverBarButtonSettings = styled(motion.button)<{
   $isExpanded: boolean;
   $viewportWidth: number;
 }>`
@@ -27,4 +27,4 @@ export const SettingsButton = styled(motion.button)<{
   opacity: 1;
 `;
 
-export const SettingsButtonText = styled(motion.span)``;
+export const HoverBarButtonSettingsText = styled(motion.span)``;

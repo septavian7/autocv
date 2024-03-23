@@ -2,9 +2,9 @@
 
 import React from "react";
 
-export const hoverbarButtonAnimations = {
-  /* Toggle Button */
-  toggleButton: {
+export const HoverBarButtonAnimations = {
+  /* Main Button */
+  hoverBarButtonMain: {
     initial: false,
     animate: (isExpanded: boolean) => ({
       width: isExpanded ? "100px" : "60px",
@@ -16,7 +16,7 @@ export const hoverbarButtonAnimations = {
   },
 
   /* Menu Button */
-  menuButton: {
+  HoverBarButtonMenu: {
     initial: false,
     animate: (isExpanded: boolean) => ({
       width: isExpanded ? "60px" : "60px",
@@ -26,7 +26,7 @@ export const hoverbarButtonAnimations = {
   },
 
   /* Settings Button */
-  settingsButton: {
+  HoverBarButtonSettings: {
     initial: {
       width: "60px",
       transform: "translate(115px)",
@@ -41,8 +41,8 @@ export const hoverbarButtonAnimations = {
     transition: { duration: 0.3, ease: "easeInOut" },
   },
 
-  /* Toggle Button Small */
-  toggleButtonSm: {
+  /* Minimize Button */
+  HoverBarButtonMinimize: {
     initial: false,
     animate: (isExpanded: boolean) => ({
       width: isExpanded ? "40px" : "40px",

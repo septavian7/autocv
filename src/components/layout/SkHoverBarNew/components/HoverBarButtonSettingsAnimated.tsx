@@ -2,8 +2,11 @@
 
 import React from "react";
 import { AnimatePresence } from "framer-motion";
-import { SettingsButton, SettingsButtonText } from "./HoverBarButtonSettings";
-import { hoverbarButtonAnimations } from "../animations/HoverBarButtonAnimations";
+import {
+  HoverBarButtonSettings,
+  HoverBarButtonSettingsText,
+} from "./HoverBarButtonSettings";
+import { HoverBarButtonAnimations } from "../animations/HoverBarButtonAnimations";
 
 interface HoverBarButtonSettingsAnimatedProps {
   isExpanded: boolean;
@@ -16,21 +19,21 @@ export const HoverBarButtonSettingsAnimated: React.FC<
 > = ({ isExpanded, viewportWidth, toggleExpanded }) => {
   return (
     <AnimatePresence mode="wait">
-      <SettingsButton
+      <HoverBarButtonSettings
         key="settingsButton"
-        initial={hoverbarButtonAnimations.settingsButton.initial}
-        animate={hoverbarButtonAnimations.settingsButton.animate(
+        initial={HoverBarButtonAnimations.HoverBarButtonSettings.initial}
+        animate={HoverBarButtonAnimations.HoverBarButtonSettings.animate(
           isExpanded,
           viewportWidth,
         )}
-        exit={hoverbarButtonAnimations.settingsButton.exit}
+        exit={HoverBarButtonAnimations.HoverBarButtonSettings.exit}
         onClick={toggleExpanded}
-        transition={hoverbarButtonAnimations.settingsButton.transition}
+        transition={HoverBarButtonAnimations.HoverBarButtonSettings.transition}
         $isExpanded={isExpanded}
         $viewportWidth={viewportWidth}
       >
-        <SettingsButtonText>S</SettingsButtonText>
-      </SettingsButton>
+        <HoverBarButtonSettingsText>S</HoverBarButtonSettingsText>
+      </HoverBarButtonSettings>
     </AnimatePresence>
   );
 };

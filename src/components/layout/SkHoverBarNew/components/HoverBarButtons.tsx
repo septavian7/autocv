@@ -1,14 +1,23 @@
 /* src/components/layout/SkHoverBarNew/HoverBarButtons.tsx */
 
 import React from "react";
-import { ToggleButton, ToggleButtonText } from "./HoverBarButtonMain";
-import { MenuButton, MenuButtonText } from "./HoverBarButtonMenu";
-import { ToggleButtonSm, ToggleButtonSmText } from "./HoverBarButtonMinimize";
+import {
+  HoverBarButtonMain,
+  HoverBarButtonMainText,
+} from "./HoverBarButtonMain";
+import {
+  HoverBarButtonMenu,
+  HoverBarButtonMenuText,
+} from "./HoverBarButtonMenu";
+import {
+  HoverBarButtonMinimize,
+  HoverBarButtonMinimizeText,
+} from "./HoverBarButtonMinimize";
 import { HoverBarButtonSettingsAnimated } from "./HoverBarButtonSettingsAnimated";
 import {
-  toggleButtonAnimationProps,
-  menuButtonAnimationProps,
-  toggleButtonSmAnimationProps,
+  HoverBarButtonMainAnimationProps,
+  HoverBarButtonMenuAnimationProps,
+  HoverBarButtonMinimizeAnimationProps,
 } from "../props/HoverBarButtonAnimationProps";
 
 interface HoverBarButtonsProps {
@@ -29,22 +38,22 @@ export const HoverBarButtons: React.FC<HoverBarButtonsProps> = ({
 }) => {
   return (
     <>
-      <ToggleButton
+      <HoverBarButtonMain
         onClick={toggleExpanded}
-        {...toggleButtonAnimationProps}
-        animate={toggleButtonAnimationProps.animate(isExpanded)}
+        {...HoverBarButtonMainAnimationProps}
+        animate={HoverBarButtonMainAnimationProps.animate(isExpanded)}
         $isExpanded={isExpanded}
       >
-        <ToggleButtonText>X</ToggleButtonText>
-      </ToggleButton>
-      <MenuButton
+        <HoverBarButtonMainText>X</HoverBarButtonMainText>
+      </HoverBarButtonMain>
+      <HoverBarButtonMenu
         onClick={toggleExpanded}
-        {...menuButtonAnimationProps}
-        animate={menuButtonAnimationProps.animate(isExpanded)}
+        {...HoverBarButtonMenuAnimationProps}
+        animate={HoverBarButtonMenuAnimationProps.animate(isExpanded)}
         $isExpanded={isExpanded}
       >
-        <MenuButtonText>M</MenuButtonText>
-      </MenuButton>
+        <HoverBarButtonMenuText>M</HoverBarButtonMenuText>
+      </HoverBarButtonMenu>
       <HoverBarButtonSettingsAnimated
         isExpanded={isExpanded}
         viewportWidth={viewportWidth}
@@ -59,13 +68,13 @@ export const HoverBarButtonSm: React.FC<HoverBarButtonSmProps> = ({
   toggleExpanded,
 }) => {
   return (
-    <ToggleButtonSm
+    <HoverBarButtonMinimize
       onClick={toggleExpanded}
-      {...toggleButtonSmAnimationProps}
-      animate={toggleButtonSmAnimationProps.animate(isExpanded)}
+      {...HoverBarButtonMinimizeAnimationProps}
+      animate={HoverBarButtonMinimizeAnimationProps.animate(isExpanded)}
       $isExpanded={isExpanded}
     >
-      <ToggleButtonSmText>X</ToggleButtonSmText>
-    </ToggleButtonSm>
+      <HoverBarButtonMinimizeText>X</HoverBarButtonMinimizeText>
+    </HoverBarButtonMinimize>
   );
 };

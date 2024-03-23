@@ -3,7 +3,9 @@
 import styled from "@emotion/styled";
 import { motion } from "framer-motion";
 
-export const MenuButton = styled(motion.button)<{ $isExpanded: boolean }>`
+export const HoverBarButtonMenu = styled(motion.button)<{
+  $isExpanded: boolean;
+}>`
   background-color: rgba(255, 0, 0, 0.5);
   color: white;
   border: none;
@@ -22,4 +24,4 @@ export const MenuButton = styled(motion.button)<{ $isExpanded: boolean }>`
   order: 2;
 `;
 
-export const MenuButtonText = styled(motion.span)``;
+export const HoverBarButtonMenuText = styled(motion.span)``;
