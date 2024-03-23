@@ -15,7 +15,6 @@ class VisibilityStore {
   // Constructor
   constructor() {
     makeAutoObservable(this);
-    window.addEventListener("resize", this.handleResize);
   }
 
   // Actions
@@ -40,12 +39,12 @@ class VisibilityStore {
   };
 
   handleResize = () => {
-    this.setViewportWidth(window.innerWidth);
+    if (window.visualViewport) {
+      this.setViewportWidth(window.visualViewport.width);
+    } else {
+      this.setViewportWidth(window.innerWidth);
+    }
   };
-
-  dispose() {
-    window.removeEventListener("resize", this.handleResize);
-  }
 }
 
 // Export

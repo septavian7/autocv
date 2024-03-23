@@ -6,21 +6,36 @@ import { toggleExpanded } from "./HoverBarUtils";
 
 export const useHoverBarState = () => {
   const [isExpanded, setIsExpanded] = useState(true);
-  const { viewportWidth } = visibilityStore;
+  const { viewportWidth, handleResize } = visibilityStore;
 
   useEffect(() => {
-    // Initialize the event listener when the component mounts
-    window.addEventListener("resize", visibilityStore.handleResize);
-
-    // Clean up the event listener when the component unmounts
-    return () => {
-      visibilityStore.dispose();
+    const attachResizeListener = () => {
+      if (window.visualViewport) {
+        window.visualViewport.addEventListener("resize", handleResize);
+      } else {
+        window.addEventListener("resize", handleResize);
+      }
     };
-  }, []);
+
+    const detachResizeListener = () => {
+      if (window.visualViewport) {
+        window.visualViewport.removeEventListener("resize", handleResize);
+      } else {
+        window.removeEventListener("resize", handleResize);
+      }
+    };
+
+    attachResizeListener();
+
+    return () => {
+      detachResizeListener();
+    };
+  }, [handleResize]);
 
   return {
     isExpanded,
     viewportWidth,
     toggleExpanded: () => toggleExpanded(isExpanded, setIsExpanded),
+    handleResize,
   };
 };
