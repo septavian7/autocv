@@ -1,10 +1,7 @@
-/* src/components/layout/FramerMotionTest/FramerMotionTest.tsx */
+/* src/components/layout/SkHoverBarNew/SkHoverBarNew.tsx */
 
-import React, { useState, useEffect } from "react";
-import styled from "@emotion/styled";
-import { AnimatePresence, motion } from "framer-motion";
+import React from "react";
 import { observer } from "mobx-react-lite";
-import { visibilityStore } from "../../../stores/SkVisibilityStore";
 
 // Importing modularized components
 import {
@@ -13,13 +10,10 @@ import {
 } from "./components/HoverBarButtonMain";
 import { MenuButton, MenuButtonText } from "./components/HoverBarButtonMenu";
 import {
-  SettingsButton,
-  SettingsButtonText,
-} from "./components/HoverBarButtonSettings";
-import {
   ToggleButtonSm,
   ToggleButtonSmText,
 } from "./components/HoverBarButtonMinimize";
+import { HoverBarButtonSettingsAnimated } from "./components/HoverBarButtonSettingsAnimated";
 import {
   OuterContainer,
   HoverbarContainer,
@@ -32,23 +26,11 @@ import {
 import { hoverBarContainerAnimations } from "./animations/HoverBarContainerAnimations";
 import { hoverbarButtonAnimations } from "./animations/HoverBarButtonAnimations";
 
-const FramerMotionTest: React.FC = observer(() => {
-  const [isExpanded, setIsExpanded] = useState(true);
-  const { viewportWidth } = visibilityStore;
+// Importing state management
+import { useHoverBarState } from "./HoverBarState";
 
-  useEffect(() => {
-    // Initialize the event listener when the component mounts
-    window.addEventListener("resize", visibilityStore.handleResize);
-
-    // Clean up the event listener when the component unmounts
-    return () => {
-      visibilityStore.dispose();
-    };
-  }, []);
-
-  const toggleExpanded = () => {
-    setIsExpanded(!isExpanded);
-  };
+const SkHoverBarNew: React.FC = observer(() => {
+  const { isExpanded, viewportWidth, toggleExpanded } = useHoverBarState();
 
   return (
     <OuterContainer>
@@ -97,23 +79,11 @@ const FramerMotionTest: React.FC = observer(() => {
             >
               <MenuButtonText>M</MenuButtonText>
             </MenuButton>
-            <AnimatePresence mode="wait">
-              <SettingsButton
-                key="settingsButton"
-                initial={hoverbarButtonAnimations.settingsButton.initial}
-                animate={hoverbarButtonAnimations.settingsButton.animate(
-                  isExpanded,
-                  viewportWidth,
-                )}
-                exit={hoverbarButtonAnimations.settingsButton.exit}
-                onClick={toggleExpanded}
-                transition={hoverbarButtonAnimations.settingsButton.transition}
-                $isExpanded={isExpanded}
-                $viewportWidth={viewportWidth}
-              >
-                <SettingsButtonText>S</SettingsButtonText>
-              </SettingsButton>
-            </AnimatePresence>
+            <HoverBarButtonSettingsAnimated
+              isExpanded={isExpanded}
+              viewportWidth={viewportWidth}
+              toggleExpanded={toggleExpanded}
+            />
           </ButtonContainerCenterRight>
           <ButtonContainerRight
             initial={hoverBarContainerAnimations.buttonContainerRight.initial}
@@ -142,4 +112,4 @@ const FramerMotionTest: React.FC = observer(() => {
   );
 });
 
-export default FramerMotionTest;
+export default SkHoverBarNew;

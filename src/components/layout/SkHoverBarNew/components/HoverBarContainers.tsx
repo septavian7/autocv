@@ -12,6 +12,7 @@ export const OuterContainer = styled(motion.div)`
   border-radius: 10px;
   display: flex;
   justify-content: right;
+  align-items: center;
   overflow: hidden;
   width: 100vw;
   height: 60px;
