@@ -1,8 +1,8 @@
 /* src/components/layout/SkHoverBarNew/HoverBarState.tsx */
 
 import { useState, useEffect } from "react";
-import { visibilityStore } from "../../../stores/SkVisibilityStore";
-import { toggleExpanded } from "./HoverBarUtils";
+import { visibilityStore } from "../../../../stores/SkVisibilityStore";
+import { toggleExpanded } from "../utils/HoverBarUtils";
 
 export const useHoverBarState = () => {
   const [isExpanded, setIsExpanded] = useState(true);

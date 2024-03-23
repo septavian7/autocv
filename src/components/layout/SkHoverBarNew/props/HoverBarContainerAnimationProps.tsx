@@ -1,6 +1,6 @@
 /* src/components/layout/SkHoverBarNew/HoverBarContainerAnimationProps.tsx */
 
-import { hoverBarContainerAnimations } from "./animations/HoverBarContainerAnimations";
+import { hoverBarContainerAnimations } from "../animations/HoverBarContainerAnimations";
 
 export const hoverbarContainerAnimationProps = {
   initial: hoverBarContainerAnimations.initial,

@@ -1,21 +1,15 @@
 /* src/components/layout/SkHoverBarNew/HoverBarButtons.tsx */
 
 import React from "react";
-import {
-  ToggleButton,
-  ToggleButtonText,
-} from "./components/HoverBarButtonMain";
-import { MenuButton, MenuButtonText } from "./components/HoverBarButtonMenu";
-import {
-  ToggleButtonSm,
-  ToggleButtonSmText,
-} from "./components/HoverBarButtonMinimize";
-import { HoverBarButtonSettingsAnimated } from "./components/HoverBarButtonSettingsAnimated";
+import { ToggleButton, ToggleButtonText } from "./HoverBarButtonMain";
+import { MenuButton, MenuButtonText } from "./HoverBarButtonMenu";
+import { ToggleButtonSm, ToggleButtonSmText } from "./HoverBarButtonMinimize";
+import { HoverBarButtonSettingsAnimated } from "./HoverBarButtonSettingsAnimated";
 import {
   toggleButtonAnimationProps,
   menuButtonAnimationProps,
   toggleButtonSmAnimationProps,
-} from "./HoverBarButtonAnimationProps";
+} from "../props/HoverBarButtonAnimationProps";
 
 interface HoverBarButtonsProps {
   isExpanded: boolean;

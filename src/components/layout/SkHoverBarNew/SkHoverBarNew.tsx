@@ -4,7 +4,10 @@ import React from "react";
 import { observer } from "mobx-react-lite";
 
 // Importing modularized components
-import { HoverBarButtons, HoverBarButtonSm } from "./HoverBarButtons";
+import {
+  HoverBarButtons,
+  HoverBarButtonSm,
+} from "./components/HoverBarButtons";
 import {
   OuterContainer,
   HoverbarContainer,
@@ -19,10 +22,10 @@ import {
   innerContainerRightAnimationProps,
   buttonContainerCenterRightAnimationProps,
   buttonContainerRightAnimationProps,
-} from "./HoverBarContainerAnimationProps";
+} from "./props/HoverBarContainerAnimationProps";
 
 // Importing state management
-import { useHoverBarState } from "./HoverBarState";
+import { useHoverBarState } from "./state/HoverBarState";
 
 const SkHoverBarNew: React.FC = observer(() => {
   const { isExpanded, viewportWidth, toggleExpanded } = useHoverBarState();

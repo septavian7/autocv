@@ -1,6 +1,6 @@
 /* src/components/layout/SkHoverBarNew/HoverBarButtonAnimationProps.tsx */
 
-import { hoverbarButtonAnimations } from "./animations/HoverBarButtonAnimations";
+import { hoverbarButtonAnimations } from "../animations/HoverBarButtonAnimations";
 
 export const toggleButtonAnimationProps = {
   initial: hoverbarButtonAnimations.toggleButton.initial,
