@@ -2,7 +2,8 @@
 
 import React from "react";
 
-export const buttonAnimations = {
+export const hoverbarButtonAnimations = {
+  /* Toggle Button */
   toggleButton: {
     initial: false,
     animate: (isExpanded: boolean) => ({
@@ -13,6 +14,8 @@ export const buttonAnimations = {
     }),
     transition: { duration: 0.5, ease: "easeInOut" },
   },
+
+  /* Menu Button */
   menuButton: {
     initial: false,
     animate: (isExpanded: boolean) => ({
@@ -21,6 +24,8 @@ export const buttonAnimations = {
     }),
     transition: { duration: 0.5, ease: "easeInOut" },
   },
+
+  /* Settings Button */
   settingsButton: {
     initial: {
       width: "60px",
@@ -35,26 +40,13 @@ export const buttonAnimations = {
     exit: { opacity: 0 },
     transition: { duration: 0.3, ease: "easeInOut" },
   },
+
+  /* Toggle Button Small */
   toggleButtonSm: {
     initial: false,
     animate: (isExpanded: boolean) => ({
       width: isExpanded ? "40px" : "40px",
       transform: isExpanded ? "translateX(10px)" : "translateX(100px)",
-    }),
-    transition: { duration: 0.5, ease: "easeInOut" },
-  },
-  buttonContainerCenterRight: {
-    initial: false,
-    animate: (isExpanded: boolean) => ({
-      width: isExpanded ? "calc(75% + 0px)" : "calc(99.9% + 0px)",
-    }),
-    transition: { duration: 0.5, ease: "easeInOut" },
-  },
-  buttonContainerRight: {
-    initial: false,
-    animate: (isExpanded: boolean) => ({
-      width: isExpanded ? "calc(25% + 0px)" : "calc(0.1% + 0px)",
-      transform: isExpanded ? "translateX(0px)" : "translateX(0px)",
     }),
     transition: { duration: 0.5, ease: "easeInOut" },
   },
