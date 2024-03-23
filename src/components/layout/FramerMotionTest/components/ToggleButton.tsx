@@ -1,0 +1,47 @@
+/* src/components/layout/FramerMotionTest/components/ToggleButton.tsx */
+
+import styled from "@emotion/styled";
+import { motion } from "framer-motion";
+
+export const ToggleButton = styled(motion.button)<{ $isExpanded: boolean }>`
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-size: 16px;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow: visible;
+  position: fixed;
+  flex-basis: 100px;
+  flex-grow: 0;
+  order: 1;
+`;
+
+export const ToggleButtonText = styled(motion.span)``;
+
+/* export const ToggleButton = styled(motion.button)<{ $isExpanded: boolean }>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 60px;
+  background: #4caf50;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  z-index: 5;
+  overflow: hidden;
+  border-radius: ${({ $isExpanded }) =>
+    $isExpanded ? "10px 0 0 10px" : "10px"};
+`;
+
+export const ToggleButtonText = styled(motion.span)`
+  font-size: 24px;
+  font-weight: bold;
+`;
+ */
