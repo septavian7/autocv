@@ -16,7 +16,8 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { AnimatePresence, motion } from "framer-motion";
-import useViewportWidth from "../../hooks/useViewportWidth";
+import { observer } from "mobx-react-lite";
+import { visibilityStore } from "../../stores/SkVisibilityStore";
 
 /* --------- STYLES --------- */
 
@@ -195,9 +196,9 @@ const ToggleButtonSmText = styled(motion.span)``;
 
 /* --------- COMPONENT --------- */
 
-const FramerMotionTest: React.FC = () => {
+const FramerMotionTest: React.FC = observer(() => {
   const [isExpanded, setIsExpanded] = useState(true);
-  const viewportWidth = useViewportWidth();
+  const { viewportWidth } = visibilityStore;
 
   const toggleExpanded = () => {
     setIsExpanded(!isExpanded);
@@ -306,6 +307,6 @@ const FramerMotionTest: React.FC = () => {
       </HoverBarContainer>
     </OuterContainer>
   );
-};
+});
 
 export default FramerMotionTest;
