@@ -18,7 +18,7 @@ import {
   HoverBarButtonMainAnimationProps,
   HoverBarButtonMenuAnimationProps,
   HoverBarButtonMinimizeAnimationProps,
-} from "../props/HoverBarButtonAnimationProps";
+} from "../props/HoverBarAnimationProps";
 
 interface HoverBarButtonsProps {
   isExpanded: boolean;

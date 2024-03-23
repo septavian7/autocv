@@ -19,7 +19,7 @@ import {
   HoverBarInnerContainerRightAnimationProps,
   HoverBarButtonContainerCenterRightAnimationProps,
   HoverBarButtonContainerFarRightAnimationProps,
-} from "./props/HoverBarContainerAnimationProps";
+} from "./props/HoverBarAnimationProps";
 
 // Importing state management
 import { UseHoverBarState } from "./state/HoverBarState";
