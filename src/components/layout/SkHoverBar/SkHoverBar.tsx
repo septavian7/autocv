@@ -125,7 +125,7 @@ const BaseHoverBarButton = styled(motion.button)`
   align-items: center;
   /*   z-index: 900; */
   overflow: hidden;
-  transition: filter 0.3s ease;
+  /*   transition: filter 0.3s ease; */
 
   &:hover {
     transition: all 0.3s ease;
