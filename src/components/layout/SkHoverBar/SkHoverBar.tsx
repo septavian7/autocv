@@ -435,84 +435,84 @@ const HoverBarButtonMakeMainInnerRightContainerVariants = {
 };
 
 // HoverBarButtonMainMenuLarge Variants
-const HoverBarButtonMainMenuLargeVariants = {
+/* const HoverBarButtonMainMenuLargeVariants = {
   expanded: {
-    ...commonVariants.expanded,
-    /*     width: "55px", */
-    /*     transform: "translateX(50px)", */
-    /*     transition: { duration: 0.5, ease: "easeInOut" }, */
-  },
+    ...commonVariants.expanded, */
+/*     width: "55px", */
+/*     transform: "translateX(50px)", */
+/*     transition: { duration: 0.5, ease: "easeInOut" }, */
+/*   },
   collapsed: {
-    ...commonVariants.collapsed,
-    /*     width: "55px", */
-    /*     transform: "translateX(50px)", */
-    transition: { duration: 0.5, ease: "easeInOut" },
+    ...commonVariants.collapsed, */
+/*     width: "55px", */
+/*     transform: "translateX(50px)", */
+/*     transition: { duration: 0.5, ease: "easeInOut" },
   },
-};
+}; */
 
 // HoverBarButtonThemeSmall Variants
-const HoverBarButtonThemeSmallVariants = {
+/* const HoverBarButtonThemeSmallVariants = {
   expanded: {
-    ...commonVariants.expanded,
-    /*     width: "40px", */
-    /*     transform: "translateX(-140px)", */
-    /*     transition: { duration: 0.5, ease: "easeInOut" }, */
-  },
+    ...commonVariants.expanded, */
+/*     width: "40px", */
+/*     transform: "translateX(-140px)", */
+/*     transition: { duration: 0.5, ease: "easeInOut" }, */
+/*   },
   collapsed: {
-    ...commonVariants.collapsed,
-    /*     width: "40px", */
-    /*     transform: "translateX(100px)", */
-    /*     transition: { duration: 0.5, ease: "easeInOut" }, */
-  },
-};
+    ...commonVariants.collapsed, */
+/*     width: "40px", */
+/*     transform: "translateX(100px)", */
+/*     transition: { duration: 0.5, ease: "easeInOut" }, */
+/*   },
+}; */
 
 // HoverBarButtonSettingsSmall Variants
-const HoverBarButtonSettingsSmallVariants = {
+/* const HoverBarButtonSettingsSmallVariants = {
   expanded: {
-    ...commonVariants.expanded,
-    /*     width: "40px", */
-    /*     transform: "translateX(-92px)", */
-    /*     transition: { duration: 0.5, ease: "easeInOut" }, */
-  },
+    ...commonVariants.expanded, */
+/*     width: "40px", */
+/*     transform: "translateX(-92px)", */
+/*     transition: { duration: 0.5, ease: "easeInOut" }, */
+/*   },
   collapsed: {
-    ...commonVariants.collapsed,
-    /*     width: "40px", */
-    /*     transform: "translateX(100px)", */
-    /*     transition: { duration: 0.5, ease: "easeInOut" }, */
-  },
-};
+    ...commonVariants.collapsed, */
+/*     width: "40px", */
+/*     transform: "translateX(100px)", */
+/*     transition: { duration: 0.5, ease: "easeInOut" }, */
+/*   },
+}; */
 
 // HoverBarButtonProfileSmall Variants
-const HoverBarButtonProfileSmallVariants = {
+/* const HoverBarButtonProfileSmallVariants = {
   expanded: {
-    ...commonVariants.expanded,
-    /*     width: "40px", */
-    /*     transform: "translateX(-44px)", */
-    /*     transition: { duration: 0.5, ease: "easeInOut" }, */
-  },
-  collapsed: {
-    ...commonVariants.collapsed,
-    /*     width: "40px", */
-    /*     transform: "translateX(100px)", */
-    /*     transition: { duration: 0.5, ease: "easeInOut" }, */
-  },
-};
+    ...commonVariants.expanded, */
+/*     width: "40px", */
+/*     transform: "translateX(-44px)", */
+/*     transition: { duration: 0.5, ease: "easeInOut" }, */
+/*   }, */
+/*   collapsed: {
+    ...commonVariants.collapsed, */
+/*     width: "40px", */
+/*     transform: "translateX(100px)", */
+/*     transition: { duration: 0.5, ease: "easeInOut" }, */
+/*   },
+}; */
 
 // HoverBarButtonMinimizeSmall Variants
-const HoverBarButtonMinimizeSmallVariants = {
+/* const HoverBarButtonMinimizeSmallVariants = {
   expanded: {
-    ...commonVariants.expanded,
-    /*     width: "40px", */
-    /*     transform: "translateX(10px)", */
-    /*     transition: { duration: 0.5, ease: "easeInOut" }, */
-  },
+    ...commonVariants.expanded, */
+/*     width: "40px", */
+/*     transform: "translateX(10px)", */
+/*     transition: { duration: 0.5, ease: "easeInOut" }, */
+/*   },
   collapsed: {
-    ...commonVariants.collapsed,
-    /*     width: "40px", */
-    /*     transform: "translateX(100px)", */
-    /*     transition: { duration: 0.5, ease: "easeInOut" }, */
-  },
-};
+    ...commonVariants.collapsed, */
+/*     width: "40px", */
+/*     transform: "translateX(100px)", */
+/*     transition: { duration: 0.5, ease: "easeInOut" }, */
+/*   },
+}; */
 
 /* --------- COMPONENT --------- */
 
@@ -582,7 +582,8 @@ const SkHoverBar: React.FC = observer(() => {
               onClick={toggleToolsMenu}
               initial={isExpanded ? false : "collapsed"}
               animate={isExpanded ? "expanded" : "collapsed"}
-              variants={HoverBarButtonMainMenuLargeVariants}
+              variants={commonVariants}
+              /*               variants={HoverBarButtonMainMenuLargeVariants} */
             >
               <HoverBarButtonMainMenuIcon></HoverBarButtonMainMenuIcon>
             </HoverBarButtonMainMenuLarge>
@@ -608,10 +609,11 @@ const SkHoverBar: React.FC = observer(() => {
                 >
                   {/* Theme Button */}
                   <HoverBarButtonThemeSmall
-                    onClick={toggleTheme}
                     initial={isExpanded ? false : "collapsed"}
                     animate={isExpanded ? "expanded" : "collapsed"}
-                    variants={HoverBarButtonThemeSmallVariants}
+                    /*                     variants={HoverBarButtonThemeSmallVariants} */
+                    variants={commonVariants}
+                    onClick={toggleTheme}
                   >
                     <HoverBarButtonThemeIcon></HoverBarButtonThemeIcon>
                   </HoverBarButtonThemeSmall>
@@ -619,7 +621,8 @@ const SkHoverBar: React.FC = observer(() => {
                   <HoverBarButtonSettingsSmall
                     initial={isExpanded ? false : "collapsed"}
                     animate={isExpanded ? "expanded" : "collapsed"}
-                    variants={HoverBarButtonSettingsSmallVariants}
+                    /*                     variants={HoverBarButtonSettingsSmallVariants} */
+                    variants={commonVariants}
                     onClick={toggleUserSettings}
                   >
                     <HoverBarButtonSettingsIcon></HoverBarButtonSettingsIcon>
@@ -635,7 +638,8 @@ const SkHoverBar: React.FC = observer(() => {
                     onClick={toggleProfileMenu}
                     initial={isExpanded ? false : "collapsed"}
                     animate={isExpanded ? "expanded" : "collapsed"}
-                    variants={HoverBarButtonProfileSmallVariants}
+                    variants={commonVariants}
+                    /*                     variants={HoverBarButtonProfileSmallVariants} */
                   >
                     <HoverBarButtonProfileIcon></HoverBarButtonProfileIcon>
                   </HoverBarButtonProfileSmall>
@@ -647,7 +651,8 @@ const SkHoverBar: React.FC = observer(() => {
               onClick={toggleHoverBarExpandMinimize}
               initial={isExpanded ? false : "collapsed"}
               animate={isExpanded ? "expanded" : "collapsed"}
-              variants={HoverBarButtonMinimizeSmallVariants}
+              variants={commonVariants}
+              /*               variants={HoverBarButtonMinimizeSmallVariants} */
             >
               <HoverBarButtonMinimizeIcon></HoverBarButtonMinimizeIcon>
             </HoverBarButtonMinimizeSmall>
