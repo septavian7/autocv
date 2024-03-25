@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings UI</title>
+<style>
+  .settings-container {
+    background-color: #000;
+    color: white;
+    font-family: sans-serif;
+  }
+
+  .settings-header {
+    font-size: 28px;
+    font-weight: bold;
+    padding: 20px;
+  }
+
+  .search-input input {
+    width: 100%;
+    background-color: #1c1c1e;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px;
+    border: none;
+    color: white;
+  }
+
+  .profile-container {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .profile-picture {
+    background-color: #ccc;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+
+  .profile-name {
+    font-size: 20px;
+  }
+
+  .promotion-container {
+    background-color: #0a84ff;
+    color: white;
+    padding: 15px;
+    margin: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .setting-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #2c2c2e;
+  }
+
+  .setting-icon {
+    font-size: 24px;
+    margin-right: 10px;
+  }
+
+  .toggle-switch {
+    position: relative;
+    width: 50px;
+    height: 30px;
+    background-color: grey;
+    border-radius: 15px;
+    cursor: pointer;
+  }
+
+  .toggle-switch:before {
+    content: '';
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: white;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s;
+  }
+
+  .toggle-switch.active:before {
+    transform: translateX(20px);
+  }
+</style>
+</head>
+<body>
+
+<div class="settings-container">
+
+  <div class="settings-header">
+    Settings
+  </div>
+
+  <div class="search-input">
+    <input type="text" placeholder="Search" />
+  </div>
+
+  <div class="profile-container">
+    <div class="profile-picture"></div>
+    <div class="profile-name">Kevin Schofield</div>
+  </div>
+
+  <div class="profile-container">
+    <div class="profile-picture"></div>
+    <div class="profile-name">Family</div>
+  </div>
+
+  <div class="promotion-container">
+    Apple News+ Free for 3 Months
+  </div>
+
+  <div class="setting-item">
+    <div style="display: flex; align-items: center;">
+      <div class="setting-icon">✈️</div>
+      Airplane Mode
+    </div>
+    <div class="toggle-switch"></div>
+  </div>
+
+  <!-- Insert the setting items for Wi-Fi, Bluetooth, Cellular, Personal Hotspot, VPN, etc. here -->
+
+  <div class="setting-item">
+    <div style="display: flex; align-items: center;">
+      <div class="setting-icon">📶</div> <!-- Replace with an appropriate icon -->
+      Wi-Fi
+    </div>
+    <!-- Add your toggle switch element here if Wi-Fi is a toggleable setting -->
+  </div>
+
+  <div class="setting-item">
+    <div style="display: flex; align-items: center;">
+      <div class="setting-icon">🔵</div> <!-- Replace with an appropriate icon -->
+      Bluetooth
+    </div>
+    <div class="toggle-switch"></div>
+  </div>
+
+  <div class="setting-item">
+    <div style="display: flex; align-items: center;">
+      <div class="setting-icon">📱</div> <!-- Replace with an appropriate icon -->
+      Cellular
+    </div>
+    <!-- Add your toggle switch element here if Cellular is a toggleable setting -->
+  </div>
+
+  <div class="setting-item">
+    <div style="display: flex; align-items: center;">
+      <div class="setting-icon">🔗</div> <!-- Replace with an appropriate icon -->
+      Personal Hotspot
+    </div>
+    <div class="toggle-switch"></div>
+  </div>
+
+  <div class="setting-item">
+    <div style="display: flex; align-items: center;">
+      <div class="setting-icon">🔒</div> <!-- Replace with an appropriate icon -->
+      VPN
+    </div>
+    <!-- Add your toggle switch element here if VPN is a toggleable setting -->
+  </div>
+
+</div>
+
+</body>
+</html>

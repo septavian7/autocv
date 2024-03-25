@@ -1,0 +1,1 @@
+function toggleHoverBarVisibility(){chrome.tabs.sendMessage(tab.id,{action:"toggleHoverBar"})}chrome.action.onClicked.addListener((e=>{chrome.scripting.executeScript({target:{tabId:e.id},function:toggleHoverBarVisibility})}));

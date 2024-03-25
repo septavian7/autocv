@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings UI</title>
+<style>
+
+.body {
+  background-image: url('ios_linkedin.jpg'); background-size: 450px 900px; background-position: center; height: 100vh;
+}
+
+/* Outer Container */
+.outer-container {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  backdrop-filter: blur(2px);
+  background-color: #0c1b2b6f;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* App Folder Container */
+.app-folder-container {
+/* TBD */
+
+}
+
+.settings-container {
+    display:flexbox;
+
+    color: white;
+    font-family: sans-serif;
+    width: 360px;
+/*     height: 730px; */
+    padding-bottom: 7px;
+    font-family: Sen, sans-serif;
+    border-radius: 36px;
+    backdrop-filter: blur(0px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(
+      -30deg,
+      rgba(0, 0, 0, 0.05),
+      rgba(110, 110, 110, 0.2),
+      rgba(99, 99, 99, 0.25),
+      rgba(0, 0, 0, 0.1)
+    );
+
+  }
+
+/* Container for Profile and Apple News Ad */
+.section-container {
+  background-color: #1c1c1ee2; /* Adjust the color to match the gray containers in the image */
+  margin: 20px;
+  border-radius: 10px;
+  overflow: hidden; /* Ensures the child elements do not overflow the rounded corners */
+  margin-top: -2px;
+}
+
+/* Individual item container to give spacing between items */
+.item-container {
+  padding: 20px;
+  border-bottom: 1px solid #2c2c2e; /* If you want a separator between items */
+}
+
+/* Remove the bottom border for the last item */
+.item-container:last-child {
+  border-bottom: none;
+}
+
+
+
+  .settings-header {
+    font-size: 32px;
+    font-weight: bold;
+    padding: 40px 20px 10px;
+    margin: 20px;
+    display: flex;
+    font-family: Sen, sans-serif;
+  }
+
+  .search-input {
+  display: flex;
+  padding: 0 0px; /* Padding to match the settings container padding */
+}
+
+  .search-input input {
+    width: calc(100% - 40px);
+    height: 20px;
+    background-color: #1c1c1ee7;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 20px;
+    border: none;
+    color: white;
+  }
+
+.profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: 1px solid #2c2c2e;
+}
+
+.profile-left {
+  flex-shrink: 0; /* Ensures that the profile picture does not shrink */
+}
+
+.profile-center {
+  flex-grow: 1; /* Allows the center content to take up the remaining space */
+  padding-left: 10px; /* Adds some space between the picture and the text */
+}
+
+.profile-right {
+  /* Styling for the right arrow, if needed */
+}
+
+.profile-picture {
+  background-color: #cccccc; /* Placeholder color, replace with actual image */
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+}
+
+.profile-name {
+  font-size: 18px;
+  margin: 0;
+}
+
+.profile-subheader {
+  font-size: 1px;
+  color: #8e8e93;
+  margin: 0;
+}
+
+  .promotion-container {
+    background-color: #0a84ff;
+    color: white;
+    padding: 15px;
+    margin: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .setting-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px;
+    border-bottom: 1px solid #2c2c2e;
+    margin: -8px;
+    height: 26px;
+  }
+
+  .setting-icon {
+    font-size: 24px;
+    margin-right: 10px;
+    padding: 10px;;
+  }
+
+  .toggle-switch {
+    position: relative;
+    width: 50px;
+    height: 30px;
+    background-color: grey;
+    border-radius: 15px;
+    cursor: pointer;
+  }
+
+  .toggle-switch:before {
+    content: '';
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: white;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s;
+  }
+
+  .toggle-switch.active:before {
+    transform: translateX(20px);
+  }
+
+  .link-arrow {
+  color: #8e8e9398;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.sub-text {
+  font-size: 12px;
+  color: #8e8e93;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+</style>
+
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sen">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body class="body">
+
+<div class="outer-container">
+  <div class="app-folder-container">
+
+    <div class="settings-container">
+
+      
+      <div class="settings-header">
+        Settings
+      </div>
+
+      <!-- Search Bar -->
+      <!--
+      <div class="search-input">
+        <input type="text" placeholder="Search" />
+      </div>
+      -->
+      <!-- Profile Section -->
+      <div class="section-container">
+
+        <!-- Profile Header -->
+        <div class="profile-container">
+          <div class="profile-left">
+            <div class="profile-picture"></div>
+          </div>
+          <div class="profile-center">
+            <div class="profile-name">Demo User</div>
+            <div class="profile-subheader">Apple ID, iCloud, Media & Purchases</div>
+          </div>
+          <div class="profile-right">
+            <div class="link-arrow">&gt;</div> <!-- This should be replaced with the actual arrow icon -->
+          </div>
+        </div>
+
+        <!-- Header Button -->
+        <!--
+        <div class="promotion-container">
+          Login
+        </div>
+        -->
+
+      </div> 
+
+      <!-- User Settings Section -->
+      <div class="section-container">
+
+        <!-- Toggle Theme -->
+        <div class="setting-item">
+          <div style="display: flex; align-items: center;">
+            <div class="setting-icon material-symbols-outlined">contrast</div> <!-- Replace with an appropriate icon -->
+            <div>
+              Toggle Theme
+              <!-- <div class="sub-text">Family Maison</div> -->
+            </div>
+          </div>
+          <div class="toggle-switch"></div>      </div>
+        
+      </div>
+
+    <!-- User Settings Section -->
+    <div class="section-container">
+
+      <!-- Make Options -->
+      <div class="setting-item">
+        <div style="display: flex; align-items: center;">
+          <div class="setting-icon material-symbols-outlined">description</div>
+          Make Options
+        </div>
+        <div class="link-arrow">></div>
+      </div>  
+
+      <!-- Output Formats -->
+      <div class="setting-item">
+        <div style="display: flex; align-items: center;">
+          <div class="setting-icon material-symbols-outlined">description</div>
+          Output Formats
+        </div>
+        <div class="link-arrow">></div>
+      </div>  
+
+      <!-- AI Model -->
+      <div class="setting-item">
+        <div style="display: flex; align-items: center;">
+          <div class="setting-icon material-symbols-outlined">smart_toy</div>
+          AI Model
+        </div>
+        <div class="link-arrow">></div>
+      </div> 
+      
+    </div>
+
+    <!-- Display -->
+    <div class="section-container">
+
+      <!-- Make Interview Prep -->
+      <div class="setting-item">
+        <div style="display: flex; align-items: center;">
+          <div class="setting-icon material-symbols-outlined">contact_page</div> <!-- Replace with an appropriate icon -->
+          <div>
+            Auto-Minimize
+          </div>
+        </div>
+        <div class="toggle-switch"></div>
+      </div>
+
+      <!-- AI Model -->
+      <div class="setting-item">
+        <div style="display: flex; align-items: center;">
+          <div class="setting-icon material-symbols-outlined">smart_toy</div>
+          Allowed Domains
+        </div>
+        <div class="link-arrow">></div>
+      </div> 
+      
+    </div>
+
+    
+
+  </div>
+
+</div>
+
+</div>
+
+</body>
+</html>
