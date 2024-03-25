@@ -18,6 +18,18 @@ import {
   /*   toggleTheme, */
 } from "./utils/HoverBarUtils";
 
+/* --------- FUNCTIONS: ONCLICK LOGIC --------- */
+
+const onMakeButtonClickExpanded = () => {
+  themeStore.toggleTheme();
+  console.log("Make expanded State Function Called");
+};
+
+const onMakeButtonClickCollapsed = () => {
+  toggleHoverBarExpandMinimize();
+  console.log("Make collapsed State Function Called");
+};
+
 /* --------- STYLES: CONTAINERS --------- */
 
 const HoverBarOuterOuterContainer = styled(motion.div)`
@@ -415,8 +427,11 @@ const HoverBarButtonMinimizeSmallVariants = {
 const SkHoverBarNew3: React.FC = observer(() => {
   const { isExpanded } = hoverBarStore;
   const viewportWidth = useViewportWidth();
-  const showSmallButtons = viewportWidth > 750;
+  const showSmallButtons = viewportWidth > 650;
   const toggleTheme = () => themeStore.toggleTheme();
+  const makeButtonClickHandler = isExpanded
+    ? onMakeButtonClickExpanded
+    : onMakeButtonClickCollapsed;
 
   // Decide which variant to use based on `isExpanded`
   const currentVariant = isExpanded ? "expanded" : "collapsed";
@@ -446,7 +461,7 @@ const SkHoverBarNew3: React.FC = observer(() => {
               initial={isExpanded ? false : "collapsed"}
               animate={isExpanded ? "expanded" : "collapsed"}
               variants={HoverBarButtonMakeMainVariants}
-              onClick={toggleHoverBarExpandMinimize}
+              onClick={makeButtonClickHandler}
             >
               <HoverBarButtonMakeMainInnerLeftContainer
                 initial={isExpanded ? false : "collapsed"}
