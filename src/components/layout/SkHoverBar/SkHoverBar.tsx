@@ -52,42 +52,42 @@ const StyledRam314Icon = styled(Ram314Icon)`
   position: absolute;
   align-items: center;
   justify-content: center;
-  transform: scale(0.07) translateX(20px);
+  transform: scale(0.07);
 `;
 
 const StyledSpaceDashboardIcon = styled(SpaceDashboardIcon)`
   position: relative;
   align-items: center;
   justify-content: center;
-  transform: scale(1.8) translateX(0px) translateY(7.5px);
+  transform: scale(1.8);
 `;
 
 const StyledContrastIcon = styled(ContrastIcon)`
   position: relative;
   align-items: center;
   justify-content: center;
-  transform: scale(1.2) translateX(0px) translateY(5.5px);
+  /*   transform: scale(1.2) translateX(0px) translateY(5.5px); */
 `;
 
 const StyledSettingsIcon = styled(SettingsIcon)`
   position: relative;
   align-items: center;
   justify-content: center;
-  transform: scale(1.2) translateX(0px) translateY(5.5px);
+  /*   transform: scale(1.2) translateX(0px) translateY(5.5px); */
 `;
 
 const StyledProfileIcon = styled(ProfileIcon)`
   position: relative;
   align-items: center;
   justify-content: center;
-  transform: scale(1.2) translateX(0px) translateY(5.5px);
+  /*   transform: scale(1.2) translateX(0px) translateY(5.5px); */
 `;
 
 const StyledCollapseAllIcon = styled(CollapseAllIcon)`
   position: relative;
   align-items: center;
   justify-content: center;
-  transform: scale(1) translateX(-1px) translateY(2.5px);
+  /*   transform: scale(1) translateX(-1px) translateY(2.5px); */
 `;
 
 /* --------- STYLES: CONTAINERS --------- */
@@ -275,7 +275,6 @@ const HoverBarButtonMakeInnerLeftContainer = styled(motion.div)`
   justify-content: center;
   /*   background-color: rgba(255, 255, 255, 0.9); */
   /*   background-image: url("/assets/icons/buttonicons/ram314_blue_stencil-gray.svg");
-  filter: brightness(110%);
   background-size: 100% 100%;
   background-position: center; */
   /*   margin-left: 20px; */
@@ -295,6 +294,16 @@ const HoverBarButtonMakeInnerRightContainer = styled(motion.div)`
   /*   margin-right: 20px; */
 `;
 
+const HoverBarButtonMakeIcon = styled(HoverBarButtonIcon)`
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  filter: brightness(110%);
+`;
+
 /* --------- STYLES: BUTTONS --------- */
 
 // Main Menu Button (Large)
@@ -307,12 +316,12 @@ const HoverBarButtonMainMenuLarge = styled(LargeHoverBarButton)`
   `}
 `;
 const HoverBarButtonMainMenuIcon = styled(HoverBarButtonIcon)`
-  /*   width: 90%;
-  height: 90%; */
-  /*   background-image: url("/assets/icons/buttonicons/space_dashboard_FILL0_wght400_GRAD0_opsz24.svg");
- */ /*   filter: invert(100%);
-  background-size: cover;
-  background-position: center; */
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
 `;
 
 // Settings Button (Large)
@@ -334,13 +343,12 @@ const HoverBarButtonThemeSmall = styled(SmallHoverBarButton)`
   `}
 `;
 const HoverBarButtonThemeIcon = styled(HoverBarButtonIcon)`
-  /*   width: 100%;
-  height: 100%; */
-/*   background-image: url("/assets/icons/buttonicons/contrast_FILL0_wght400_GRAD0_opsz24.svg");
- */  /*   filter: invert(100%);
-/*   background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat; */ */
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
 `;
 
 // Settings Button (Small)
@@ -353,13 +361,12 @@ const HoverBarButtonSettingsSmall = styled(SmallHoverBarButton)`
   `}
 `;
 const HoverBarButtonSettingsIcon = styled(HoverBarButtonIcon)`
-  /*   width: 100%;
-  height: 100%; */
-  /*   background-image: url("/assets/icons/buttonicons/settings_FILL0_wght400_GRAD0_opsz24.svg");
- */ /*   filter: invert(100%);
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat; */
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
 `;
 // Profile Button (Small)
 const HoverBarButtonProfileSmall = styled(SmallHoverBarButton)`
@@ -371,13 +378,12 @@ const HoverBarButtonProfileSmall = styled(SmallHoverBarButton)`
   `}
 `;
 const HoverBarButtonProfileIcon = styled(HoverBarButtonIcon)`
-  /*   width: 100%;
-  height: 100%; */
-  /*   background-image: url("/assets/icons/buttonicons/account_circle_FILL0_wght400_GRAD0_opsz24.svg");
- */ /*   filter: invert(100%);
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat; */
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
 `;
 // Minimize Button (Small)
 const HoverBarButtonMinimizeSmall = styled(SmallHoverBarButton)`
@@ -389,13 +395,10 @@ const HoverBarButtonMinimizeSmall = styled(SmallHoverBarButton)`
   `}
 `;
 const HoverBarButtonMinimizeIcon = styled(HoverBarButtonIcon)`
-  width: 80%;
-  height: 80%;
-  /*   background-image: url("/assets/icons/buttonicons/collapse_all_FILL0_wght400_GRAD0_opsz24.svg");
- */ /*   filter: invert(100%);
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat; */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transform: rotate(90deg);
 `;
 
@@ -622,8 +625,10 @@ const SkHoverBar: React.FC = observer(() => {
                 animate={isExpanded ? "expanded" : "collapsed"}
                 variants={HoverBarButtonMakeMainInnerLeftContainerVariants}
               >
-                {/* Icon */}
-                <StyledRam314Icon />
+                <HoverBarButtonMakeIcon>
+                  {/* Icon */}
+                  <StyledRam314Icon />
+                </HoverBarButtonMakeIcon>
                 <HoverBarButtonMakeTextLeft></HoverBarButtonMakeTextLeft>
               </HoverBarButtonMakeInnerLeftContainer>
               <HoverBarButtonMakeInnerRightContainer
