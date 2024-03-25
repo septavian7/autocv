@@ -14,9 +14,9 @@ export default {
     new CopyPlugin({
       patterns: [
         { from: "public", to: "." }, // Always include Static Files
-        /* { from: "dev", to: "dev" }, */
-        { from: "src/assets/icons", to: "assets/icons" }, // New pattern for SVGs
-        { from: "src/components/layout/SkHoverBar/assets", to: "assets/SkHoverBar" },
+        { from: "dev", to: "dev" },
+        { from: "src/assets/icons", to: "assets/icons" },
+        { from: "src/components/layout/SkHoverBar/assets", to: "assets/SkHoverBar" }, // Hover Bar Assets
       ],
     }),
   ],
@@ -68,9 +68,9 @@ export default {
   },
   devtool: process.env.NODE_ENV === 'production' ? 'source-map' : 'cheap-module-source-map', // Adjusted for CSP compliance
   optimization: {
-    minimize: process.env.NODE_ENV === 'production', // Ensures minimization only in production
+    minimize: process.env.NODE_ENV === 'production', // Minimization only in production
     minimizer: [new TerserPlugin({
-      // TerserPlugin options here, if needed for further customization
+      // TerserPlugin options here
     })],
   },
   devServer: {
@@ -83,7 +83,6 @@ export default {
         directory: path.join(__dirname, 'src/components/layout/SkHoverBar/assets'),
         publicPath: '/assets',
       },
-      // You can add more directories here if needed
     ],
     port: 8080,
     allowedHosts: 'all',

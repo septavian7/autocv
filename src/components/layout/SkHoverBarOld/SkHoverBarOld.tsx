@@ -28,7 +28,7 @@ import {
 
 /* --------- COMPONENT DEFINITION --------- */
 
-const SkHoverBar = observer(() => {
+const SkHoverBarOld = observer(() => {
   const theme = useTheme(); // Utilize theme here if needed for future implementation
 
   return (
@@ -55,4 +55,4 @@ const SkHoverBar = observer(() => {
 
 /* --------- EXPORT --------- */
 
-export default SkHoverBar;
+export default SkHoverBarOld;

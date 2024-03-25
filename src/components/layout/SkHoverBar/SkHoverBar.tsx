@@ -45,9 +45,9 @@ const HoverBarOuterOuterContainer = styled(motion.div)`
   height: 120px;
   width: 100vw;
   position: fixed;
-  bottom: 100px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 104px;
+/*   left: 50%; */
+/*   transform: translateX(-50%); */
    background:
   border-radius: 10px;
   display: flex;
@@ -59,10 +59,10 @@ const HoverBarOuterOuterContainer = styled(motion.div)`
 `;
 
 const HoverBarOuterContainer = styled(motion.div)`
-  position: relative;
+  position: center;
+  display: flex;
   /*   background-color: #808080; */
   border-radius: 10px;
-  display: flex;
   align-items: center;
   justify-content: flex-end;
   height: 100%;
@@ -84,7 +84,7 @@ const HoverBarButtonContainerCenterRight = styled(motion.div)`
   height: 100%;
   /*   background-color: rgba(0, 200, 200, 0); */
   align-items: center;
-  position: relative;
+  position: flex-start;
   display: flex;
   flex-wrap: wrap;
   overflow: visible;
@@ -96,7 +96,7 @@ const HoverBarButtonContainerFarRight = styled(motion.div)`
   background-color: rgba(200, 200, 0, 0);
   align-items: center;
   justify-content: flex-end;
-  position: relative;
+  position: flex-end;
   display: flex;
   overflow: visible;
   /*   z-index: 1100; */
@@ -106,7 +106,9 @@ const HoverBarButtonSmallContainer = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 8px; // Adjust the gap as needed
+  /*   position: flex-end; */
+  margin-right: 52px;
+  /*   gap: 8px; // Adjust the gap as needed */
   // Other styles to control positioning, like align-items, justify-content, etc.
 `;
 
@@ -154,10 +156,12 @@ const LargeHoverBarButtonText = styled(motion.span)`
 const SmallHoverBarButton = styled(BaseHoverBarButton)`
   ${({ theme }) => `
   height: 40px;
+  display: flex;
   border-radius: 8px;
-  font-size: 16px;
   flex-basis: 40px;
   flex-grow: 0;
+  font-size: 16px;
+  margin: 3px;
   /*   z-index: 1200; */
   border: ${theme.hoverBarButtonOutline};
   `}
@@ -169,13 +173,13 @@ const SmallHoverBarButtonText = styled(motion.span)`
   padding: 2px 5px;
 `;
 
-/* --------- STYLES: MAIN BUTTON --------- */
+/* --------- STYLES: MAKE BUTTON --------- */
 
-// Make Button (Main)
+// Make Button
 const HoverBarButtonMake = styled(BaseHoverBarButton)`
   ${({ theme }) => `
     display: flex;
-    height: 65px;
+    height: 55px;
     background: ${theme.hoverBarButtonPrimaryBackground};
     order: 1;
     flex-basis: 100px;
@@ -219,7 +223,7 @@ const HoverBarButtonMakeInnerRightContainer = styled(motion.div)`
   justify-content: flex-start;
   overflow: hidden;
   font-size: 18px;
-  margin-left: 5px;
+  margin-left: 1px;
   margin-top: 2.5px;
   /*   padding: 10px 15px; */
   /*   margin-right: 20px; */
@@ -233,6 +237,7 @@ const HoverBarButtonMainMenuLarge = styled(LargeHoverBarButton)`
     background: ${theme.hoverBarButtonSecondaryBackground};
     order: 2;
     margin: 18px;
+    transform: translateX(50px);
   `}
 `;
 const HoverBarButtonMainMenuIcon = styled(motion.span)`
@@ -257,8 +262,9 @@ const HoverBarButtonSettingsLarge = styled(LargeHoverBarButton)`
 const HoverBarButtonThemeSmall = styled(SmallHoverBarButton)`
   ${({ theme }) => `
     background: ${theme.hoverBarButtonSecondaryBackground};
-    order: 4;
-    margin-right: 14px;
+/*     order: 4; */
+/*     margin-right: 14px; */
+    position: relative;
   `}
 `;
 const HoverBarButtonThemeIcon = styled(motion.span)`
@@ -275,8 +281,9 @@ const HoverBarButtonThemeIcon = styled(motion.span)`
 const HoverBarButtonSettingsSmall = styled(SmallHoverBarButton)`
   ${({ theme }) => `
     background: ${theme.hoverBarButtonSecondaryBackground};
-    order: 3;
-    margin-right: 14px;
+/*     order: 3; */
+/*     margin-right: 14px; */
+    position: relative;
   `}
 `;
 const HoverBarButtonSettingsIcon = styled(motion.span)`
@@ -292,8 +299,9 @@ const HoverBarButtonSettingsIcon = styled(motion.span)`
 const HoverBarButtonProfileSmall = styled(SmallHoverBarButton)`
   ${({ theme }) => `
     background: ${theme.hoverBarButtonSecondaryBackground};
-    order: 3;
+/*     order: 3; */
     margin-right: 14px;
+    position: relative;
   `}
 `;
 const HoverBarButtonProfileIcon = styled(motion.span)`
@@ -309,8 +317,9 @@ const HoverBarButtonProfileIcon = styled(motion.span)`
 const HoverBarButtonMinimizeSmall = styled(SmallHoverBarButton)`
   ${({ theme }) => `
     background: ${theme.hoverBarButtonPrimaryBackground};
-    order: 0;
+/*     order: 0; */
     margin-right: 20px;
+    position: fixed;
   `}
 `;
 const HoverBarButtonMinimizeIcon = styled(motion.span)`
@@ -338,13 +347,13 @@ const buttonVisibilityVariants = {
     opacity: 0,
     scale: 1,
     transform: "translateX(100px)",
-    transition: { duration: 0.3, ease: "easeInOut" },
+    transition: { duration: 0.4, ease: "easeInOut" },
   },
   visible: {
     opacity: 1,
     scale: 1,
     transform: "translateX(0px)",
-    transition: { duration: 0.3, ease: "easeInOut" },
+    transition: { duration: 0.4, ease: "easeInOut" },
   },
 };
 
@@ -352,26 +361,24 @@ const buttonVisibilityVariants = {
 const HoverBarButtonContainerCenterRightVariants = {
   expanded: {
     ...commonVariants.expanded,
-    width: "calc(50% + 0px)", // Merging with existing styles
-    // Add transform if needed
+    width: "calc(50% + 0px)",
   },
   collapsed: {
     ...commonVariants.collapsed,
-    width: "calc(100% + 0px)", // Merging with existing styles
-    // Add transform if needed
+    width: "calc(100% + 0px)",
   },
 };
 // HoverBarButtonContainerFarRight Variants
 const HoverBarButtonContainerFarRightVariants = {
   expanded: {
     ...commonVariants.expanded,
-    width: "calc(50% + 0px)", // Retain this for potential future dynamic changes
-    // Any additional specific animations for the expanded state
+    width: "calc(50% + 0px)",
+    transform: "translateX(0px)",
   },
   collapsed: {
     ...commonVariants.collapsed,
-    width: "calc(0% + 0px)", // Even if it's the same for now, it allows for easy adjustments later
-    // Any additional specific animations for the collapsed state
+    width: "calc(0% + 0px)",
+    transform: "translateX(140px)",
   },
 };
 
@@ -379,14 +386,14 @@ const HoverBarButtonContainerFarRightVariants = {
 const HoverBarButtonMakeVariants = {
   expanded: {
     /*     ...commonVariants.expanded, */
-    width: "120px",
+    width: "110px",
     opacity: 1,
     transform: "translateX(calc(0% + -50px))",
     transition: { duration: 0.5, ease: "easeInOut" },
   },
   collapsed: {
     /*     ...commonVariants.collapsed, */
-    width: "65px",
+    width: "55px",
     opacity: 0.3,
     transform: "translateX(calc(0% + -15px))",
     transition: { duration: 0.5, ease: "easeInOut" },
@@ -428,12 +435,12 @@ const HoverBarButtonMakeMainInnerRightContainerVariants = {
 const HoverBarButtonMainMenuLargeVariants = {
   expanded: {
     width: "55px",
-    transform: "translateX(60px)",
+    /*     transform: "translateX(50px)", */
     transition: { duration: 0.5, ease: "easeInOut" },
   },
   collapsed: {
     width: "55px",
-    transform: "translateX(50px)",
+    /*     transform: "translateX(50px)", */
     transition: { duration: 0.5, ease: "easeInOut" },
   },
 };
@@ -442,12 +449,12 @@ const HoverBarButtonMainMenuLargeVariants = {
 const HoverBarButtonThemeSmallVariants = {
   expanded: {
     width: "40px",
-    transform: "translateX(-140px)",
+    /*     transform: "translateX(-140px)", */
     transition: { duration: 0.5, ease: "easeInOut" },
   },
   collapsed: {
     width: "40px",
-    transform: "translateX(100px)",
+    /*     transform: "translateX(100px)", */
     transition: { duration: 0.5, ease: "easeInOut" },
   },
 };
@@ -456,12 +463,12 @@ const HoverBarButtonThemeSmallVariants = {
 const HoverBarButtonSettingsSmallVariants = {
   expanded: {
     width: "40px",
-    transform: "translateX(-92px)",
+    /*     transform: "translateX(-92px)", */
     transition: { duration: 0.5, ease: "easeInOut" },
   },
   collapsed: {
     width: "40px",
-    transform: "translateX(100px)",
+    /*     transform: "translateX(100px)", */
     transition: { duration: 0.5, ease: "easeInOut" },
   },
 };
@@ -470,12 +477,12 @@ const HoverBarButtonSettingsSmallVariants = {
 const HoverBarButtonProfileSmallVariants = {
   expanded: {
     width: "40px",
-    transform: "translateX(-44px)",
+    /*     transform: "translateX(-44px)", */
     transition: { duration: 0.5, ease: "easeInOut" },
   },
   collapsed: {
     width: "40px",
-    transform: "translateX(100px)",
+    /*     transform: "translateX(100px)", */
     transition: { duration: 0.5, ease: "easeInOut" },
   },
 };
@@ -484,12 +491,12 @@ const HoverBarButtonProfileSmallVariants = {
 const HoverBarButtonMinimizeSmallVariants = {
   expanded: {
     width: "40px",
-    transform: "translateX(10px)",
+    /*     transform: "translateX(10px)", */
     transition: { duration: 0.5, ease: "easeInOut" },
   },
   collapsed: {
     width: "40px",
-    transform: "translateX(100px)",
+    /*     transform: "translateX(100px)", */
     transition: { duration: 0.5, ease: "easeInOut" },
   },
 };

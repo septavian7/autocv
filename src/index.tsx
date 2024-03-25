@@ -13,7 +13,7 @@ import { configure } from "mobx";
 import { SkUserStoreProvider } from "./contexts/SkUserContext";
 import { ThemeProvider } from "./providers/SkThemeProvider";
 // Components, Modules
-import SkHoverBar from "./components/layout/SkHoverBarOld/SkHoverBar";
+import SkHoverBar from "./components/layout/SkHoverBar/SkHoverBar";
 import SkGlobalStyles from "./styles/SkGlobalStyles";
 // import FramerMotionTest from "./components/layout/FramerMotionTest"; // Import FramerMotionTest component
 
@@ -33,10 +33,6 @@ if (!rootElement) {
 
 /* --------- RENDER --------- */
 
-// Define constants to control rendering of components
-// const RENDER_FRAMER_MOTION_TEST = true;
-// const RENDER_SK_HOVER_BAR = false;
-
 const root = createRoot(rootElement);
 root.render(
   <React.StrictMode>
@@ -44,10 +40,6 @@ root.render(
       <ThemeProvider>
         <SkGlobalStyles />
         <SkHoverBar />
-        {/* Conditionally render FramerMotionTest based on the constant */}
-        {/* {RENDER_FRAMER_MOTION_TEST && <FramerMotionTest />} */}
-        {/* Conditionally render SkHoverBar based on the constant */}
-        {/* {RENDER_SK_HOVER_BAR && <SkHoverBar />} */}
       </ThemeProvider>
     </SkUserStoreProvider>
   </React.StrictMode>,
