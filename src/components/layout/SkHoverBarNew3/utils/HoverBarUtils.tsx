@@ -15,12 +15,17 @@ export const toggleMakeMenu = () => {
 
 // Toggle main menu window
 export const toggleMainMenu = () => {
-  console.log("Toggle menu");
+  console.log("Toggle main menu");
 };
 
 // Toggle settings window
 export const toggleSettingsMenu = () => {
-  console.log("Toggle settings");
+  console.log("Toggle settings window");
+};
+
+// Toggle profile window
+export const toggleProfileMenu = () => {
+  console.log("Toggle profile window");
 };
 
 // Toggle Theme

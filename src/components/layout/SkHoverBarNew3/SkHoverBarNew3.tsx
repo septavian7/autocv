@@ -13,6 +13,7 @@ import {
   toggleMakeMenu,
   toggleMainMenu,
   toggleSettingsMenu,
+  toggleProfileMenu,
   toggleTheme,
 } from "./utils/HoverBarUtils";
 
@@ -54,17 +55,18 @@ const HoverBarInnerContainerRight = styled(motion.div)`
   /*   justify-content: center; */
   overflow: visible;
   /*   width: 50%; */
-  background-color: rgba(0, 255, 0, 0);
+  /*   background-color: rgba(0, 255, 0, 0); */
 `;
 
 const HoverBarButtonContainerCenterRight = styled(motion.div)`
   height: 100%;
-  background-color: rgba(0, 200, 200, 0);
+  /*   background-color: rgba(0, 200, 200, 0); */
   align-items: center;
   position: relative;
   display: flex;
   flex-wrap: wrap;
   overflow: visible;
+  /*   z-index: 1000; */
 `;
 
 const HoverBarButtonContainerFarRight = styled(motion.div)`
@@ -74,7 +76,8 @@ const HoverBarButtonContainerFarRight = styled(motion.div)`
   justify-content: flex-end;
   position: relative;
   display: flex;
-  overflow: hidden;
+  overflow: visible;
+  /*   z-index: 1100; */
 `;
 
 const HoverBarButtonSmallContainer = styled(motion.div)`
@@ -97,7 +100,7 @@ const BaseHoverBarButton = styled(motion.button)`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 900;
+  /*   z-index: 900; */
   overflow: hidden;
   transition: filter 0.2s ease;
 
@@ -128,6 +131,7 @@ const SmallHoverBarButton = styled(BaseHoverBarButton)`
   font-size: 16px;
   flex-basis: 40px;
   flex-grow: 0;
+  /*   z-index: 1200; */
 `;
 
 // Small Button Text
@@ -505,7 +509,7 @@ const SkHoverBarNew3: React.FC = observer(() => {
 
                   {/* Profile Button */}
                   <HoverBarButtonProfileSmall
-                    onClick={toggleSettingsMenu}
+                    onClick={toggleProfileMenu}
                     initial={isExpanded ? false : "collapsed"}
                     animate={isExpanded ? "expanded" : "collapsed"}
                     variants={HoverBarButtonProfileSmallVariants}
