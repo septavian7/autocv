@@ -52,42 +52,53 @@ const StyledRam314Icon = styled(Ram314Icon)`
   position: relative;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  min-width: 40px;
+  min-height: 40px;
+  max-width: 40px;
+  max-height: 40px;
   overflow: visible;
-  transform: scale(0.08) translateX(-240px) translateY(-240px);
+  /*   transform: scale(0.08) translateX(-240px) translateY(-240px); */
 `;
 
 const StyledSpaceDashboardIcon = styled(SpaceDashboardIcon)`
   position: relative;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  min-width: 40px;
+  min-height: 40px;
+  /*   font-size: 48px; */
 `;
 
 const StyledContrastIcon = styled(ContrastIcon)`
   position: relative;
   align-items: center;
   justify-content: center;
+  min-width: 30px;
+  min-height: 30px;
 `;
 
 const StyledSettingsIcon = styled(SettingsIcon)`
   position: relative;
   align-items: center;
   justify-content: center;
+  min-width: 30px;
+  min-height: 30px;
 `;
 
 const StyledProfileIcon = styled(ProfileIcon)`
   position: relative;
   align-items: center;
   justify-content: center;
+  min-width: 30px;
+  min-height: 30px;
 `;
 
 const StyledCollapseAllIcon = styled(CollapseAllIcon)`
   position: relative;
   align-items: center;
   justify-content: center;
+  min-width: 20px;
+  min-height: 20px;
 `;
 
 /* --------- STYLES: CONTAINERS --------- */
