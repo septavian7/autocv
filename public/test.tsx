@@ -3,6 +3,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { ThemeProvider } from "@emotion/react";
+import { HoverBarProvider } from "../src/components/layout/SkHoverBarNew3/contexts/HoverBarContext";
 import { getThemeStyles } from "../src/styles/SkThemeStyles";
 import SkHoverBarNew3 from "../src/components/layout/SkHoverBarNew3/SkHoverBarNew3";
 
@@ -14,7 +15,9 @@ if (rootElement) {
 
   root.render(
     <ThemeProvider theme={theme}>
-      <SkHoverBarNew3 />
+      <HoverBarProvider>
+        <SkHoverBarNew3 />
+      </HoverBarProvider>
     </ThemeProvider>,
   );
 }

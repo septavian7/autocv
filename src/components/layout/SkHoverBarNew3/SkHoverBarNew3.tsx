@@ -4,7 +4,8 @@ import React from "react";
 import styled from "@emotion/styled";
 import { AnimatePresence, motion } from "framer-motion";
 import { observer } from "mobx-react-lite";
-// import { visibilityStore } from "../../../stores/SkVisibilityStore";
+import { useViewportWidth } from "../../../utils/useViewportWidth";
+import { visibilityStore } from "../../../stores/SkVisibilityStore";
 import { hoverBarStore } from "./stores/HoverBarStore";
 import { UseHoverBarState } from "./state/HoverBarState";
 import {
@@ -70,10 +71,18 @@ const HoverBarButtonContainerFarRight = styled(motion.div)`
   height: 100%;
   background-color: rgba(200, 200, 0, 0);
   align-items: center;
-  justify-content: right;
+  justify-content: flex-end;
   position: relative;
   display: flex;
   overflow: hidden;
+`;
+
+const HoverBarButtonSmallContainer = styled(motion.div)`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px; // Adjust the gap as needed
+  // Other styles to control positioning, like align-items, justify-content, etc.
 `;
 
 /* --------- STYLES: BUTTONS (COMMON) --------- */
@@ -227,6 +236,20 @@ const commonVariants = {
   collapsed: { transition: { duration: 0.5, ease: "easeInOut" } },
 };
 
+// Define animation variants for showing/hiding buttons
+const buttonVisibilityVariants = {
+  hidden: {
+    opacity: 0,
+    scale: 1,
+    transition: { duration: 0.3, ease: "easeInOut" },
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.3, ease: "easeInOut" },
+  },
+};
+
 // HoverBarButtonContainerCenterRight Variants
 const HoverBarButtonContainerCenterRightVariants = {
   expanded: {
@@ -363,8 +386,9 @@ const HoverBarButtonMinimizeSmallVariants = {
 /* --------- COMPONENT --------- */
 
 const SkHoverBarNew3: React.FC = observer(() => {
-  const { viewportWidth } = UseHoverBarState();
   const { isExpanded } = hoverBarStore;
+  const viewportWidth = useViewportWidth();
+  const showSmallButtons = viewportWidth > 550; // Visibility threshold
 
   // Decide which variant to use based on `isExpanded`
   const currentVariant = isExpanded ? "expanded" : "collapsed";
@@ -429,24 +453,37 @@ const SkHoverBarNew3: React.FC = observer(() => {
             animate={isExpanded ? "expanded" : "collapsed"}
             variants={HoverBarButtonContainerFarRightVariants}
           >
-            <HoverBarButtonThemeSmall
-              onClick={toggleTheme}
-              initial={isExpanded ? false : "collapsed"}
-              animate={isExpanded ? "expanded" : "collapsed"}
-              variants={HoverBarButtonThemeSmallVariants}
-            >
-              <SmallHoverBarButtonText>T</SmallHoverBarButtonText>
-            </HoverBarButtonThemeSmall>
+            <AnimatePresence>
+              {showSmallButtons && (
+                <HoverBarButtonSmallContainer
+                  initial="visible"
+                  animate="visible"
+                  exit="hidden"
+                  variants={buttonVisibilityVariants}
+                >
+                  {/* Theme Button */}
+                  <HoverBarButtonThemeSmall
+                    onClick={toggleTheme}
+                    initial={isExpanded ? false : "collapsed"}
+                    animate={isExpanded ? "expanded" : "collapsed"}
+                    variants={HoverBarButtonThemeSmallVariants}
+                  >
+                    <SmallHoverBarButtonText>T</SmallHoverBarButtonText>
+                  </HoverBarButtonThemeSmall>
 
-            <HoverBarButtonSettingsSmall
-              onClick={toggleSettingsMenu}
-              initial={isExpanded ? false : "collapsed"}
-              animate={isExpanded ? "expanded" : "collapsed"}
-              variants={HoverBarButtonSettingsSmallVariants}
-            >
-              <SmallHoverBarButtonText>S</SmallHoverBarButtonText>
-            </HoverBarButtonSettingsSmall>
-
+                  {/* Settings Button */}
+                  <HoverBarButtonSettingsSmall
+                    onClick={toggleSettingsMenu}
+                    initial={isExpanded ? false : "collapsed"}
+                    animate={isExpanded ? "expanded" : "collapsed"}
+                    variants={HoverBarButtonSettingsSmallVariants}
+                  >
+                    <SmallHoverBarButtonText>S</SmallHoverBarButtonText>
+                  </HoverBarButtonSettingsSmall>
+                </HoverBarButtonSmallContainer>
+              )}
+            </AnimatePresence>
+            {/* Minimize Button (Always visible) */}
             <HoverBarButtonMinimizeSmall
               onClick={toggleHoverBarExpandMinimize}
               initial={isExpanded ? false : "collapsed"}
