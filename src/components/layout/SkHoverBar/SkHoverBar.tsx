@@ -126,10 +126,11 @@ const BaseHoverBarButton = styled(motion.button)`
   align-items: center;
   /*   z-index: 900; */
   overflow: hidden;
-  transition: filter 0.2s ease;
+  transition: filter 0.5s ease;
 
   &:hover {
-    filter: brightness(85%);
+    transition: filter 1.5s ease;
+    filter: brightness(75%);
   }
 `;
 
@@ -137,6 +138,7 @@ const BaseHoverBarButton = styled(motion.button)`
 const LargeHoverBarButton = styled(BaseHoverBarButton)`
   ${({ theme }) => `
   height: 55px;
+  width: 55px;
   border-radius: 15px;
   font-size: 16px;
   flex-basis: 65px;
@@ -147,15 +149,16 @@ const LargeHoverBarButton = styled(BaseHoverBarButton)`
 `;
 
 // Large Button Text
-const LargeHoverBarButtonText = styled(motion.span)`
+/* const LargeHoverBarButtonText = styled(motion.span)`
   background-color: rgba(255, 255, 255, 0.9);
   padding: 10px 15px;
-`;
+`; */
 
 // Small Button
 const SmallHoverBarButton = styled(BaseHoverBarButton)`
   ${({ theme }) => `
   height: 40px;
+  width: 40px;
   display: flex;
   border-radius: 8px;
   flex-basis: 40px;
@@ -168,10 +171,10 @@ const SmallHoverBarButton = styled(BaseHoverBarButton)`
 `;
 
 // Small Button Text
-const SmallHoverBarButtonText = styled(motion.span)`
+/* const SmallHoverBarButtonText = styled(motion.span)`
   background-color: rgba(255, 255, 255, 0.9);
   padding: 2px 5px;
-`;
+`; */
 
 /* --------- STYLES: MAKE BUTTON --------- */
 
@@ -236,7 +239,7 @@ const HoverBarButtonMainMenuLarge = styled(LargeHoverBarButton)`
   ${({ theme }) => `
     background: ${theme.hoverBarButtonSecondaryBackground};
     order: 2;
-    margin: 18px;
+    margin-left: 17px;
     transform: translateX(50px);
   `}
 `;
@@ -250,13 +253,13 @@ const HoverBarButtonMainMenuIcon = styled(motion.span)`
 `;
 
 // Settings Button (Large)
-const HoverBarButtonSettingsLarge = styled(LargeHoverBarButton)`
+/* const HoverBarButtonSettingsLarge = styled(LargeHoverBarButton)`
   ${({ theme }) => `
     background: ${theme.hoverBarButtonSecondaryBackground};
     order: 3;
     margin: 18px;
   `}
-`;
+`; */
 
 // Theme Button (Small)
 const HoverBarButtonThemeSmall = styled(SmallHoverBarButton)`
@@ -319,7 +322,7 @@ const HoverBarButtonMinimizeSmall = styled(SmallHoverBarButton)`
     background: ${theme.hoverBarButtonPrimaryBackground};
 /*     order: 0; */
     margin-right: 20px;
-    position: fixed;
+    position: flex-end;
   `}
 `;
 const HoverBarButtonMinimizeIcon = styled(motion.span)`
@@ -378,7 +381,7 @@ const HoverBarButtonContainerFarRightVariants = {
   collapsed: {
     ...commonVariants.collapsed,
     width: "calc(0% + 0px)",
-    transform: "translateX(140px)",
+    transform: "translateX(200px)",
   },
 };
 
@@ -419,27 +422,29 @@ const HoverBarButtonMakeMainInnerLeftContainerVariants = {
 const HoverBarButtonMakeMainInnerRightContainerVariants = {
   expanded: {
     ...commonVariants.expanded,
-    /*     opacity: 1, */
     width: "50%",
-    transform: "translateX(0%)",
+    /*     opacity: 1, */
+    /*     transform: "translateX(0%)", */
   },
   collapsed: {
     ...commonVariants.collapsed,
-    /*     opacity: 1, */
     width: "0%",
-    transform: "translateX(0%)",
+    /*     opacity: 1, */
+    /*     transform: "translateX(0%)", */
   },
 };
 
 // HoverBarButtonMainMenuLarge Variants
 const HoverBarButtonMainMenuLargeVariants = {
   expanded: {
-    width: "55px",
+    ...commonVariants.expanded,
+    /*     width: "55px", */
     /*     transform: "translateX(50px)", */
-    transition: { duration: 0.5, ease: "easeInOut" },
+    /*     transition: { duration: 0.5, ease: "easeInOut" }, */
   },
   collapsed: {
-    width: "55px",
+    ...commonVariants.collapsed,
+    /*     width: "55px", */
     /*     transform: "translateX(50px)", */
     transition: { duration: 0.5, ease: "easeInOut" },
   },
@@ -448,56 +453,64 @@ const HoverBarButtonMainMenuLargeVariants = {
 // HoverBarButtonThemeSmall Variants
 const HoverBarButtonThemeSmallVariants = {
   expanded: {
-    width: "40px",
+    ...commonVariants.expanded,
+    /*     width: "40px", */
     /*     transform: "translateX(-140px)", */
-    transition: { duration: 0.5, ease: "easeInOut" },
+    /*     transition: { duration: 0.5, ease: "easeInOut" }, */
   },
   collapsed: {
-    width: "40px",
+    ...commonVariants.collapsed,
+    /*     width: "40px", */
     /*     transform: "translateX(100px)", */
-    transition: { duration: 0.5, ease: "easeInOut" },
+    /*     transition: { duration: 0.5, ease: "easeInOut" }, */
   },
 };
 
 // HoverBarButtonSettingsSmall Variants
 const HoverBarButtonSettingsSmallVariants = {
   expanded: {
-    width: "40px",
+    ...commonVariants.expanded,
+    /*     width: "40px", */
     /*     transform: "translateX(-92px)", */
-    transition: { duration: 0.5, ease: "easeInOut" },
+    /*     transition: { duration: 0.5, ease: "easeInOut" }, */
   },
   collapsed: {
-    width: "40px",
+    ...commonVariants.collapsed,
+    /*     width: "40px", */
     /*     transform: "translateX(100px)", */
-    transition: { duration: 0.5, ease: "easeInOut" },
+    /*     transition: { duration: 0.5, ease: "easeInOut" }, */
   },
 };
 
 // HoverBarButtonProfileSmall Variants
 const HoverBarButtonProfileSmallVariants = {
   expanded: {
-    width: "40px",
+    ...commonVariants.expanded,
+    /*     width: "40px", */
     /*     transform: "translateX(-44px)", */
-    transition: { duration: 0.5, ease: "easeInOut" },
+    /*     transition: { duration: 0.5, ease: "easeInOut" }, */
   },
   collapsed: {
-    width: "40px",
+    ...commonVariants.collapsed,
+    /*     width: "40px", */
     /*     transform: "translateX(100px)", */
-    transition: { duration: 0.5, ease: "easeInOut" },
+    /*     transition: { duration: 0.5, ease: "easeInOut" }, */
   },
 };
 
 // HoverBarButtonMinimizeSmall Variants
 const HoverBarButtonMinimizeSmallVariants = {
   expanded: {
-    width: "40px",
+    ...commonVariants.expanded,
+    /*     width: "40px", */
     /*     transform: "translateX(10px)", */
-    transition: { duration: 0.5, ease: "easeInOut" },
+    /*     transition: { duration: 0.5, ease: "easeInOut" }, */
   },
   collapsed: {
-    width: "40px",
+    ...commonVariants.collapsed,
+    /*     width: "40px", */
     /*     transform: "translateX(100px)", */
-    transition: { duration: 0.5, ease: "easeInOut" },
+    /*     transition: { duration: 0.5, ease: "easeInOut" }, */
   },
 };
 
