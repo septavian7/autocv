@@ -206,15 +206,23 @@ const HoverBarButtonSettingsLarge = styled(LargeHoverBarButton)`
 // Theme Button (Small)
 const HoverBarButtonThemeSmall = styled(SmallHoverBarButton)`
   ${({ theme }) => `
-    background: ${theme.hoverBarButtonPrimaryBackground};
+    background: ${theme.hoverBarButtonSecondaryBackground};
     order: 4;
     margin-right: 14px;
   `}
 `;
-// Minimize Button (Small)
+// Settings Button (Small)
 const HoverBarButtonSettingsSmall = styled(SmallHoverBarButton)`
   ${({ theme }) => `
-    background: ${theme.hoverBarButtonPrimaryBackground};
+    background: ${theme.hoverBarButtonSecondaryBackground};
+    order: 3;
+    margin-right: 14px;
+  `}
+`;
+// Settings Button (Small)
+const HoverBarButtonProfileSmall = styled(SmallHoverBarButton)`
+  ${({ theme }) => `
+    background: ${theme.hoverBarButtonSecondaryBackground};
     order: 3;
     margin-right: 14px;
   `}
@@ -345,7 +353,7 @@ const HoverBarButtonMainMenuLargeVariants = {
 const HoverBarButtonThemeSmallVariants = {
   expanded: {
     width: "40px",
-    transform: "translateX(-92px)",
+    transform: "translateX(-142px)",
     transition: { duration: 0.5, ease: "easeInOut" },
   },
   collapsed: {
@@ -357,6 +365,20 @@ const HoverBarButtonThemeSmallVariants = {
 
 // HoverBarButtonSettingsSmall Variants
 const HoverBarButtonSettingsSmallVariants = {
+  expanded: {
+    width: "40px",
+    transform: "translateX(-92px)",
+    transition: { duration: 0.5, ease: "easeInOut" },
+  },
+  collapsed: {
+    width: "40px",
+    transform: "translateX(100px)",
+    transition: { duration: 0.5, ease: "easeInOut" },
+  },
+};
+
+// HoverBarButtonProfileSmall Variants
+const HoverBarButtonProfileSmallVariants = {
   expanded: {
     width: "40px",
     transform: "translateX(-44px)",
@@ -388,7 +410,7 @@ const HoverBarButtonMinimizeSmallVariants = {
 const SkHoverBarNew3: React.FC = observer(() => {
   const { isExpanded } = hoverBarStore;
   const viewportWidth = useViewportWidth();
-  const showSmallButtons = viewportWidth > 550; // Visibility threshold
+  const showSmallButtons = viewportWidth > 750; // Visibility threshold
 
   // Decide which variant to use based on `isExpanded`
   const currentVariant = isExpanded ? "expanded" : "collapsed";
@@ -480,6 +502,16 @@ const SkHoverBarNew3: React.FC = observer(() => {
                   >
                     <SmallHoverBarButtonText>S</SmallHoverBarButtonText>
                   </HoverBarButtonSettingsSmall>
+
+                  {/* Profile Button */}
+                  <HoverBarButtonProfileSmall
+                    onClick={toggleSettingsMenu}
+                    initial={isExpanded ? false : "collapsed"}
+                    animate={isExpanded ? "expanded" : "collapsed"}
+                    variants={HoverBarButtonProfileSmallVariants}
+                  >
+                    <SmallHoverBarButtonText>P</SmallHoverBarButtonText>
+                  </HoverBarButtonProfileSmall>
                 </HoverBarButtonSmallContainer>
               )}
             </AnimatePresence>
