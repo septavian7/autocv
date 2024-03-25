@@ -19,8 +19,8 @@ export const Container = styled.div`
 
   /* Styling */
   background: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: saturate(70%) blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 `;
 
 // Hover Window Styles
@@ -48,8 +48,9 @@ export const HoverWindow = styled.div`
     color: ${theme.text};
     border-radius: 28px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
 
     /* Scoped Reset Styles */
     *, *::before, *::after {

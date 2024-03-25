@@ -133,11 +133,15 @@ const BaseHoverBarButton = styled(motion.button)`
 
 // Large Button
 const LargeHoverBarButton = styled(BaseHoverBarButton)`
+  ${({ theme }) => `
   height: 55px;
   border-radius: 15px;
   font-size: 16px;
   flex-basis: 65px;
   flex-grow: 0;
+  border: ${theme.hoverBarButtonOutline};
+  z-index: 1200;
+  `}
 `;
 
 // Large Button Text
@@ -148,12 +152,15 @@ const LargeHoverBarButtonText = styled(motion.span)`
 
 // Small Button
 const SmallHoverBarButton = styled(BaseHoverBarButton)`
+  ${({ theme }) => `
   height: 40px;
   border-radius: 8px;
   font-size: 16px;
   flex-basis: 40px;
   flex-grow: 0;
   /*   z-index: 1200; */
+  border: ${theme.hoverBarButtonOutline};
+  `}
 `;
 
 // Small Button Text
@@ -175,6 +182,8 @@ const HoverBarButtonMake = styled(BaseHoverBarButton)`
     flex-grow: 0;
     justify-content: flex-end;
     border-radius: 15px;
+    border: ${theme.hoverBarButtonOutline};
+    z-index: 1000;
   `}
 `;
 
@@ -191,7 +200,7 @@ const HoverBarButtonMakeTextRight = styled(motion.span)`
 // Make Button (Inner-Left Container)
 const HoverBarButtonMakeInnerLeftContainer = styled(motion.div)`
   display: flex;
-  height: 65%;
+  height: 70%;
   /*   background-color: rgba(255, 255, 255, 0.9); */
   background-image: url("/assets/SkHoverBar/ram314_blue_stencil-gray.svg");
   filter: brightness(110%);
@@ -305,13 +314,14 @@ const HoverBarButtonMinimizeSmall = styled(SmallHoverBarButton)`
   `}
 `;
 const HoverBarButtonMinimizeIcon = styled(motion.span)`
-  width: 100%;
-  height: 100%;
-  background-image: url("/assets/SkHoverBar/right_panel_close_FILL0_wght400_GRAD0_opsz24.svg");
+  width: 80%;
+  height: 80%;
+  background-image: url("/assets/SkHoverBar/collapse_all_FILL0_wght400_GRAD0_opsz24.svg");
   filter: invert(100%);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  transform: rotate(90deg);
 `;
 
 /* --------- STYLES: FRAMER-MOTION --------- */

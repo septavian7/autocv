@@ -27,12 +27,13 @@ export interface ThemeColors {
   hoverBarMinimizedBoxShadow?: string;
 
   // Hover Bar Buttons
-  hoverBarButtonPrimaryTextColor: string;
-  hoverBarButtonSecondaryTextColor: string;
+  hoverBarButtonOutline: string;
   hoverBarButtonPrimaryBackground: string;
   hoverBarButtonSecondaryBackground: string;
   hoverBarButtonPrimaryBackgroundOnHover: string;
   hoverBarButtonSecondaryBackgroundOnHover: string;
+  hoverBarButtonPrimaryTextColor: string;
+  hoverBarButtonSecondaryTextColor: string;
   hoverBarButtonTextColorOnHover: string;
 }
 
