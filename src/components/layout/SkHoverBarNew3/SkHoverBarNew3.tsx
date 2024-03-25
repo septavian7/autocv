@@ -4,17 +4,18 @@ import React from "react";
 import styled from "@emotion/styled";
 import { AnimatePresence, motion } from "framer-motion";
 import { observer } from "mobx-react-lite";
-import { useViewportWidth } from "../../../utils/useViewportWidth";
-import { visibilityStore } from "../../../stores/SkVisibilityStore";
+import { themeStore } from "../../../stores";
+/* import { visibilityStore } from "../../../stores/SkVisibilityStore"; */
 import { hoverBarStore } from "./stores/HoverBarStore";
-import { UseHoverBarState } from "./state/HoverBarState";
+/* import { UseHoverBarState } from "./state/HoverBarState"; */
+import { useViewportWidth } from "../../../utils/useViewportWidth";
 import {
   toggleHoverBarExpandMinimize,
   toggleMakeMenu,
   toggleMainMenu,
   toggleSettingsMenu,
   toggleProfileMenu,
-  toggleTheme,
+  /*   toggleTheme, */
 } from "./utils/HoverBarUtils";
 
 /* --------- STYLES: CONTAINERS --------- */
@@ -414,7 +415,8 @@ const HoverBarButtonMinimizeSmallVariants = {
 const SkHoverBarNew3: React.FC = observer(() => {
   const { isExpanded } = hoverBarStore;
   const viewportWidth = useViewportWidth();
-  const showSmallButtons = viewportWidth > 750; // Visibility threshold
+  const showSmallButtons = viewportWidth > 750;
+  const toggleTheme = () => themeStore.toggleTheme();
 
   // Decide which variant to use based on `isExpanded`
   const currentVariant = isExpanded ? "expanded" : "collapsed";
