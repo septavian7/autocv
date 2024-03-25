@@ -7,14 +7,13 @@ import { observer } from "mobx-react-lite";
 import { themeStore } from "../../../stores";
 import { visibilityStore } from "../../../stores/SkVisibilityStore";
 import { hoverBarStore } from "./stores/HoverBarStore";
-/* import { UseHoverBarState } from "./state/HoverBarState"; */
 import { useViewportWidth } from "../../../utils/useViewportWidth";
 import {
   toggleHoverBarExpandMinimize,
-  toggleMakeMenu,
-  toggleMainMenu,
-  toggleSettingsMenu,
   toggleProfileMenu,
+  /*   toggleMakeMenu,
+  toggleMainMenu,
+  toggleSettingsMenu, */
   /*   toggleTheme, */
 } from "./utils/HoverBarUtils";
 import { SkUserSettings } from "../../features/SkUserSettings/SkUserSettings";
@@ -126,11 +125,12 @@ const BaseHoverBarButton = styled(motion.button)`
   align-items: center;
   /*   z-index: 900; */
   overflow: hidden;
-  transition: filter 0.5s ease;
+  transition: filter 0.3s ease;
 
   &:hover {
-    transition: filter 1.5s ease;
-    filter: brightness(75%);
+    transition: all 0.3s ease;
+    /*     scale: 0.98; */
+    filter: brightness(70%);
   }
 `;
 
@@ -141,7 +141,7 @@ const LargeHoverBarButton = styled(BaseHoverBarButton)`
   width: 55px;
   border-radius: 15px;
   font-size: 16px;
-  flex-basis: 65px;
+  flex-basis: 55px;
   flex-grow: 0;
   border: ${theme.hoverBarButtonOutline};
   z-index: 1200;
@@ -160,14 +160,24 @@ const SmallHoverBarButton = styled(BaseHoverBarButton)`
   height: 40px;
   width: 40px;
   display: flex;
-  border-radius: 8px;
+  border-radius: 10px;
   flex-basis: 40px;
   flex-grow: 0;
-  font-size: 16px;
+/*   font-size: 16px; */
   margin: 3px;
   /*   z-index: 1200; */
   border: ${theme.hoverBarButtonOutline};
   `}
+`;
+
+// Button Icon
+const HoverBarButtonIcon = styled(motion.span)`
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: invert(100%);
 `;
 
 // Small Button Text
@@ -184,8 +194,8 @@ const HoverBarButtonMake = styled(BaseHoverBarButton)`
     display: flex;
     height: 55px;
     background: ${theme.hoverBarButtonPrimaryBackground};
-    order: 1;
-    flex-basis: 100px;
+/*     order: 1; */
+    flex-basis: 110px;
     flex-grow: 0;
     justify-content: flex-end;
     border-radius: 15px;
@@ -238,18 +248,18 @@ const HoverBarButtonMakeInnerRightContainer = styled(motion.div)`
 const HoverBarButtonMainMenuLarge = styled(LargeHoverBarButton)`
   ${({ theme }) => `
     background: ${theme.hoverBarButtonSecondaryBackground};
-    order: 2;
+/*     order: 2; */
     margin-left: 17px;
     transform: translateX(50px);
   `}
 `;
-const HoverBarButtonMainMenuIcon = styled(motion.span)`
-  width: 90%;
-  height: 90%;
+const HoverBarButtonMainMenuIcon = styled(HoverBarButtonIcon)`
+  /*   width: 90%;
+  height: 90%; */
   background-image: url("/assets/SkHoverBar/space_dashboard_FILL0_wght400_GRAD0_opsz24.svg");
-  filter: invert(100%);
+  /*   filter: invert(100%);
   background-size: cover;
-  background-position: center;
+  background-position: center; */
 `;
 
 // Settings Button (Large)
@@ -270,14 +280,14 @@ const HoverBarButtonThemeSmall = styled(SmallHoverBarButton)`
     position: relative;
   `}
 `;
-const HoverBarButtonThemeIcon = styled(motion.span)`
-  width: 100%;
-  height: 100%;
+const HoverBarButtonThemeIcon = styled(HoverBarButtonIcon)`
+  /*   width: 100%;
+  height: 100%; */
   background-image: url("/assets/SkHoverBar/contrast_FILL0_wght400_GRAD0_opsz24.svg");
-  filter: invert(100%);
+  /*   filter: invert(100%);
   background-size: contain;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
 `;
 
 // Settings Button (Small)
@@ -289,14 +299,14 @@ const HoverBarButtonSettingsSmall = styled(SmallHoverBarButton)`
     position: relative;
   `}
 `;
-const HoverBarButtonSettingsIcon = styled(motion.span)`
-  width: 100%;
-  height: 100%;
+const HoverBarButtonSettingsIcon = styled(HoverBarButtonIcon)`
+  /*   width: 100%;
+  height: 100%; */
   background-image: url("/assets/SkHoverBar/settings_FILL0_wght400_GRAD0_opsz24.svg");
-  filter: invert(100%);
+  /*   filter: invert(100%);
   background-size: contain;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
 `;
 // Profile Button (Small)
 const HoverBarButtonProfileSmall = styled(SmallHoverBarButton)`
@@ -307,14 +317,14 @@ const HoverBarButtonProfileSmall = styled(SmallHoverBarButton)`
     position: relative;
   `}
 `;
-const HoverBarButtonProfileIcon = styled(motion.span)`
-  width: 100%;
-  height: 100%;
+const HoverBarButtonProfileIcon = styled(HoverBarButtonIcon)`
+  /*   width: 100%;
+  height: 100%; */
   background-image: url("/assets/SkHoverBar/account_circle_FILL0_wght400_GRAD0_opsz24.svg");
-  filter: invert(100%);
+  /*   filter: invert(100%);
   background-size: contain;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
 `;
 // Minimize Button (Small)
 const HoverBarButtonMinimizeSmall = styled(SmallHoverBarButton)`
@@ -322,17 +332,17 @@ const HoverBarButtonMinimizeSmall = styled(SmallHoverBarButton)`
     background: ${theme.hoverBarButtonPrimaryBackground};
 /*     order: 0; */
     margin-right: 20px;
-    position: flex-end;
+/*     position: flex-end; */
   `}
 `;
-const HoverBarButtonMinimizeIcon = styled(motion.span)`
+const HoverBarButtonMinimizeIcon = styled(HoverBarButtonIcon)`
   width: 80%;
   height: 80%;
   background-image: url("/assets/SkHoverBar/collapse_all_FILL0_wght400_GRAD0_opsz24.svg");
-  filter: invert(100%);
+  /*   filter: invert(100%);
   background-size: contain;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
   transform: rotate(90deg);
 `;
 
