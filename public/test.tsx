@@ -5,8 +5,8 @@ import { createRoot } from "react-dom/client";
 import { ThemeProvider } from "@emotion/react";
 import { observer } from "mobx-react-lite";
 import { themeStore } from "../src/stores/SkThemeStore";
-import { HoverBarProvider } from "../src/components/layout/SkHoverBarNew3/contexts/HoverBarContext";
-import SkHoverBarNew3 from "../src/components/layout/SkHoverBarNew3/SkHoverBarNew3";
+import { HoverBarProvider } from "../src/components/layout/SkHoverBar/contexts/HoverBarContext";
+import SkHoverBar from "../src/components/layout/SkHoverBar/SkHoverBar";
 import { getThemeStyles } from "../src/styles/SkThemeStyles";
 
 const rootElement = document.getElementById("test-root");
@@ -18,7 +18,7 @@ if (rootElement) {
     return (
       <ThemeProvider theme={theme}>
         <HoverBarProvider>
-          <SkHoverBarNew3 />
+          <SkHoverBar />
         </HoverBarProvider>
       </ThemeProvider>
     );

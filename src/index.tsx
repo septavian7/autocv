@@ -13,7 +13,7 @@ import { configure } from "mobx";
 import { SkUserStoreProvider } from "./contexts/SkUserContext";
 import { ThemeProvider } from "./providers/SkThemeProvider";
 // Components, Modules
-import SkHoverBar from "./components/layout/SkHoverBar/SkHoverBar";
+import SkHoverBar from "./components/layout/SkHoverBarOld/SkHoverBar";
 import SkGlobalStyles from "./styles/SkGlobalStyles";
 // import FramerMotionTest from "./components/layout/FramerMotionTest"; // Import FramerMotionTest component
 
