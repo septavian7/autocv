@@ -74,11 +74,19 @@ export default {
     })],
   },
   devServer: {
-    static: {
-      directory: path.join(__dirname, 'dist'),
-      publicPath: '/',
-    },
+    static: [
+      {
+        directory: path.join(__dirname, 'dist'),
+        publicPath: '/',
+      },
+      {
+        directory: path.join(__dirname, 'src/components/layout/SkHoverBar/assets'),
+        publicPath: '/assets',
+      },
+      // You can add more directories here if needed
+    ],
     port: 8080,
     allowedHosts: 'all',
   },
+  
 };

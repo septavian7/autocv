@@ -65,7 +65,7 @@ const HoverBarOuterContainer = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  height: 50%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0);
 `;
 
@@ -133,7 +133,7 @@ const BaseHoverBarButton = styled(motion.button)`
 
 // Large Button
 const LargeHoverBarButton = styled(BaseHoverBarButton)`
-  height: 100%;
+  height: 55px;
   border-radius: 15px;
   font-size: 16px;
   flex-basis: 65px;
@@ -148,7 +148,7 @@ const LargeHoverBarButtonText = styled(motion.span)`
 
 // Small Button
 const SmallHoverBarButton = styled(BaseHoverBarButton)`
-  height: 66.7%;
+  height: 40px;
   border-radius: 8px;
   font-size: 16px;
   flex-basis: 40px;
@@ -165,37 +165,36 @@ const SmallHoverBarButtonText = styled(motion.span)`
 /* --------- STYLES: MAIN BUTTON --------- */
 
 // Make Button (Main)
-const HoverBarButtonMakeMain = styled(BaseHoverBarButton)`
+const HoverBarButtonMake = styled(BaseHoverBarButton)`
   ${({ theme }) => `
     display: flex;
-    height: 100%;
+    height: 65px;
     background: ${theme.hoverBarButtonPrimaryBackground};
     order: 1;
     flex-basis: 100px;
     flex-grow: 0;
     justify-content: flex-end;
     border-radius: 15px;
-    font-size: 16px;
   `}
 `;
 
-const HoverBarButtonMakeMainTextLeft = styled(motion.span)`
+const HoverBarButtonMakeTextLeft = styled(motion.span)`
   /*   display: absolute; */
   /*   padding: 10px 15px; */
 `;
 
-const HoverBarButtonMakeMainTextRight = styled(motion.span)`
+const HoverBarButtonMakeTextRight = styled(motion.span)`
   display: flex;
   color: white;
 `;
 
 // Make Button (Inner-Left Container)
-
-const HoverBarButtonMakeMainInnerLeftContainer = styled(motion.div)`
+const HoverBarButtonMakeInnerLeftContainer = styled(motion.div)`
   display: flex;
-  height: 69%;
+  height: 65%;
   /*   background-color: rgba(255, 255, 255, 0.9); */
   background-image: url("/assets/SkHoverBar/ram314_blue_stencil-gray.svg");
+  filter: brightness(110%);
   background-size: 100% 100%;
   background-position: center;
   align-items: center;
@@ -204,11 +203,15 @@ const HoverBarButtonMakeMainInnerLeftContainer = styled(motion.div)`
 `;
 
 // Make Button (Inner-Right Container)
-const HoverBarButtonMakeMainInnerRightContainer = styled(motion.div)`
+const HoverBarButtonMakeInnerRightContainer = styled(motion.div)`
   display: flex;
   height: 50%;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  font-size: 18px;
+  margin-left: 5px;
+  margin-top: 2.5px;
   /*   padding: 10px 15px; */
   /*   margin-right: 20px; */
 `;
@@ -224,9 +227,10 @@ const HoverBarButtonMainMenuLarge = styled(LargeHoverBarButton)`
   `}
 `;
 const HoverBarButtonMainMenuIcon = styled(motion.span)`
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
   background-image: url("/assets/SkHoverBar/space_dashboard_FILL0_wght400_GRAD0_opsz24.svg");
+  filter: invert(100%);
   background-size: cover;
   background-position: center;
 `;
@@ -248,6 +252,16 @@ const HoverBarButtonThemeSmall = styled(SmallHoverBarButton)`
     margin-right: 14px;
   `}
 `;
+const HoverBarButtonThemeIcon = styled(motion.span)`
+  width: 100%;
+  height: 100%;
+  background-image: url("/assets/SkHoverBar/contrast_FILL0_wght400_GRAD0_opsz24.svg");
+  filter: invert(100%);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+`;
+
 // Settings Button (Small)
 const HoverBarButtonSettingsSmall = styled(SmallHoverBarButton)`
   ${({ theme }) => `
@@ -256,13 +270,31 @@ const HoverBarButtonSettingsSmall = styled(SmallHoverBarButton)`
     margin-right: 14px;
   `}
 `;
-// Settings Button (Small)
+const HoverBarButtonSettingsIcon = styled(motion.span)`
+  width: 100%;
+  height: 100%;
+  background-image: url("/assets/SkHoverBar/settings_FILL0_wght400_GRAD0_opsz24.svg");
+  filter: invert(100%);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+`;
+// Profile Button (Small)
 const HoverBarButtonProfileSmall = styled(SmallHoverBarButton)`
   ${({ theme }) => `
     background: ${theme.hoverBarButtonSecondaryBackground};
     order: 3;
     margin-right: 14px;
   `}
+`;
+const HoverBarButtonProfileIcon = styled(motion.span)`
+  width: 100%;
+  height: 100%;
+  background-image: url("/assets/SkHoverBar/account_circle_FILL0_wght400_GRAD0_opsz24.svg");
+  filter: invert(100%);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 `;
 // Minimize Button (Small)
 const HoverBarButtonMinimizeSmall = styled(SmallHoverBarButton)`
@@ -271,6 +303,15 @@ const HoverBarButtonMinimizeSmall = styled(SmallHoverBarButton)`
     order: 0;
     margin-right: 20px;
   `}
+`;
+const HoverBarButtonMinimizeIcon = styled(motion.span)`
+  width: 100%;
+  height: 100%;
+  background-image: url("/assets/SkHoverBar/right_panel_close_FILL0_wght400_GRAD0_opsz24.svg");
+  filter: invert(100%);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 `;
 
 /* --------- STYLES: FRAMER-MOTION --------- */
@@ -286,11 +327,13 @@ const buttonVisibilityVariants = {
   hidden: {
     opacity: 0,
     scale: 1,
+    transform: "translateX(100px)",
     transition: { duration: 0.3, ease: "easeInOut" },
   },
   visible: {
     opacity: 1,
     scale: 1,
+    transform: "translateX(0px)",
     transition: { duration: 0.3, ease: "easeInOut" },
   },
 };
@@ -322,65 +365,64 @@ const HoverBarButtonContainerFarRightVariants = {
   },
 };
 
-// HoverBarButtonMakeMain Variants
-const HoverBarButtonMakeMainVariants = {
+// Make Button Variants
+const HoverBarButtonMakeVariants = {
   expanded: {
-    ...commonVariants.expanded,
-    width: "100px",
+    /*     ...commonVariants.expanded, */
+    width: "120px",
+    opacity: 1,
     transform: "translateX(calc(0% + -50px))",
+    transition: { duration: 0.5, ease: "easeInOut" },
   },
   collapsed: {
-    ...commonVariants.collapsed,
+    /*     ...commonVariants.collapsed, */
     width: "65px",
+    opacity: 0.3,
     transform: "translateX(calc(0% + -15px))",
+    transition: { duration: 0.5, ease: "easeInOut" },
   },
 };
 
-// Make Button (Inner-Left Container)
+// Make Button Variants (Inner-Left Container)
 
 const HoverBarButtonMakeMainInnerLeftContainerVariants = {
   expanded: {
     ...commonVariants.expanded,
     width: "50%",
-    transform: "translateX(0%)",
-    transition: { duration: 0.5, ease: "easeInOut" },
+    transform: "translateX(0px)",
   },
   collapsed: {
     ...commonVariants.collapsed,
-
     width: "100%",
-    transform: "translateX(0%)",
-    transition: { duration: 0.5, ease: "easeInOut" },
+    transform: "translateX(3px)",
   },
 };
 
-// Make Button (Inner-Right Container)
+// Make Button Variants (Inner-Right Container)
 const HoverBarButtonMakeMainInnerRightContainerVariants = {
   expanded: {
     ...commonVariants.expanded,
-    opacity: 1,
+    /*     opacity: 1, */
     width: "50%",
     transform: "translateX(0%)",
-    transition: { duration: 0.5, ease: "easeInOut" },
   },
   collapsed: {
     ...commonVariants.collapsed,
-    opacity: 0,
+    /*     opacity: 1, */
     width: "0%",
     transform: "translateX(0%)",
-    transition: { duration: 0.5, ease: "easeInOut" },
   },
 };
 
 // HoverBarButtonMainMenuLarge Variants
 const HoverBarButtonMainMenuLargeVariants = {
   expanded: {
-    width: "65px",
-    transform: "translateX(40px)",
+    width: "55px",
+    transform: "translateX(60px)",
     transition: { duration: 0.5, ease: "easeInOut" },
   },
   collapsed: {
-    width: "65px",
+    width: "55px",
     transform: "translateX(50px)",
     transition: { duration: 0.5, ease: "easeInOut" },
   },
@@ -390,7 +432,7 @@ const HoverBarButtonMainMenuLargeVariants = {
 const HoverBarButtonThemeSmallVariants = {
   expanded: {
     width: "40px",
-    transform: "translateX(-142px)",
+    transform: "translateX(-140px)",
     transition: { duration: 0.5, ease: "easeInOut" },
   },
   collapsed: {
@@ -447,7 +489,7 @@ const HoverBarButtonMinimizeSmallVariants = {
 const SkHoverBar: React.FC = observer(() => {
   const { isExpanded } = hoverBarStore;
   const viewportWidth = useViewportWidth();
-  const showSmallButtons = viewportWidth > 650;
+  const showSmallButtons = viewportWidth > 670;
   const toggleTheme = () => themeStore.toggleTheme();
   const makeButtonClickHandler = isExpanded
     ? onMakeButtonClickExpanded
@@ -477,29 +519,27 @@ const SkHoverBar: React.FC = observer(() => {
             animate={isExpanded ? "expanded" : "collapsed"}
             variants={HoverBarButtonContainerCenterRightVariants}
           >
-            <HoverBarButtonMakeMain
+            <HoverBarButtonMake
               initial={isExpanded ? false : "collapsed"}
               animate={isExpanded ? "expanded" : "collapsed"}
-              variants={HoverBarButtonMakeMainVariants}
+              variants={HoverBarButtonMakeVariants}
               onClick={makeButtonClickHandler}
             >
-              <HoverBarButtonMakeMainInnerLeftContainer
+              <HoverBarButtonMakeInnerLeftContainer
                 initial={isExpanded ? false : "collapsed"}
                 animate={isExpanded ? "expanded" : "collapsed"}
                 variants={HoverBarButtonMakeMainInnerLeftContainerVariants}
               >
-                <HoverBarButtonMakeMainTextLeft></HoverBarButtonMakeMainTextLeft>
-              </HoverBarButtonMakeMainInnerLeftContainer>
-              <HoverBarButtonMakeMainInnerRightContainer
+                <HoverBarButtonMakeTextLeft></HoverBarButtonMakeTextLeft>
+              </HoverBarButtonMakeInnerLeftContainer>
+              <HoverBarButtonMakeInnerRightContainer
                 initial={isExpanded ? false : "collapsed"}
                 animate={isExpanded ? "expanded" : "collapsed"}
                 variants={HoverBarButtonMakeMainInnerRightContainerVariants}
               >
-                <HoverBarButtonMakeMainTextRight>
-                  Make
-                </HoverBarButtonMakeMainTextRight>
-              </HoverBarButtonMakeMainInnerRightContainer>
-            </HoverBarButtonMakeMain>
+                <HoverBarButtonMakeTextRight>Make</HoverBarButtonMakeTextRight>
+              </HoverBarButtonMakeInnerRightContainer>
+            </HoverBarButtonMake>
             <AnimatePresence>
               {visibilityStore.isMakeCVVisible && (
                 <SkMakeCV
@@ -543,7 +583,7 @@ const SkHoverBar: React.FC = observer(() => {
                     animate={isExpanded ? "expanded" : "collapsed"}
                     variants={HoverBarButtonThemeSmallVariants}
                   >
-                    <SmallHoverBarButtonText>T</SmallHoverBarButtonText>
+                    <HoverBarButtonThemeIcon></HoverBarButtonThemeIcon>
                   </HoverBarButtonThemeSmall>
                   {/* Settings Button */}
                   <HoverBarButtonSettingsSmall
@@ -552,7 +592,7 @@ const SkHoverBar: React.FC = observer(() => {
                     variants={HoverBarButtonSettingsSmallVariants}
                     onClick={toggleUserSettings}
                   >
-                    <SmallHoverBarButtonText>S</SmallHoverBarButtonText>
+                    <HoverBarButtonSettingsIcon></HoverBarButtonSettingsIcon>
                   </HoverBarButtonSettingsSmall>
                   {visibilityStore.isUserSettingsVisible && (
                     <SkUserSettings
@@ -567,7 +607,7 @@ const SkHoverBar: React.FC = observer(() => {
                     animate={isExpanded ? "expanded" : "collapsed"}
                     variants={HoverBarButtonProfileSmallVariants}
                   >
-                    <SmallHoverBarButtonText>P</SmallHoverBarButtonText>
+                    <HoverBarButtonProfileIcon></HoverBarButtonProfileIcon>
                   </HoverBarButtonProfileSmall>
                 </HoverBarButtonSmallContainer>
               )}
@@ -579,7 +619,7 @@ const SkHoverBar: React.FC = observer(() => {
               animate={isExpanded ? "expanded" : "collapsed"}
               variants={HoverBarButtonMinimizeSmallVariants}
             >
-              <SmallHoverBarButtonText>X</SmallHoverBarButtonText>
+              <HoverBarButtonMinimizeIcon></HoverBarButtonMinimizeIcon>
             </HoverBarButtonMinimizeSmall>
           </HoverBarButtonContainerFarRight>
         </HoverBarInnerContainerRight>

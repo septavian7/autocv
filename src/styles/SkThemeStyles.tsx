@@ -91,9 +91,9 @@ const themes: { [key: string]: ThemeColors } = {
     hoverBarButtonPrimaryTextColor: "white",
     hoverBarButtonSecondaryTextColor: "white",
     hoverBarButtonPrimaryBackground:
-      "linear-gradient(2deg, rgba(0,50,170,0.75) 0%, rgba(0,90,250,0.95) 50%)",
+      "linear-gradient(2deg, rgba(0,70,190,0.75) 0%, rgba(0,90,250,0.95) 30%)",
     hoverBarButtonSecondaryBackground:
-      "linear-gradient(2deg, rgba(60,60,60,0.6) 0%, rgba(140,140,140,0.95) 60%)",
+      "linear-gradient(2deg, rgba(10,10,10,0.6) 0%, rgba(50,50,50,0.95) 60%)",
     hoverBarButtonPrimaryBackgroundOnHover:
       "linear-gradient(2deg, rgba(9,9,121,1) 10%, rgba(0,212,255,1) 85%)",
     hoverBarButtonSecondaryBackgroundOnHover: "rgba(0,0,0,0.9)",
