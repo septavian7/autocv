@@ -49,45 +49,45 @@ const onMakeButtonClickCollapsed = () => {
 /* --------- STYLES: ICONS --------- */
 
 const StyledRam314Icon = styled(Ram314Icon)`
-  position: absolute;
+  position: relative;
   align-items: center;
   justify-content: center;
-  transform: scale(0.07);
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  transform: scale(0.08) translateX(-240px) translateY(-240px);
 `;
 
 const StyledSpaceDashboardIcon = styled(SpaceDashboardIcon)`
   position: relative;
   align-items: center;
   justify-content: center;
-  transform: scale(1.8);
+  width: 100%;
+  height: 100%;
 `;
 
 const StyledContrastIcon = styled(ContrastIcon)`
   position: relative;
   align-items: center;
   justify-content: center;
-  /*   transform: scale(1.2) translateX(0px) translateY(5.5px); */
 `;
 
 const StyledSettingsIcon = styled(SettingsIcon)`
   position: relative;
   align-items: center;
   justify-content: center;
-  /*   transform: scale(1.2) translateX(0px) translateY(5.5px); */
 `;
 
 const StyledProfileIcon = styled(ProfileIcon)`
   position: relative;
   align-items: center;
   justify-content: center;
-  /*   transform: scale(1.2) translateX(0px) translateY(5.5px); */
 `;
 
 const StyledCollapseAllIcon = styled(CollapseAllIcon)`
   position: relative;
   align-items: center;
   justify-content: center;
-  /*   transform: scale(1) translateX(-1px) translateY(2.5px); */
 `;
 
 /* --------- STYLES: CONTAINERS --------- */
