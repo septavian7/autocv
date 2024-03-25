@@ -109,6 +109,6 @@
   "include": [
     "src/**/*",
     "node_modules/normalize.css/normalize.css"
-, "dev_old/_save/SkMenuItem_save_20240312-2042.tsx", "dev_old/_save/SkThemeContext.tsx", "src/components/common/SkIcon/IconRamStencilCircleWhite.tsx", "public/test.tsx"  ],
+, "dev_old/_save/SkMenuItem_save_20240312-2042.tsx", "dev_old/_save/SkThemeContext.tsx", "dev_old/IconRamStencilCircleWhite.tsx", "public/test.tsx"  ],
   "exclude": ["node_modules", "build", "dist", "**/*.spec.ts"]
 }

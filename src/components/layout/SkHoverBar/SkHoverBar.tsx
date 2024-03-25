@@ -20,6 +20,14 @@ import { SkUserSettings } from "../../features/SkUserSettings/SkUserSettings";
 import { SkToolsMenu } from "../../features/SkToolsMenu/SkToolsMenu";
 import { SkMakeCV } from "../../features/SkMakeCV/SkMakeCV";
 
+// Icons
+import { ReactComponent as Ram314Icon } from "../../../assets/icons/buttonicons/ram314_blue_stencil-gray.svg";
+import { ReactComponent as SpaceDashboardIcon } from "../../../assets/icons/buttonicons/space_dashboard_FILL0_wght400_GRAD0_opsz24.svg";
+import { ReactComponent as ContrastIcon } from "../../../assets/icons/buttonicons/contrast_FILL0_wght400_GRAD0_opsz24.svg";
+import { ReactComponent as SettingsIcon } from "../../../assets/icons/buttonicons/settings_FILL0_wght400_GRAD0_opsz24.svg";
+import { ReactComponent as ProfileIcon } from "../../../assets/icons/buttonicons/account_circle_FILL0_wght400_GRAD0_opsz24.svg";
+import { ReactComponent as CollapseAllIcon } from "../../../assets/icons/buttonicons/collapse_all_FILL0_wght400_GRAD0_opsz24.svg";
+
 /* --------- FUNCTIONS: ONCLICK LOGIC --------- */
 
 const toggleUserSettings = () => visibilityStore.toggleUserSettingsVisible();
@@ -37,6 +45,50 @@ const onMakeButtonClickCollapsed = () => {
   toggleHoverBarExpandMinimize();
   console.log("Make collapsed State Function Called");
 };
+
+/* --------- STYLES: ICONS --------- */
+
+const StyledRam314Icon = styled(Ram314Icon)`
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0.07) translateX(20px);
+`;
+
+const StyledSpaceDashboardIcon = styled(SpaceDashboardIcon)`
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  transform: scale(1.8) translateX(0px) translateY(7.5px);
+`;
+
+const StyledContrastIcon = styled(ContrastIcon)`
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  transform: scale(1.2) translateX(0px) translateY(5.5px);
+`;
+
+const StyledSettingsIcon = styled(SettingsIcon)`
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  transform: scale(1.2) translateX(0px) translateY(5.5px);
+`;
+
+const StyledProfileIcon = styled(ProfileIcon)`
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  transform: scale(1.2) translateX(0px) translateY(5.5px);
+`;
+
+const StyledCollapseAllIcon = styled(CollapseAllIcon)`
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  transform: scale(1) translateX(-1px) translateY(2.5px);
+`;
 
 /* --------- STYLES: CONTAINERS --------- */
 
@@ -219,13 +271,13 @@ const HoverBarButtonMakeTextRight = styled(motion.span)`
 const HoverBarButtonMakeInnerLeftContainer = styled(motion.div)`
   display: flex;
   height: 70%;
-  /*   background-color: rgba(255, 255, 255, 0.9); */
-  background-image: url("/assets/SkHoverBar/ram314_blue_stencil-gray.svg");
-  filter: brightness(110%);
-  background-size: 100% 100%;
-  background-position: center;
   align-items: center;
   justify-content: center;
+  /*   background-color: rgba(255, 255, 255, 0.9); */
+  /*   background-image: url("/assets/icons/buttonicons/ram314_blue_stencil-gray.svg");
+  filter: brightness(110%);
+  background-size: 100% 100%;
+  background-position: center; */
   /*   margin-left: 20px; */
 `;
 
@@ -257,8 +309,8 @@ const HoverBarButtonMainMenuLarge = styled(LargeHoverBarButton)`
 const HoverBarButtonMainMenuIcon = styled(HoverBarButtonIcon)`
   /*   width: 90%;
   height: 90%; */
-  background-image: url("/assets/SkHoverBar/space_dashboard_FILL0_wght400_GRAD0_opsz24.svg");
-  /*   filter: invert(100%);
+  /*   background-image: url("/assets/icons/buttonicons/space_dashboard_FILL0_wght400_GRAD0_opsz24.svg");
+ */ /*   filter: invert(100%);
   background-size: cover;
   background-position: center; */
 `;
@@ -284,11 +336,11 @@ const HoverBarButtonThemeSmall = styled(SmallHoverBarButton)`
 const HoverBarButtonThemeIcon = styled(HoverBarButtonIcon)`
   /*   width: 100%;
   height: 100%; */
-  background-image: url("/assets/SkHoverBar/contrast_FILL0_wght400_GRAD0_opsz24.svg");
-  /*   filter: invert(100%);
-  background-size: contain;
+/*   background-image: url("/assets/icons/buttonicons/contrast_FILL0_wght400_GRAD0_opsz24.svg");
+ */  /*   filter: invert(100%);
+/*   background-size: contain;
   background-position: center;
-  background-repeat: no-repeat; */
+  background-repeat: no-repeat; */ */
 `;
 
 // Settings Button (Small)
@@ -303,8 +355,8 @@ const HoverBarButtonSettingsSmall = styled(SmallHoverBarButton)`
 const HoverBarButtonSettingsIcon = styled(HoverBarButtonIcon)`
   /*   width: 100%;
   height: 100%; */
-  background-image: url("/assets/SkHoverBar/settings_FILL0_wght400_GRAD0_opsz24.svg");
-  /*   filter: invert(100%);
+  /*   background-image: url("/assets/icons/buttonicons/settings_FILL0_wght400_GRAD0_opsz24.svg");
+ */ /*   filter: invert(100%);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat; */
@@ -321,8 +373,8 @@ const HoverBarButtonProfileSmall = styled(SmallHoverBarButton)`
 const HoverBarButtonProfileIcon = styled(HoverBarButtonIcon)`
   /*   width: 100%;
   height: 100%; */
-  background-image: url("/assets/SkHoverBar/account_circle_FILL0_wght400_GRAD0_opsz24.svg");
-  /*   filter: invert(100%);
+  /*   background-image: url("/assets/icons/buttonicons/account_circle_FILL0_wght400_GRAD0_opsz24.svg");
+ */ /*   filter: invert(100%);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat; */
@@ -339,8 +391,8 @@ const HoverBarButtonMinimizeSmall = styled(SmallHoverBarButton)`
 const HoverBarButtonMinimizeIcon = styled(HoverBarButtonIcon)`
   width: 80%;
   height: 80%;
-  background-image: url("/assets/SkHoverBar/collapse_all_FILL0_wght400_GRAD0_opsz24.svg");
-  /*   filter: invert(100%);
+  /*   background-image: url("/assets/icons/buttonicons/collapse_all_FILL0_wght400_GRAD0_opsz24.svg");
+ */ /*   filter: invert(100%);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat; */
@@ -415,17 +467,16 @@ const HoverBarButtonMakeVariants = {
 };
 
 // Make Button Variants (Inner-Left Container)
-
 const HoverBarButtonMakeMainInnerLeftContainerVariants = {
   expanded: {
     ...commonVariants.expanded,
     width: "50%",
-    transform: "translateX(0px)",
+    /*     transform: "translateX(0px)", */
   },
   collapsed: {
     ...commonVariants.collapsed,
     width: "100%",
-    transform: "translateX(3px)",
+    /*     transform: "translateX(3px)", */
   },
 };
 
@@ -571,6 +622,8 @@ const SkHoverBar: React.FC = observer(() => {
                 animate={isExpanded ? "expanded" : "collapsed"}
                 variants={HoverBarButtonMakeMainInnerLeftContainerVariants}
               >
+                {/* Icon */}
+                <StyledRam314Icon />
                 <HoverBarButtonMakeTextLeft></HoverBarButtonMakeTextLeft>
               </HoverBarButtonMakeInnerLeftContainer>
               <HoverBarButtonMakeInnerRightContainer
@@ -596,7 +649,10 @@ const SkHoverBar: React.FC = observer(() => {
               variants={commonVariants}
               /*               variants={HoverBarButtonMainMenuLargeVariants} */
             >
-              <HoverBarButtonMainMenuIcon></HoverBarButtonMainMenuIcon>
+              <HoverBarButtonMainMenuIcon>
+                {/* Icon */}
+                <StyledSpaceDashboardIcon />
+              </HoverBarButtonMainMenuIcon>
             </HoverBarButtonMainMenuLarge>
             {visibilityStore.isToolsMenuVisible && (
               <SkToolsMenu
@@ -626,7 +682,10 @@ const SkHoverBar: React.FC = observer(() => {
                     variants={commonVariants}
                     onClick={toggleTheme}
                   >
-                    <HoverBarButtonThemeIcon></HoverBarButtonThemeIcon>
+                    <HoverBarButtonThemeIcon>
+                      {/* Icon */}
+                      <StyledContrastIcon />
+                    </HoverBarButtonThemeIcon>
                   </HoverBarButtonThemeSmall>
                   {/* Settings Button */}
                   <HoverBarButtonSettingsSmall
@@ -636,7 +695,10 @@ const SkHoverBar: React.FC = observer(() => {
                     variants={commonVariants}
                     onClick={toggleUserSettings}
                   >
-                    <HoverBarButtonSettingsIcon></HoverBarButtonSettingsIcon>
+                    <HoverBarButtonSettingsIcon>
+                      {/* Icon */}
+                      <StyledSettingsIcon />
+                    </HoverBarButtonSettingsIcon>
                   </HoverBarButtonSettingsSmall>
                   {visibilityStore.isUserSettingsVisible && (
                     <SkUserSettings
@@ -652,7 +714,10 @@ const SkHoverBar: React.FC = observer(() => {
                     variants={commonVariants}
                     /*                     variants={HoverBarButtonProfileSmallVariants} */
                   >
-                    <HoverBarButtonProfileIcon></HoverBarButtonProfileIcon>
+                    <HoverBarButtonProfileIcon>
+                      {/* Icon */}
+                      <StyledProfileIcon />
+                    </HoverBarButtonProfileIcon>
                   </HoverBarButtonProfileSmall>
                 </HoverBarButtonSmallContainer>
               )}
@@ -665,7 +730,10 @@ const SkHoverBar: React.FC = observer(() => {
               variants={commonVariants}
               /*               variants={HoverBarButtonMinimizeSmallVariants} */
             >
-              <HoverBarButtonMinimizeIcon></HoverBarButtonMinimizeIcon>
+              <HoverBarButtonMinimizeIcon>
+                {/* Icon */}
+                <StyledCollapseAllIcon />
+              </HoverBarButtonMinimizeIcon>
             </HoverBarButtonMinimizeSmall>
           </HoverBarButtonContainerFarRight>
         </HoverBarInnerContainerRight>

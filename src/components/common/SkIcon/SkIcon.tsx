@@ -30,7 +30,7 @@ import PowerSettingsNew from "@mui/icons-material/PowerSettingsNew";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 
 // Custom SVG Icons
-import IconRamStencilCircleWhite from "./IconRamStencilCircleWhite";
+/* import IconRamStencilCircleWhite from "./IconRamStencilCircleWhite"; */
 
 /* --------- ICON MAPPING --------- */
 
@@ -52,7 +52,7 @@ export const iconComponents = {
   accountCircle: AccountCircle,
 
   // Custom Icons
-  ramStencilCircleWhite: IconRamStencilCircleWhite,
+  /*   ramStencilCircleWhite: IconRamStencilCircleWhite, */
 };
 
 /* --------- COMPONENT DEFINITION --------- */

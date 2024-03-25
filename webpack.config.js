@@ -16,8 +16,8 @@ export default {
         { from: "public", to: "." }, // Always include Static Files
         { from: "dev", to: "dev" },
         { from: "src/assets/icons", to: "assets/icons" },
-        { from: "src/components/layout/SkHoverBar/assets", to: "assets/SkHoverBar" }, // Hover Bar Assets
-      ],
+/*         { from: "src/components/layout/SkHoverBar/assets", to: "assets/SkHoverBar" }, // Hover Bar Assets
+ */      ],
     }),
   ],
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development', // Adjusted for environmental checks
@@ -28,6 +28,7 @@ export default {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
+    publicPath: '/',
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
@@ -50,10 +51,20 @@ export default {
       },
       {
         test: /\.svg$/,
-        type: 'asset/resource',
-        generator: {
-          filename: 'assets/icons/[name][ext]', // Adjust the path as necessary
-        }
+        use: [
+          {
+            loader: '@svgr/webpack',
+            options: {
+              // SVGR options here
+            },
+          },
+          {
+            loader: 'file-loader', // Fallback for any SVGs not imported as React components
+            options: {
+              name: 'assets/icons/[name].[ext]',
+            },
+          },
+        ],
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
@@ -77,10 +88,10 @@ export default {
         directory: path.join(__dirname, 'dist'),
         publicPath: '/',
       },
-      {
+/*       {
         directory: path.join(__dirname, 'src/components/layout/SkHoverBar/assets'),
         publicPath: '/assets',
-      },
+      }, */
     ],
     port: 8080,
     allowedHosts: 'all',
