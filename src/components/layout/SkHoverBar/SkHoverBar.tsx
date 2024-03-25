@@ -223,6 +223,14 @@ const HoverBarButtonMainMenuLarge = styled(LargeHoverBarButton)`
     margin: 18px;
   `}
 `;
+const HoverBarButtonMainMenuIcon = styled(motion.span)`
+  width: 100%;
+  height: 100%;
+  background-image: url("/assets/SkHoverBar/space_dashboard_FILL0_wght400_GRAD0_opsz24.svg");
+  background-size: cover;
+  background-position: center;
+`;
+
 // Settings Button (Large)
 const HoverBarButtonSettingsLarge = styled(LargeHoverBarButton)`
   ${({ theme }) => `
@@ -506,7 +514,7 @@ const SkHoverBar: React.FC = observer(() => {
               animate={isExpanded ? "expanded" : "collapsed"}
               variants={HoverBarButtonMainMenuLargeVariants}
             >
-              <LargeHoverBarButtonText>M</LargeHoverBarButtonText>
+              <HoverBarButtonMainMenuIcon></HoverBarButtonMainMenuIcon>
             </HoverBarButtonMainMenuLarge>
             {visibilityStore.isToolsMenuVisible && (
               <SkToolsMenu
