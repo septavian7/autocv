@@ -23,11 +23,11 @@ export default {
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development', // Adjusted for environmental checks
   entry: {
     main: "./src/index.tsx",
-    test: "./public/test.tsx",
+/*     test: "./public/test.tsx", */
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "[name].bundle.js",
+    filename: "bundle.js",
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
@@ -50,20 +50,18 @@ export default {
       },
       {
         test: /\.svg$/,
-        /*         use: ['@svgr/webpack'], */
         type: 'asset/resource',
+        generator: {
+          filename: 'assets/icons/[name][ext]', // Adjust the path as necessary
+        }
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[path][name].[ext]',
-            },
-          },
-        ],
-      },
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/images/[name][ext]', // Example for other images
+        }
+      },      
     ],
   },
   devtool: process.env.NODE_ENV === 'production' ? 'source-map' : 'cheap-module-source-map', // Adjusted for CSP compliance

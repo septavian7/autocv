@@ -1,29 +1,46 @@
-/* public/test.tsx */
+/* src/index.tsx */
 
+/* --------- IMPORT --------- */
+
+// Plugins, Dependencies
+import "normalize.css";
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { ThemeProvider } from "@emotion/react";
-import { observer } from "mobx-react-lite";
-import { themeStore } from "../src/stores/SkThemeStore";
-import { HoverBarProvider } from "../src/components/layout/SkHoverBar/contexts/HoverBarContext";
+// Configs
+import "../src/config/firebaseConfig";
+import { configure } from "mobx";
+// Providers, Stores
+import { SkUserStoreProvider } from "../src/contexts/SkUserContext";
+import { ThemeProvider } from "../src/providers/SkThemeProvider";
+// Components, Modules
 import SkHoverBar from "../src/components/layout/SkHoverBar/SkHoverBar";
-import { getThemeStyles } from "../src/styles/SkThemeStyles";
+import SkGlobalStyles from "../src/styles/SkGlobalStyles";
+// import FramerMotionTest from "./components/layout/FramerMotionTest"; // Import FramerMotionTest component
 
-const rootElement = document.getElementById("test-root");
+/* --------- SETUP --------- */
 
-if (rootElement) {
-  const App = observer(() => {
-    const theme = getThemeStyles(themeStore.theme);
+configure({
+  enforceActions: "always",
+});
 
-    return (
-      <ThemeProvider theme={theme}>
-        <HoverBarProvider>
-          <SkHoverBar />
-        </HoverBarProvider>
-      </ThemeProvider>
-    );
-  });
-
-  const root = createRoot(rootElement);
-  root.render(<App />);
+let rootElement = document.getElementById("extension-root"); // Look for dummy host root element
+if (!rootElement) {
+  // If not found, proceed as usual
+  rootElement = document.createElement("div");
+  rootElement.id = "Sk0ne-root";
+  document.body.appendChild(rootElement);
 }
+
+/* --------- RENDER --------- */
+
+const root = createRoot(rootElement);
+root.render(
+  <React.StrictMode>
+    <SkUserStoreProvider>
+      <ThemeProvider>
+        <SkGlobalStyles />
+        <SkHoverBar />
+      </ThemeProvider>
+    </SkUserStoreProvider>
+  </React.StrictMode>,
+);
