@@ -127,6 +127,7 @@ const BaseHoverBarButton = styled(motion.button)`
   /*   z-index: 900; */
   overflow: hidden;
   /*   transition: filter 0.3s ease; */
+  font-family: "Avenir", sans-serif;
 
   &:hover {
     transition: all 0.3s ease;

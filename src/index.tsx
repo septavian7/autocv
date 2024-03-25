@@ -6,9 +6,10 @@
 import "normalize.css";
 import React from "react";
 import { createRoot } from "react-dom/client";
+import { Global, css } from "@emotion/react";
 // Configs
 import "./config/firebaseConfig";
-import { configure } from "mobx";
+/* import { configure } from "mobx"; */
 // Providers, Stores
 import { SkUserStoreProvider } from "./contexts/SkUserContext";
 import { ThemeProvider } from "./providers/SkThemeProvider";
@@ -19,9 +20,24 @@ import SkGlobalStyles from "./styles/SkGlobalStyles";
 
 /* --------- SETUP --------- */
 
-configure({
+// MobX Configuration
+/* configure({
   enforceActions: "always",
-});
+}); */
+
+const globalStyles = css`
+  @font-face {
+    font-family: "Avenir";
+    src: url("/fonts/Avenir-Regular.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  body {
+    font-family: "Avenir", sans-serif;
+    /* Other global styles */
+  }
+`;
 
 let rootElement = document.getElementById("extension-root"); // Look for dummy host root element
 if (!rootElement) {
@@ -36,6 +52,7 @@ if (!rootElement) {
 const root = createRoot(rootElement);
 root.render(
   <React.StrictMode>
+    <Global styles={globalStyles} />
     <SkUserStoreProvider>
       <ThemeProvider>
         <SkGlobalStyles />
