@@ -115,7 +115,7 @@ const HoverBarButtonSmallContainer = styled(motion.div)`
 
 // Base Button
 const BaseHoverBarButton = styled(motion.button)`
-  /*   background: ${({ theme }) => theme.hoverBarButtonPrimaryBackground}; */
+  ${({ theme }) => `
   /* color: white; */
   position: absolute;
   border: none;
@@ -123,6 +123,7 @@ const BaseHoverBarButton = styled(motion.button)`
   display: flex;
   justify-content: center;
   align-items: center;
+  border: ${theme.hoverBarButtonOutline};
   /*   z-index: 900; */
   overflow: hidden;
   /*   transition: filter 0.3s ease; */
@@ -132,6 +133,7 @@ const BaseHoverBarButton = styled(motion.button)`
     /*     scale: 0.98; */
     filter: brightness(70%);
   }
+  `}
 `;
 
 // Large Button
@@ -143,7 +145,6 @@ const LargeHoverBarButton = styled(BaseHoverBarButton)`
   font-size: 16px;
   flex-basis: 55px;
   flex-grow: 0;
-  border: ${theme.hoverBarButtonOutline};
   z-index: 1200;
   `}
 `;
@@ -166,7 +167,6 @@ const SmallHoverBarButton = styled(BaseHoverBarButton)`
 /*   font-size: 16px; */
   margin: 3px;
   /*   z-index: 1200; */
-  border: ${theme.hoverBarButtonOutline};
   `}
 `;
 
@@ -401,14 +401,14 @@ const HoverBarButtonMakeVariants = {
     /*     ...commonVariants.expanded, */
     width: "110px",
     opacity: 1,
-    transform: "translateX(calc(0% + -50px))",
+    transform: "translateX(-50px)",
     transition: { duration: 0.5, ease: "easeInOut" },
   },
   collapsed: {
     /*     ...commonVariants.collapsed, */
     width: "55px",
     opacity: 0.3,
-    transform: "translateX(calc(0% + -15px))",
+    transform: "translateX(calc(-15px)",
     transition: { duration: 0.5, ease: "easeInOut" },
   },
 };
@@ -545,7 +545,7 @@ const SkHoverBar: React.FC = observer(() => {
         animate={{
           width: isExpanded ? "calc(100% - 0px)" : "calc(100% + 0px)",
         }}
-        transition={{ duration: 0.8, ease: "easeInOut" }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
       >
         <HoverBarInnerContainerRight
           initial={false}

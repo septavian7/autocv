@@ -39,7 +39,8 @@ const themes: { [key: string]: ThemeColors } = {
     hoverBarMinimizedBoxShadow: "0 1px 2px rgba(0, 0, 0, 0.2)",
 
     // Hover Bar Buttons
-    hoverBarButtonOutline: "2px solid rgba(255,255,255,0.3)",
+    hoverBarButtonOutline: "1px solid rgba(255,255,255,0.3)",
+    /*     hoverBarButtonOutline: "1px solid rgba(30,30,30,0.5)", */
     hoverBarButtonPrimaryBackground:
       "linear-gradient(2deg, rgba(0,70,190,0.75) 0%, rgba(0,90,250,0.95) 30%)",
     hoverBarButtonSecondaryBackground:
@@ -89,7 +90,8 @@ const themes: { [key: string]: ThemeColors } = {
     hoverBarMinimizedBoxShadow: "0 1px 2px rgba(0, 0, 0, 0.3)",
 
     // Hover Bar Buttons
-    hoverBarButtonOutline: "2px solid rgba(30,30,30,0.3)",
+    /*    hoverBarButtonOutline: "1px solid rgba(30,30,30,0.3)", */
+    hoverBarButtonOutline: "1px solid rgba(255,255,255,0.5)",
     hoverBarButtonPrimaryBackground:
       "linear-gradient(2deg, rgba(0,40,160,0.75) 0%, rgba(0,70,230,0.95) 30%)",
     hoverBarButtonSecondaryBackground:
