@@ -194,7 +194,10 @@ const HoverBarButtonMakeMainTextRight = styled(motion.span)`
 const HoverBarButtonMakeMainInnerLeftContainer = styled(motion.div)`
   display: flex;
   height: 69%;
-  background-color: rgba(255, 255, 255, 0.9);
+  /*   background-color: rgba(255, 255, 255, 0.9); */
+  background-image: url("/assets/SkHoverBar/ram314_blue_stencil-gray.svg");
+  background-size: 100% 100%;
+  background-position: center;
   align-items: center;
   justify-content: center;
   /*   margin-left: 20px; */
@@ -330,7 +333,7 @@ const HoverBarButtonMakeMainVariants = {
 const HoverBarButtonMakeMainInnerLeftContainerVariants = {
   expanded: {
     ...commonVariants.expanded,
-    width: "40%",
+    width: "50%",
     transform: "translateX(0%)",
     transition: { duration: 0.5, ease: "easeInOut" },
   },
@@ -348,7 +351,7 @@ const HoverBarButtonMakeMainInnerRightContainerVariants = {
   expanded: {
     ...commonVariants.expanded,
     opacity: 1,
-    width: "60%",
+    width: "50%",
     transform: "translateX(0%)",
     transition: { duration: 0.5, ease: "easeInOut" },
   },
@@ -477,9 +480,7 @@ const SkHoverBar: React.FC = observer(() => {
                 animate={isExpanded ? "expanded" : "collapsed"}
                 variants={HoverBarButtonMakeMainInnerLeftContainerVariants}
               >
-                <HoverBarButtonMakeMainTextLeft>
-                  X
-                </HoverBarButtonMakeMainTextLeft>
+                <HoverBarButtonMakeMainTextLeft></HoverBarButtonMakeMainTextLeft>
               </HoverBarButtonMakeMainInnerLeftContainer>
               <HoverBarButtonMakeMainInnerRightContainer
                 initial={isExpanded ? false : "collapsed"}

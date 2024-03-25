@@ -14,8 +14,9 @@ export default {
     new CopyPlugin({
       patterns: [
         { from: "public", to: "." }, // Always include Static Files
-        { from: "dev", to: "dev" }, // Always include /dev/ folder
+        /* { from: "dev", to: "dev" }, */
         { from: "src/assets/icons", to: "assets/icons" }, // New pattern for SVGs
+        { from: "src/components/layout/SkHoverBar/assets", to: "assets/SkHoverBar" },
       ],
     }),
   ],
@@ -49,7 +50,19 @@ export default {
       },
       {
         test: /\.svg$/,
-        use: ['@svgr/webpack'],
+        /*         use: ['@svgr/webpack'], */
+        type: 'asset/resource',
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]',
+            },
+          },
+        ],
       },
     ],
   },
