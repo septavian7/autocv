@@ -5,7 +5,7 @@ import styled from "@emotion/styled";
 import { AnimatePresence, motion } from "framer-motion";
 import { observer } from "mobx-react-lite";
 import { themeStore } from "../../../stores";
-/* import { visibilityStore } from "../../../stores/SkVisibilityStore"; */
+import { visibilityStore } from "../../../stores/SkVisibilityStore";
 import { hoverBarStore } from "./stores/HoverBarStore";
 /* import { UseHoverBarState } from "./state/HoverBarState"; */
 import { useViewportWidth } from "../../../utils/useViewportWidth";
@@ -17,11 +17,20 @@ import {
   toggleProfileMenu,
   /*   toggleTheme, */
 } from "./utils/HoverBarUtils";
+import { SkUserSettings } from "../../features/SkUserSettings/SkUserSettings";
+import { SkToolsMenu } from "../../features/SkToolsMenu/SkToolsMenu";
+import { SkMakeCV } from "../../features/SkMakeCV/SkMakeCV";
 
 /* --------- FUNCTIONS: ONCLICK LOGIC --------- */
 
+const toggleUserSettings = () => visibilityStore.toggleUserSettingsVisible();
+
+const toggleToolsMenu = () => visibilityStore.toggleToolsMenuVisible();
+
+const toggleMakeCV = () => visibilityStore.toggleMakeCVVisible();
+
 const onMakeButtonClickExpanded = () => {
-  themeStore.toggleTheme();
+  toggleMakeCV();
   console.log("Make expanded State Function Called");
 };
 
@@ -482,14 +491,28 @@ const SkHoverBar: React.FC = observer(() => {
                 </HoverBarButtonMakeMainTextRight>
               </HoverBarButtonMakeMainInnerRightContainer>
             </HoverBarButtonMakeMain>
+            <AnimatePresence>
+              {visibilityStore.isMakeCVVisible && (
+                <SkMakeCV
+                  isVisible={visibilityStore.isMakeCVVisible}
+                  onClose={toggleMakeCV}
+                />
+              )}
+            </AnimatePresence>
             <HoverBarButtonMainMenuLarge
-              onClick={toggleMainMenu}
+              onClick={toggleToolsMenu}
               initial={isExpanded ? false : "collapsed"}
               animate={isExpanded ? "expanded" : "collapsed"}
               variants={HoverBarButtonMainMenuLargeVariants}
             >
               <LargeHoverBarButtonText>M</LargeHoverBarButtonText>
             </HoverBarButtonMainMenuLarge>
+            {visibilityStore.isToolsMenuVisible && (
+              <SkToolsMenu
+                isVisible={visibilityStore.isToolsMenuVisible}
+                onClose={toggleToolsMenu}
+              />
+            )}
           </HoverBarButtonContainerCenterRight>
           <HoverBarButtonContainerFarRight
             initial={isExpanded ? false : "collapsed"}
@@ -513,17 +536,21 @@ const SkHoverBar: React.FC = observer(() => {
                   >
                     <SmallHoverBarButtonText>T</SmallHoverBarButtonText>
                   </HoverBarButtonThemeSmall>
-
                   {/* Settings Button */}
                   <HoverBarButtonSettingsSmall
-                    onClick={toggleSettingsMenu}
                     initial={isExpanded ? false : "collapsed"}
                     animate={isExpanded ? "expanded" : "collapsed"}
                     variants={HoverBarButtonSettingsSmallVariants}
+                    onClick={toggleUserSettings}
                   >
                     <SmallHoverBarButtonText>S</SmallHoverBarButtonText>
                   </HoverBarButtonSettingsSmall>
-
+                  {visibilityStore.isUserSettingsVisible && (
+                    <SkUserSettings
+                      isVisible={visibilityStore.isUserSettingsVisible}
+                      onClose={toggleUserSettings}
+                    />
+                  )}
                   {/* Profile Button */}
                   <HoverBarButtonProfileSmall
                     onClick={toggleProfileMenu}
