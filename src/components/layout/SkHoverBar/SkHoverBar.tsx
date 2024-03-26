@@ -154,7 +154,6 @@ const HoverBarInnerContainerRight = styled(HoverBarCommonContainer)`
 
 const HoverBarButtonContainerCenterRight = styled(HoverBarCommonContainer)`
   height: 55px;
-  position: center;
   justify-content: flex-start;
   flex-wrap: wrap;
   /*   background-color: rgba(0, 200, 200, 0); */
@@ -294,14 +293,6 @@ const HoverBarButtonMainMenuLarge = styled(LargeHoverBarButton)`
     transform: translateX(50px);
   `}
 `;
-const HoverBarButtonMainMenuIcon = styled(HoverBarButtonIconContainer)`
-  position: relative;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-`;
 
 // Theme Button (Small)
 const HoverBarButtonThemeSmall = styled(SmallHoverBarButton)`
@@ -363,14 +354,14 @@ const buttonDynamicViewportVariants = {
 };
 
 // HoverBarInnerContainerRight Variants
-const HoverBarInnerContainerRightVariants = {
+const HoverBarContainerInnerRightVariants = {
   expanded: {
     ...commonVariants.expanded,
     width: "calc(50% + 0px)",
   },
   collapsed: {
     ...commonVariants.collapsed,
-    width: "calc(0% + 60px)",
+    width: "calc(0% + 55px)",
   },
 };
 
@@ -448,7 +439,7 @@ const SkHoverBar: React.FC = observer(() => {
         <HoverBarInnerContainerRight
           initial={isExpanded ? false : "collapsed"}
           animate={isExpanded ? "expanded" : "collapsed"}
-          variants={HoverBarInnerContainerRightVariants}
+          variants={HoverBarContainerInnerRightVariants}
         >
           <HoverBarButtonContainerCenterRight
             initial={isExpanded ? false : "collapsed"}
