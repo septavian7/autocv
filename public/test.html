@@ -11,6 +11,18 @@
     />
     <title>AutoDummy</title>
     <style>
+      .background-image {
+        height: 100vh; /* 100% of the viewport height */
+        background-image: url("dev/images/dummybg-static/ios_linkedin2.jpg");
+        background-repeat: no-repeat;
+        background-position: center top;
+        background-size: contain; /* Change to 'contain' to ensure the image fits within the div without being cropped */
+        position: fixed; /* Make it cover the whole page */
+        width: 100%; /* Cover the full width */
+        top: 0; /* Align top */
+        left: 0; /* Align left */
+        z-index: -1; /* Ensure it stays behind other content */
+      }
       .extension-root {
         position: absolute;
         top: 0;
@@ -25,6 +37,7 @@
     </style>
   </head>
   <body>
+    <div class="background-image"></div>
     <div id="extension-root"></div>
 
     <!-- dist bundle  -->
