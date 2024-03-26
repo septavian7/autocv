@@ -229,8 +229,12 @@ const SmallHoverBarButton = styled(BaseHoverBarButton)`
 
 // Button Icon
 const HoverBarButtonIcon = styled(motion.span)`
+  position: relative;
+  display: flex;
   width: 100%;
   height: 100%;
+  justify-content: center;
+  align-items: center;
   filter: invert(100%);
 `;
 
@@ -323,14 +327,6 @@ const HoverBarButtonThemeSmall = styled(SmallHoverBarButton)`
     position: relative;
   `}
 `;
-const HoverBarButtonThemeIcon = styled(HoverBarButtonIcon)`
-  position: relative;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-`;
 
 // Settings Button (Small)
 const HoverBarButtonSettingsSmall = styled(SmallHoverBarButton)`
@@ -341,14 +337,7 @@ const HoverBarButtonSettingsSmall = styled(SmallHoverBarButton)`
     position: relative;
   `}
 `;
-const HoverBarButtonSettingsIcon = styled(HoverBarButtonIcon)`
-  position: relative;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-`;
+
 // Profile Button (Small)
 const HoverBarButtonProfileSmall = styled(SmallHoverBarButton)`
   ${({ theme }) => `
@@ -358,14 +347,7 @@ const HoverBarButtonProfileSmall = styled(SmallHoverBarButton)`
     position: relative;
   `}
 `;
-const HoverBarButtonProfileIcon = styled(HoverBarButtonIcon)`
-  position: relative;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-`;
+const HoverBarButtonProfileIcon = styled(HoverBarButtonIcon)``;
 // Minimize Button (Small)
 const HoverBarButtonMinimizeSmall = styled(SmallHoverBarButton)`
   ${({ theme }) => `
@@ -374,12 +356,6 @@ const HoverBarButtonMinimizeSmall = styled(SmallHoverBarButton)`
     margin-right: 20px;
 /*     position: flex-end; */
   `}
-`;
-const HoverBarButtonMinimizeIcon = styled(HoverBarButtonIcon)`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 /* --------- STYLES: FRAMER-MOTION --------- */
@@ -582,27 +558,25 @@ const SkHoverBar: React.FC = observer(() => {
                   <HoverBarButtonThemeSmall
                     initial={isExpanded ? false : "collapsed"}
                     animate={isExpanded ? "expanded" : "collapsed"}
-                    /*                     variants={HoverBarButtonThemeSmallVariants} */
                     variants={commonVariants}
                     onClick={toggleTheme}
                   >
-                    <HoverBarButtonThemeIcon>
-                      {/* Icon */}
+                    {/* Icon */}
+                    <HoverBarButtonIcon>
                       <StyledContrastIcon />
-                    </HoverBarButtonThemeIcon>
+                    </HoverBarButtonIcon>
                   </HoverBarButtonThemeSmall>
                   {/* Settings Button */}
                   <HoverBarButtonSettingsSmall
                     initial={isExpanded ? false : "collapsed"}
                     animate={isExpanded ? "expanded" : "collapsed"}
-                    /*                     variants={HoverBarButtonSettingsSmallVariants} */
                     variants={commonVariants}
                     onClick={toggleUserSettings}
                   >
-                    <HoverBarButtonSettingsIcon>
-                      {/* Icon */}
+                    {/* Icon */}
+                    <HoverBarButtonIcon>
                       <StyledSettingsIcon />
-                    </HoverBarButtonSettingsIcon>
+                    </HoverBarButtonIcon>
                   </HoverBarButtonSettingsSmall>
                   {visibilityStore.isUserSettingsVisible && (
                     <SkUserSettings
@@ -616,12 +590,11 @@ const SkHoverBar: React.FC = observer(() => {
                     initial={isExpanded ? false : "collapsed"}
                     animate={isExpanded ? "expanded" : "collapsed"}
                     variants={commonVariants}
-                    /*                     variants={HoverBarButtonProfileSmallVariants} */
                   >
-                    <HoverBarButtonProfileIcon>
-                      {/* Icon */}
+                    {/* Icon */}
+                    <HoverBarButtonIcon>
                       <StyledProfileIcon />
-                    </HoverBarButtonProfileIcon>
+                    </HoverBarButtonIcon>
                   </HoverBarButtonProfileSmall>
                 </HoverBarButtonSmallContainer>
               )}
@@ -632,12 +605,11 @@ const SkHoverBar: React.FC = observer(() => {
               initial={isExpanded ? false : "collapsed"}
               animate={isExpanded ? "expanded" : "collapsed"}
               variants={commonVariants}
-              /*               variants={HoverBarButtonMinimizeSmallVariants} */
             >
-              <HoverBarButtonMinimizeIcon>
-                {/* Icon */}
+              {/* Icon */}
+              <HoverBarButtonIcon>
                 <StyledCollapseAllIcon />
-              </HoverBarButtonMinimizeIcon>
+              </HoverBarButtonIcon>
             </HoverBarButtonMinimizeSmall>
           </HoverBarButtonContainerFarRight>
         </HoverBarInnerContainerRight>
