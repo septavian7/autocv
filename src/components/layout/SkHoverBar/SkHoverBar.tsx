@@ -11,11 +11,9 @@ import { useViewportWidth } from "../../../utils/useViewportWidth";
 import {
   toggleHoverBarExpandMinimize,
   toggleProfileMenu,
-  /*   toggleMakeMenu,
-  toggleMainMenu,
-  toggleSettingsMenu, */
-  /*   toggleTheme, */
 } from "./utils/HoverBarUtils";
+
+// Features
 import { SkUserSettings } from "../../features/SkUserSettings/SkUserSettings";
 import { SkToolsMenu } from "../../features/SkToolsMenu/SkToolsMenu";
 import { SkMakeCV } from "../../features/SkMakeCV/SkMakeCV";
@@ -214,12 +212,6 @@ const LargeHoverBarButton = styled(BaseHoverBarButton)`
   `}
 `;
 
-// Large Button Text
-/* const LargeHoverBarButtonText = styled(motion.span)`
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 10px 15px;
-`; */
-
 // Small Button
 const SmallHoverBarButton = styled(BaseHoverBarButton)`
   ${({ theme }) => `
@@ -241,12 +233,6 @@ const HoverBarButtonIcon = styled(motion.span)`
   height: 100%;
   filter: invert(100%);
 `;
-
-// Small Button Text
-/* const SmallHoverBarButtonText = styled(motion.span)`
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 2px 5px;
-`; */
 
 /* --------- STYLES: MAKE BUTTON --------- */
 
@@ -327,15 +313,6 @@ const HoverBarButtonMainMenuIcon = styled(HoverBarButtonIcon)`
   justify-content: center;
   align-items: center;
 `;
-
-// Settings Button (Large)
-/* const HoverBarButtonSettingsLarge = styled(LargeHoverBarButton)`
-  ${({ theme }) => `
-    background: ${theme.hoverBarButtonSecondaryBackground};
-    order: 3;
-    margin: 18px;
-  `}
-`; */
 
 // Theme Button (Small)
 const HoverBarButtonThemeSmall = styled(SmallHoverBarButton)`
@@ -501,86 +478,6 @@ const HoverBarButtonMakeMainInnerRightContainerVariants = {
     /*     transform: "translateX(0%)", */
   },
 };
-
-// HoverBarButtonMainMenuLarge Variants
-/* const HoverBarButtonMainMenuLargeVariants = {
-  expanded: {
-    ...commonVariants.expanded, */
-/*     width: "55px", */
-/*     transform: "translateX(50px)", */
-/*     transition: { duration: 0.5, ease: "easeInOut" }, */
-/*   },
-  collapsed: {
-    ...commonVariants.collapsed, */
-/*     width: "55px", */
-/*     transform: "translateX(50px)", */
-/*     transition: { duration: 0.5, ease: "easeInOut" },
-  },
-}; */
-
-// HoverBarButtonThemeSmall Variants
-/* const HoverBarButtonThemeSmallVariants = {
-  expanded: {
-    ...commonVariants.expanded, */
-/*     width: "40px", */
-/*     transform: "translateX(-140px)", */
-/*     transition: { duration: 0.5, ease: "easeInOut" }, */
-/*   },
-  collapsed: {
-    ...commonVariants.collapsed, */
-/*     width: "40px", */
-/*     transform: "translateX(100px)", */
-/*     transition: { duration: 0.5, ease: "easeInOut" }, */
-/*   },
-}; */
-
-// HoverBarButtonSettingsSmall Variants
-/* const HoverBarButtonSettingsSmallVariants = {
-  expanded: {
-    ...commonVariants.expanded, */
-/*     width: "40px", */
-/*     transform: "translateX(-92px)", */
-/*     transition: { duration: 0.5, ease: "easeInOut" }, */
-/*   },
-  collapsed: {
-    ...commonVariants.collapsed, */
-/*     width: "40px", */
-/*     transform: "translateX(100px)", */
-/*     transition: { duration: 0.5, ease: "easeInOut" }, */
-/*   },
-}; */
-
-// HoverBarButtonProfileSmall Variants
-/* const HoverBarButtonProfileSmallVariants = {
-  expanded: {
-    ...commonVariants.expanded, */
-/*     width: "40px", */
-/*     transform: "translateX(-44px)", */
-/*     transition: { duration: 0.5, ease: "easeInOut" }, */
-/*   }, */
-/*   collapsed: {
-    ...commonVariants.collapsed, */
-/*     width: "40px", */
-/*     transform: "translateX(100px)", */
-/*     transition: { duration: 0.5, ease: "easeInOut" }, */
-/*   },
-}; */
-
-// HoverBarButtonMinimizeSmall Variants
-/* const HoverBarButtonMinimizeSmallVariants = {
-  expanded: {
-    ...commonVariants.expanded, */
-/*     width: "40px", */
-/*     transform: "translateX(10px)", */
-/*     transition: { duration: 0.5, ease: "easeInOut" }, */
-/*   },
-  collapsed: {
-    ...commonVariants.collapsed, */
-/*     width: "40px", */
-/*     transform: "translateX(100px)", */
-/*     transition: { duration: 0.5, ease: "easeInOut" }, */
-/*   },
-}; */
 
 /* --------- COMPONENT --------- */
 

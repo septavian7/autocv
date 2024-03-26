@@ -1,24 +1,10 @@
 <!-- public/test.html -->
 
-<!-- <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Test</title>
-  </head>
-  <body>
-    <div id="test-root"></div>
-    <script src="bundle.js"></script>
-  </body>
-</html> -->
-
 <!doctype html>
 <html lang="en">
-  <meta name="viewport" content="width=device-width" />
   <head>
+    <meta name="viewport" content="width=device-width" />
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=2.0" />
     <meta
       http-equiv="Content-Security-Policy"
       content="default-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://localhost:8080 http://192.168.1.5:8080;"
@@ -44,7 +30,10 @@
     <!-- dist bundle  -->
     <!-- <script src="bundle.js"></script> -->
 
-    <!-- webpack dev server-->
-    <script src="http://localhost:8080/bundle.js"></script>
+    <!-- webpack dev server -->
+    <!-- <script src="localhost:8080/bundle.js"></script> -->
+
+    <!-- webpack dev server local ip-->
+    <script src="http://192.168.1.5:8080/bundle.js"></script>
   </body>
 </html>
