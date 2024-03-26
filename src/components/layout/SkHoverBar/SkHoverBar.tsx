@@ -189,9 +189,11 @@ const BaseHoverBarButton = styled(motion.button)`
   font-family: "Avenir", sans-serif;
   transition: filter 0.3s ease; 
 
-  &:hover {
-    transition: all 0.3s ease;
-    filter: brightness(70%);
+  @media (hover: hover) {
+    &:hover {
+      transition: all 0.3s ease;
+      filter: brightness(70%);
+    }
   }
   `}
 `;
