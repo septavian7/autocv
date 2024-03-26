@@ -1,19 +1,24 @@
 /* src/components/layout/SkHoverBar/SkHoverBar.tsx */
 
+// Plugins/Tools
 import React from "react";
 import styled from "@emotion/styled";
 import { AnimatePresence, motion } from "framer-motion";
 import { observer } from "mobx-react-lite";
+
+// Global Stores
 import { themeStore } from "../../../stores";
 import { visibilityStore } from "../../../stores/SkVisibilityStore";
 import { hoverBarStore } from "./stores/HoverBarStore";
 import { useViewportWidth } from "../../../utils/useViewportWidth";
+
+// HoverBar Utils
 import {
   toggleHoverBarExpandMinimize,
   toggleProfileMenu,
 } from "./utils/HoverBarUtils";
 
-// Features
+// Feature Windows
 import { SkUserSettings } from "../../features/SkUserSettings/SkUserSettings";
 import { SkToolsMenu } from "../../features/SkToolsMenu/SkToolsMenu";
 import { SkMakeCV } from "../../features/SkMakeCV/SkMakeCV";
@@ -28,20 +33,29 @@ import { ReactComponent as CollapseAllIcon } from "../../../assets/icons/buttoni
 
 /* --------- FUNCTIONS: ONCLICK LOGIC --------- */
 
-const toggleUserSettings = () => visibilityStore.toggleUserSettingsVisible();
+const toggleUserSettings = () => {
+  visibilityStore.toggleUserSettingsVisible();
+  console.log("User Settings Function Called");
+};
 
-const toggleToolsMenu = () => visibilityStore.toggleToolsMenuVisible();
+const toggleToolsMenu = () => {
+  visibilityStore.toggleToolsMenuVisible();
+  console.log("Tools Menu Function Called");
+};
 
-const toggleMakeCV = () => visibilityStore.toggleMakeCVVisible();
+const toggleMakeCV = () => {
+  visibilityStore.toggleMakeCVVisible();
+  console.log("Make CV Function Called");
+};
 
 const onMakeButtonClickExpanded = () => {
   toggleMakeCV();
-  console.log("Make expanded State Function Called");
+  console.log("HoverBar expanded State Function Called");
 };
 
 const onMakeButtonClickCollapsed = () => {
   toggleHoverBarExpandMinimize();
-  console.log("Make collapsed State Function Called");
+  console.log("HoverBar collapsed State Function Called");
 };
 
 /* --------- STYLES: ICONS --------- */
@@ -176,7 +190,7 @@ const BaseHoverBarButton = styled(motion.button)`
   border: ${theme.hoverBarButtonOutline};
   overflow: hidden;
   font-family: "Avenir", sans-serif;
-  /*   transition: filter 0.3s ease; */
+  transition: filter 0.3s ease; 
 
   &:hover {
     transition: all 0.3s ease;
@@ -194,7 +208,6 @@ const LargeHoverBarButton = styled(BaseHoverBarButton)`
   font-size: 16px;
   flex-basis: 55px;
   flex-grow: 0;
-  z-index: 1200;
   `}
 `;
 
@@ -240,6 +253,7 @@ const HoverBarButtonMake = styled(BaseHoverBarButton)`
   `}
 `;
 
+// Make Button (Text Right)
 const HoverBarButtonMakeTextRight = styled(motion.span)`
   display: flex;
   color: white;
@@ -267,13 +281,8 @@ const HoverBarButtonMakeInnerRightContainer = styled(motion.div)`
   margin-top: 2.5px;
 `;
 
+// Make Button (Icon)
 const HoverBarButtonMakeIcon = styled(HoverBarButtonIcon)`
-  position: relative;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
   filter: brightness(110%);
 `;
 
@@ -344,15 +353,15 @@ const commonVariants = {
 
 // Dynamic Viewport Visibility Variants
 const buttonVisibilityVariants = {
-  hidden: {
-    ...commonVariants.collapsed,
-    opacity: 0,
-    transform: "translateX(100px)",
-  },
   visible: {
     ...commonVariants.expanded,
     opacity: 1,
     transform: "translateX(0px)",
+  },
+  hidden: {
+    ...commonVariants.collapsed,
+    opacity: 0,
+    transform: "translateX(200px)",
   },
 };
 
@@ -377,7 +386,7 @@ const HoverBarButtonContainerFarRightVariants = {
   collapsed: {
     ...commonVariants.collapsed,
     width: "0%",
-    transform: "translateX(200px)",
+    transform: "translateX(280px)",
   },
 };
 
