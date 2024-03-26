@@ -156,11 +156,11 @@ const HoverBarInnerContainerRight = styled(HoverBarCommonContainer)`
   overflow: visible;
 `;
 
-const HoverBarButtonContainerCenterRight = styled(motion.div)`
+const HoverBarButtonContainerCenterRight = styled(HoverBarCommonContainer)`
   height: 55px;
   position: center;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   /*   background-color: rgba(0, 200, 200, 0); */
   overflow: visible;
