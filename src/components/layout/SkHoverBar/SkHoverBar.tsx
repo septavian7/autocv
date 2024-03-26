@@ -215,7 +215,7 @@ const SmallHoverBarButton = styled(BaseHoverBarButton)`
   height: 40px;
   width: 40px;
   display: flex;
-  border-radius: 10px;
+  border-radius: 12px;
   flex-basis: 40px;
   flex-grow: 0;
   margin: 3px;
@@ -239,14 +239,14 @@ const HoverBarButtonIconContainer = styled(motion.span)`
 const HoverBarButtonMake = styled(BaseHoverBarButton)`
   ${({ theme }) => `
     display: flex;
-    width: 110px;
+    width: 114px;
 /*     flex-basis: 110px; */
 /*     flex-grow: 0; */
     height: 55px;
     background: ${theme.hoverBarButtonPrimaryBackground};
 /*     order: 1; */
     justify-content: space-evenly;
-    border-radius: 15px;
+    border-radius: 18px;
     border: ${theme.hoverBarButtonOutline};
     transform: translateX(-55px);
   `}
@@ -293,7 +293,7 @@ const HoverBarButtonMainMenu = styled(SmallHoverBarButton)`
   ${({ theme }) => `
     background: ${theme.hoverBarButtonSecondaryBackground};
 /*     order: 2; */
-    transform: translateX(58px);
+    transform: translateX(62px);
   `}
 `;
 
