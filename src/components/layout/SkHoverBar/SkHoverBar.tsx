@@ -156,14 +156,14 @@ const HoverBarButtonContainerCenterRight = styled(HoverBarCommonContainer)`
   justify-content: flex-start;
   flex-wrap: wrap;
   /*   z-index: 1000; */
-  background-color: rgba(0, 200, 200, 0.3);
+  /*   background-color: rgba(0, 200, 200, 0.3); */
 `;
 
 const HoverBarButtonContainerFarRight = styled(HoverBarCommonContainer)`
   position: flex-end;
   height: 55px;
   justify-content: flex-end;
-  background-color: rgba(200, 200, 0, 0.6);
+  /*   background-color: rgba(200, 200, 0, 0.6); */
 `;
 
 const HoverBarButtonDynamicViewportContainer = styled(HoverBarCommonContainer)`
@@ -363,7 +363,7 @@ const HoverBarContainerInnerRightVariants = {
   },
   collapsed: {
     ...commonVariants.collapsed,
-    width: "50%",
+    width: "0%",
   },
 };
 
@@ -376,8 +376,8 @@ const HoverBarButtonContainerCenterRightVariants = {
   },
   collapsed: {
     ...commonVariants.collapsed,
-    width: "50%",
-    transform: "translateX(440px)",
+    width: "0%",
+    transform: "translateX(240px)",
   },
 };
 
@@ -391,7 +391,7 @@ const HoverBarButtonContainerFarRightVariants = {
   collapsed: {
     ...commonVariants.collapsed,
     width: "50%",
-    transform: "translateX(440px)",
+    transform: "translateX(240px)",
   },
 };
 
