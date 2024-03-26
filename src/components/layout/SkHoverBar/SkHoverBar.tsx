@@ -490,10 +490,10 @@ const SkHoverBar: React.FC = observer(() => {
             </AnimatePresence>
             {/* Main Menu Button */}
             <HoverBarButtonMainMenuLarge
-              onClick={toggleMainMenu}
               initial={isExpanded ? false : "collapsed"}
               animate={isExpanded ? "expanded" : "collapsed"}
               variants={commonVariants}
+              onClick={toggleMainMenu}
             >
               {/* Icon */}
               <HoverBarButtonIconContainer>
@@ -552,10 +552,10 @@ const SkHoverBar: React.FC = observer(() => {
                   )}
                   {/* Profile Button */}
                   <HoverBarButtonProfileSmall
-                    onClick={toggleProfileMenu}
                     initial={isExpanded ? false : "collapsed"}
                     animate={isExpanded ? "expanded" : "collapsed"}
                     variants={commonVariants}
+                    onClick={toggleProfileMenu}
                   >
                     {/* Icon */}
                     <HoverBarButtonIconContainer>
@@ -567,10 +567,10 @@ const SkHoverBar: React.FC = observer(() => {
             </AnimatePresence>
             {/* Minimize Button (Always visible) */}
             <HoverBarButtonMinimizeSmall
-              onClick={toggleHoverBarExpandMinimize}
               initial={isExpanded ? false : "collapsed"}
               animate={isExpanded ? "expanded" : "collapsed"}
               variants={commonVariants}
+              onClick={toggleHoverBarExpandMinimize}
             >
               {/* Icon */}
               <HoverBarButtonIconContainer>
