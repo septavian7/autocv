@@ -12,14 +12,9 @@ import { visibilityStore } from "../../../stores/SkVisibilityStore";
 import { hoverBarStore } from "./stores/HoverBarStore";
 import { useViewportWidth } from "../../../utils/useViewportWidth";
 
-// HoverBar Utils
-import {
-  toggleHoverBarExpandMinimize,
-  toggleProfileMenu,
-} from "./utils/HoverBarUtils";
-
 // Feature Windows
 import { SkUserSettings } from "../../features/SkUserSettings/SkUserSettings";
+import { SkUserLogin } from "../../features/SkUserLogin/SkUserLogin";
 import { SkToolsMenu } from "../../features/SkToolsMenu/SkToolsMenu";
 import { SkMakeCV } from "../../features/SkMakeCV/SkMakeCV";
 
@@ -52,6 +47,12 @@ const toggleTheme = () => themeStore.toggleTheme();
 const toggleUserSettingsWindow = () => {
   visibilityStore.toggleUserSettingsVisible();
   console.log("Toggle User Settings Window Function Called");
+};
+
+// Toggle User Login
+const toggleUserLoginWindow = () => {
+  visibilityStore.toggleUserLoginVisible();
+  console.log("Toggle User Login Window Function Called");
 };
 
 /* --------- STYLES: ICONS --------- */
@@ -565,13 +566,19 @@ const SkHoverBar: React.FC = observer(() => {
                     initial={isExpanded ? false : "collapsed"}
                     animate={isExpanded ? "expanded" : "collapsed"}
                     variants={commonVariants}
-                    onClick={toggleProfileMenu}
+                    onClick={toggleUserLoginWindow}
                   >
                     {/* Icon */}
                     <HoverBarButtonIconContainer>
                       <ProfileButtonIcon />
                     </HoverBarButtonIconContainer>
                   </HoverBarButtonProfile>
+                  {visibilityStore.isUserLoginVisible && (
+                    <SkUserLogin
+                      isVisible={visibilityStore.isUserLoginVisible}
+                      onClose={toggleUserLoginWindow}
+                    />
+                  )}
                 </HoverBarButtonDynamicViewportContainer>
               )}
             </AnimatePresence>

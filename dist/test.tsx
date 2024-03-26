@@ -9,12 +9,13 @@ import { createRoot } from "react-dom/client";
 // Configs
 import "../src/config/firebaseConfig";
 import { configure } from "mobx";
-// Providers, Stores
+// Providers, Stores, Styles
 import { SkUserStoreProvider } from "../src/contexts/SkUserContext";
 import { ThemeProvider } from "../src/providers/SkThemeProvider";
+import SkGlobalStyles from "../src/styles/SkGlobalStyles";
 // Components, Modules
 import SkHoverBar from "../src/components/layout/SkHoverBar/SkHoverBar";
-import SkGlobalStyles from "../src/styles/SkGlobalStyles";
+import SkUserLogin from "../src/components/features/SkUserLogin/SkUserLogin";
 // import FramerMotionTest from "./components/layout/FramerMotionTest"; // Import FramerMotionTest component
 
 /* --------- SETUP --------- */

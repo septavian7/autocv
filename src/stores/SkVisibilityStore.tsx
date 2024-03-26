@@ -8,6 +8,7 @@ class VisibilityStore {
   // State
   hoverBarVisible: boolean = true;
   isUserSettingsVisible: boolean = false;
+  isUserLoginVisible: boolean = false;
   isToolsMenuVisible: boolean = false;
   isMakeCVVisible: boolean = false;
   viewportWidth: number = window.innerWidth;
@@ -20,6 +21,10 @@ class VisibilityStore {
   // Actions
   toggleUserSettingsVisible() {
     this.isUserSettingsVisible = !this.isUserSettingsVisible;
+  }
+
+  toggleUserLoginVisible() {
+    this.isUserLoginVisible = !this.isUserLoginVisible;
   }
 
   toggleToolsMenuVisible = () => {
