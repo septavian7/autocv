@@ -169,7 +169,7 @@ const HoverBarButtonContainerFarRight = styled(motion.div)`
   overflow: visible;
 `;
 
-const HoverBarButtonSmallContainer = styled(motion.div)`
+const HoverBarButtonDynamicViewportContainer = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -353,7 +353,7 @@ const commonVariants = {
 };
 
 // Dynamic Viewport Visibility Variants
-const buttonVisibilityVariants = {
+const buttonDynamicViewportVariants = {
   visible: {
     ...commonVariants.expanded,
     opacity: 1,
@@ -377,16 +377,6 @@ const HoverBarInnerContainerRightVariants = {
     width: "calc(0% + 60px)",
   },
 };
-
-{
-  /* <HoverBarInnerContainerRight
-initial={false}
-animate={{
-  width: isExpanded ? "calc(50% + 0px)" : "calc(0% + 60px)",
-}}
-transition={{ duration: 0.5, ease: "easeInOut" }}
-> */
-}
 
 // HoverBarButtonContainerCenterRight Variants
 const HoverBarButtonContainerCenterRightVariants = {
@@ -470,6 +460,7 @@ const SkHoverBar: React.FC = observer(() => {
             animate={isExpanded ? "expanded" : "collapsed"}
             variants={HoverBarButtonContainerCenterRightVariants}
           >
+            {/* Make Button */}
             <HoverBarButtonMake
               initial={isExpanded ? false : "collapsed"}
               animate={isExpanded ? "expanded" : "collapsed"}
@@ -502,6 +493,7 @@ const SkHoverBar: React.FC = observer(() => {
                 />
               )}
             </AnimatePresence>
+            {/* Main Menu Button */}
             <HoverBarButtonMainMenuLarge
               onClick={toggleToolsMenu}
               initial={isExpanded ? false : "collapsed"}
@@ -527,11 +519,11 @@ const SkHoverBar: React.FC = observer(() => {
           >
             <AnimatePresence>
               {showSmallButtons && (
-                <HoverBarButtonSmallContainer
+                <HoverBarButtonDynamicViewportContainer
                   initial="visible"
                   animate="visible"
                   exit="hidden"
-                  variants={buttonVisibilityVariants}
+                  variants={buttonDynamicViewportVariants}
                 >
                   {/* Theme Button */}
                   <HoverBarButtonThemeSmall
@@ -575,7 +567,7 @@ const SkHoverBar: React.FC = observer(() => {
                       <StyledProfileIcon />
                     </HoverBarButtonIcon>
                   </HoverBarButtonProfileSmall>
-                </HoverBarButtonSmallContainer>
+                </HoverBarButtonDynamicViewportContainer>
               )}
             </AnimatePresence>
             {/* Minimize Button (Always visible) */}
