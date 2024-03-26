@@ -1,7 +1,7 @@
 /* src/components/layout/SkHoverBar/SkHoverBar.tsx */
 
 // Plugins/Tools
-import React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { AnimatePresence, motion } from "framer-motion";
 import { observer } from "mobx-react-lite";
@@ -106,7 +106,18 @@ const CollapseButtonIcon = styled(CollapseAllIcon)`
   justify-content: center;
   min-width: 20px;
   min-height: 20px;
+  /*   margin-left: 13px; */
   transform: rotate(90deg);
+`;
+
+const ExpandButtonIcon = styled(Ram314Icon)`
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  min-height: 26px;
+  /*   margin-right: 13px; */
+  filter: invert(100%) brightness(110%);
 `;
 
 /* --------- STYLES: CONTAINERS --------- */
@@ -225,6 +236,7 @@ const HoverBarButtonIconContainer = styled(motion.span)`
 const HoverBarButtonMake = styled(BaseHoverBarButton)`
   ${({ theme }) => `
     display: flex;
+    width: 110px;
     flex-basis: 110px;
     flex-grow: 0;
     height: 55px;
@@ -277,7 +289,8 @@ const HoverBarButtonMainMenu = styled(SmallHoverBarButton)`
   ${({ theme }) => `
     background: ${theme.hoverBarButtonSecondaryBackground};
 /*     order: 2; */
-    transform: translateX(50px);
+    transform: translateX(58px);
+    position: relative;
   `}
 `;
 
@@ -309,8 +322,8 @@ const HoverBarButtonProfile = styled(SmallHoverBarButton)`
   `}
 `;
 
-// Minimize Button
-const HoverBarButtonMinimize = styled(SmallHoverBarButton)`
+// Expand/Collapse Button
+const HoverBarButtonExpandCollapse = styled(SmallHoverBarButton)`
   ${({ theme }) => `
   position: fixed;
   display: flex-end;
@@ -382,12 +395,55 @@ const HoverBarButtonContainerFarRightVariants = {
   },
 };
 
+// Expand/Collapse Button Variants
+const HoverBarButtonExpandCollapseVariants = {
+  expanded: {
+    ...commonVariants.expanded,
+    /*     transform: "rotate(0deg) scale(1)", */
+    opacity: 1,
+  },
+  collapsed: {
+    ...commonVariants.collapsed,
+    /*     transform: "rotate(-90deg) scale(1.4)", */
+    opacity: 0.4,
+  },
+};
+
+// Collapse Icon Variants
+const HoverBarCollapseIconVariants = {
+  expanded: {
+    display: "flex",
+    /*     opacity: 1, */
+    /*     ...commonVariants.expanded, */
+  },
+  collapsed: {
+    display: "none",
+    /*     opacity: 0, */
+    /*     ...commonVariants.collapsed, */
+  },
+};
+
+// Expand Icon Variants
+const HoverBarExpandIconVariants = {
+  expanded: {
+    display: "none",
+    /*     ...commonVariants.expanded, */
+    /*     opacity: 0, */
+  },
+  collapsed: {
+    display: "flex",
+    /*     ...commonVariants.collapsed, */
+    /*     opacity: 1, */
+  },
+};
+
 /* --------- COMPONENT --------- */
 
 const SkHoverBar: React.FC = observer(() => {
-  const { isExpanded } = hoverBarStore;
+  /* const { isExpanded } = hoverBarStore; */
   const viewportWidth = useViewportWidth();
   const showSmallButtons = viewportWidth > 670;
+  const { isExpanded } = hoverBarStore;
 
   return (
     <HoverBarOuterOuterContainer>
@@ -518,18 +574,21 @@ const SkHoverBar: React.FC = observer(() => {
             </AnimatePresence>
           </HoverBarButtonContainerFarRight>
         </HoverBarInnerContainerRight>
-        {/* Minimize Button (Always visible) */}
-        <HoverBarButtonMinimize
-          initial={isExpanded ? false : "collapsed"}
-          animate={isExpanded ? "expanded" : "collapsed"}
-          variants={commonVariants}
-          onClick={toggleHoverBarExpandMinimize}
+        {/* Minimize Button (Visible when expanded) */}
+        <HoverBarButtonExpandCollapse
+          onClick={hoverBarStore.toggleExpandMinimize}
         >
-          {/* Icon */}
-          <HoverBarButtonIconContainer>
-            <CollapseButtonIcon />
-          </HoverBarButtonIconContainer>
-        </HoverBarButtonMinimize>
+          {/* Conditional rendering based on `isExpanded` state from the store */}
+          {isExpanded ? (
+            <HoverBarButtonIconContainer>
+              <CollapseButtonIcon />
+            </HoverBarButtonIconContainer>
+          ) : (
+            <HoverBarButtonIconContainer>
+              <ExpandButtonIcon />
+            </HoverBarButtonIconContainer>
+          )}
+        </HoverBarButtonExpandCollapse>
       </HoverBarOuterContainer>
     </HoverBarOuterOuterContainer>
   );
