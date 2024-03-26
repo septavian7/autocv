@@ -138,7 +138,6 @@ const HoverBarOuterOuterContainer = styled(HoverBarCommonContainer)`
 `;
 
 const HoverBarOuterContainer = styled(HoverBarCommonContainer)`
-  position: center;
   justify-content: flex-end;
   height: 100%;
   width: 100%;
@@ -151,6 +150,7 @@ const HoverBarInnerContainerRight = styled(HoverBarCommonContainer)`
 `;
 
 const HoverBarButtonContainerCenterRight = styled(HoverBarCommonContainer)`
+  position: fixed;
   height: 55px;
   justify-content: flex-start;
   flex-wrap: wrap;
@@ -158,6 +158,7 @@ const HoverBarButtonContainerCenterRight = styled(HoverBarCommonContainer)`
 `;
 
 const HoverBarButtonContainerFarRight = styled(HoverBarCommonContainer)`
+  position: fixed;
   height: 55px;
   background-color: rgba(200, 200, 0, 0);
   justify-content: flex-end;
