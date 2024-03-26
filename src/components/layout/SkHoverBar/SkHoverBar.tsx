@@ -131,12 +131,13 @@ const HoverBarOuterOuterContainer = styled(motion.div)`
 `;
 
 const HoverBarOuterContainer = styled(motion.div)`
+  height: 100%;
+  width: 100%;
   position: center;
   display: flex;
   border-radius: 10px;
   align-items: center;
   justify-content: flex-end;
-  height: 100%;
   background-color: rgba(0, 0, 0, 0);
 `;
 
@@ -365,6 +366,28 @@ const buttonVisibilityVariants = {
   },
 };
 
+// HoverBarInnerContainerRight Variants
+const HoverBarInnerContainerRightVariants = {
+  expanded: {
+    ...commonVariants.expanded,
+    width: "calc(50% + 0px)",
+  },
+  collapsed: {
+    ...commonVariants.collapsed,
+    width: "calc(0% + 60px)",
+  },
+};
+
+{
+  /* <HoverBarInnerContainerRight
+initial={false}
+animate={{
+  width: isExpanded ? "calc(50% + 0px)" : "calc(0% + 60px)",
+}}
+transition={{ duration: 0.5, ease: "easeInOut" }}
+> */
+}
+
 // HoverBarButtonContainerCenterRight Variants
 const HoverBarButtonContainerCenterRightVariants = {
   expanded: {
@@ -376,6 +399,7 @@ const HoverBarButtonContainerCenterRightVariants = {
     width: "100%",
   },
 };
+
 // HoverBarButtonContainerFarRight Variants
 const HoverBarButtonContainerFarRightVariants = {
   expanded: {
@@ -432,18 +456,14 @@ const SkHoverBar: React.FC = observer(() => {
   return (
     <HoverBarOuterOuterContainer>
       <HoverBarOuterContainer
-        initial={false}
-        animate={{
-          width: isExpanded ? "calc(100% - 0px)" : "calc(100% + 0px)",
-        }}
-        transition={{ duration: 0.5, ease: "easeInOut" }}
+        initial={isExpanded ? false : "collapsed"}
+        animate={isExpanded ? "expanded" : "collapsed"}
+        variants={commonVariants}
       >
         <HoverBarInnerContainerRight
-          initial={false}
-          animate={{
-            width: isExpanded ? "calc(50% + 0px)" : "calc(0% + 60px)",
-          }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
+          initial={isExpanded ? false : "collapsed"}
+          animate={isExpanded ? "expanded" : "collapsed"}
+          variants={HoverBarInnerContainerRightVariants}
         >
           <HoverBarButtonContainerCenterRight
             initial={isExpanded ? false : "collapsed"}
@@ -461,8 +481,8 @@ const SkHoverBar: React.FC = observer(() => {
                 animate={isExpanded ? "expanded" : "collapsed"}
                 variants={commonVariants}
               >
+                {/* Icon */}
                 <HoverBarButtonMakeIcon>
-                  {/* Icon */}
                   <StyledRam314Icon />
                 </HoverBarButtonMakeIcon>
               </HoverBarButtonMakeInnerLeftContainer>
@@ -487,10 +507,9 @@ const SkHoverBar: React.FC = observer(() => {
               initial={isExpanded ? false : "collapsed"}
               animate={isExpanded ? "expanded" : "collapsed"}
               variants={commonVariants}
-              /*               variants={HoverBarButtonMainMenuLargeVariants} */
             >
+              {/* Icon */}
               <HoverBarButtonMainMenuIcon>
-                {/* Icon */}
                 <StyledSpaceDashboardIcon />
               </HoverBarButtonMainMenuIcon>
             </HoverBarButtonMainMenuLarge>
