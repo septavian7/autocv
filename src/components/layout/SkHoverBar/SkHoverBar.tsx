@@ -242,7 +242,7 @@ const HoverBarButtonMake = styled(BaseHoverBarButton)`
 /*     order: 1; */
     flex-basis: 110px;
     flex-grow: 0;
-    justify-content: flex-end;
+    justify-content: center;
     border-radius: 15px;
     border: ${theme.hoverBarButtonOutline};
     z-index: 1000;
@@ -259,7 +259,7 @@ const HoverBarButtonMakeTextRight = styled(motion.span)`
 const HoverBarButtonMakeInnerLeftContainer = styled(motion.div)`
   display: flex;
   height: 70%;
-  width: 55px;
+  width: 50%;
   align-items: center;
   justify-content: center;
   /*   background-color: rgba(255, 255, 255, 0.9); */
@@ -269,6 +269,7 @@ const HoverBarButtonMakeInnerLeftContainer = styled(motion.div)`
 const HoverBarButtonMakeInnerRightContainer = styled(motion.div)`
   display: flex;
   height: 50%;
+  width: 50%;
   align-items: center;
   justify-content: flex-start;
   overflow: hidden;
