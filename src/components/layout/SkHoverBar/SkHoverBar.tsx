@@ -172,7 +172,6 @@ const HoverBarButtonDynamicViewportContainer = styled(HoverBarCommonContainer)`
   margin-right: 54px;
   display: flex;
 `;
-
 /* --------- STYLES: BUTTONS (COMMON) --------- */
 
 // Base Button
@@ -241,12 +240,12 @@ const HoverBarButtonMake = styled(BaseHoverBarButton)`
   ${({ theme }) => `
     display: flex;
     width: 110px;
-    flex-basis: 110px;
-    flex-grow: 0;
+/*     flex-basis: 110px; */
+/*     flex-grow: 0; */
     height: 55px;
     background: ${theme.hoverBarButtonPrimaryBackground};
 /*     order: 1; */
-    justify-content: center;
+    justify-content: space-evenly;
     border-radius: 15px;
     border: ${theme.hoverBarButtonOutline};
     transform: translateX(-55px);
@@ -262,22 +261,24 @@ const HoverBarButtonMakeTextRight = styled(motion.span)`
 // Make Button (Inner-Left Container)
 const HoverBarButtonMakeInnerLeftContainer = styled(motion.div)`
   display: flex;
-  width: 50%;
+  width: 45px;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   /*   background-color: rgba(255, 255, 255, 0.9); */
+  /*   transform: translateX(-2px); */
 `;
 
 // Make Button (Inner-Right Container)
 const HoverBarButtonMakeInnerRightContainer = styled(motion.div)`
   display: flex;
-  width: 50%;
+  width: 45px;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-end;
   overflow: visible;
   font-size: 18px;
-  margin-left: 2px;
   margin-top: 2px;
+  margin-left: 3px;
+  /*   transform: translateX(2px); */
 `;
 
 // Make Button (Icon)
