@@ -23,6 +23,7 @@ import { ReactComponent as Ram314Icon } from "../../../assets/icons/buttonicons/
 import { ReactComponent as SpaceDashboardIcon } from "../../../assets/icons/buttonicons/space_dashboard_FILL0_wght400_GRAD0_opsz24.svg";
 import { ReactComponent as ContrastIcon } from "../../../assets/icons/buttonicons/contrast_FILL0_wght400_GRAD0_opsz24.svg";
 import { ReactComponent as SettingsIcon } from "../../../assets/icons/buttonicons/settings_FILL0_wght400_GRAD0_opsz24.svg";
+import { ReactComponent as SearchIcon } from "../../../assets/icons/buttonicons/search_FILL0_wght400_GRAD0_opsz24.svg";
 import { ReactComponent as ProfileIcon } from "../../../assets/icons/buttonicons/account_circle_FILL0_wght400_GRAD0_opsz24.svg";
 import { ReactComponent as CollapseAllIcon } from "../../../assets/icons/buttonicons/collapse_all_FILL0_wght400_GRAD0_opsz24.svg";
 
@@ -86,6 +87,14 @@ const ThemeButtonIcon = styled(ContrastIcon)`
 `;
 
 const SettingsButtonIcon = styled(SettingsIcon)`
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  min-height: 30px;
+`;
+
+const SearchButtonIcon = styled(SearchIcon)`
   position: relative;
   align-items: center;
   justify-content: center;
@@ -316,6 +325,15 @@ const HoverBarButtonSettings = styled(SmallHoverBarButton)`
   `}
 `;
 
+// Search Button
+const HoverBarButtonSearch = styled(SmallHoverBarButton)`
+  ${({ theme }) => `
+    background: ${theme.hoverBarButtonSecondaryBackground};
+/*     order: 3; */
+    position: relative;
+  `}
+`;
+
 // Profile Button
 const HoverBarButtonProfile = styled(SmallHoverBarButton)`
   ${({ theme }) => `
@@ -446,7 +464,7 @@ const HoverBarExpandIconVariants = {
 const SkHoverBar: React.FC = observer(() => {
   /* const { isExpanded } = hoverBarStore; */
   const viewportWidth = useViewportWidth();
-  const showSmallButtons = viewportWidth > 670;
+  const showSmallButtons = viewportWidth > 720;
   const { isExpanded } = hoverBarStore;
 
   return (
@@ -553,6 +571,24 @@ const SkHoverBar: React.FC = observer(() => {
                     {/* Icon */}
                     <HoverBarButtonIconContainer>
                       <SettingsButtonIcon />
+                    </HoverBarButtonIconContainer>
+                  </HoverBarButtonSettings>
+                  {visibilityStore.isUserSettingsVisible && (
+                    <SkUserSettings
+                      isVisible={visibilityStore.isUserSettingsVisible}
+                      onClose={toggleUserSettingsWindow}
+                    />
+                  )}
+                  {/* Search Button */}
+                  <HoverBarButtonSettings
+                    initial={isExpanded ? false : "collapsed"}
+                    animate={isExpanded ? "expanded" : "collapsed"}
+                    variants={commonVariants}
+                    onClick={toggleUserSettingsWindow}
+                  >
+                    {/* Icon */}
+                    <HoverBarButtonIconContainer>
+                      <SearchButtonIcon />
                     </HoverBarButtonIconContainer>
                   </HoverBarButtonSettings>
                   {visibilityStore.isUserSettingsVisible && (
