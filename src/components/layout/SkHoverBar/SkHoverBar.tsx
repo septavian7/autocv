@@ -33,34 +33,40 @@ import { ReactComponent as CollapseAllIcon } from "../../../assets/icons/buttoni
 
 /* --------- FUNCTIONS: ONCLICK LOGIC --------- */
 
-const toggleUserSettings = () => {
-  visibilityStore.toggleUserSettingsVisible();
-  console.log("User Settings Function Called");
-};
-
-const toggleToolsMenu = () => {
-  visibilityStore.toggleToolsMenuVisible();
-  console.log("Tools Menu Function Called");
-};
-
-const toggleMakeCV = () => {
+// Toggle MakeCV
+const toggleMakeWindow = () => {
   visibilityStore.toggleMakeCVVisible();
-  console.log("Make CV Function Called");
+  console.log("Toggle Make Window Function Called");
 };
 
 const onMakeButtonClickExpanded = () => {
-  toggleMakeCV();
-  console.log("HoverBar expanded State Function Called");
+  toggleMakeWindow();
+  console.log("Make Button expanded State Function Called");
 };
 
 const onMakeButtonClickCollapsed = () => {
   toggleHoverBarExpandMinimize();
-  console.log("HoverBar collapsed State Function Called");
+  console.log("Make Button collapsed State Function Called");
+};
+
+// Toggle Main Menu
+const toggleMainMenu = () => {
+  visibilityStore.toggleToolsMenuVisible();
+  console.log("Toggle Main Menu Function Called");
+};
+
+// Toggle Theme
+const toggleTheme = () => themeStore.toggleTheme();
+
+// Toggle User Settings
+const toggleUserSettingsWindow = () => {
+  visibilityStore.toggleUserSettingsVisible();
+  console.log("Toggle User Settings Window Function Called");
 };
 
 /* --------- STYLES: ICONS --------- */
 
-const StyledRam314Icon = styled(Ram314Icon)`
+const MakeButtonIcon = styled(Ram314Icon)`
   position: relative;
   align-items: center;
   justify-content: center;
@@ -71,7 +77,7 @@ const StyledRam314Icon = styled(Ram314Icon)`
   overflow: visible;
 `;
 
-const StyledSpaceDashboardIcon = styled(SpaceDashboardIcon)`
+const MainMenuButtonIcon = styled(SpaceDashboardIcon)`
   position: relative;
   align-items: center;
   justify-content: center;
@@ -80,7 +86,7 @@ const StyledSpaceDashboardIcon = styled(SpaceDashboardIcon)`
   /*   font-size: 48px; */
 `;
 
-const StyledContrastIcon = styled(ContrastIcon)`
+const ThemeButtonIcon = styled(ContrastIcon)`
   position: relative;
   align-items: center;
   justify-content: center;
@@ -88,7 +94,7 @@ const StyledContrastIcon = styled(ContrastIcon)`
   min-height: 30px;
 `;
 
-const StyledSettingsIcon = styled(SettingsIcon)`
+const SettingsButtonIcon = styled(SettingsIcon)`
   position: relative;
   align-items: center;
   justify-content: center;
@@ -96,7 +102,7 @@ const StyledSettingsIcon = styled(SettingsIcon)`
   min-height: 30px;
 `;
 
-const StyledProfileIcon = styled(ProfileIcon)`
+const ProfileButtonIcon = styled(ProfileIcon)`
   position: relative;
   align-items: center;
   justify-content: center;
@@ -104,7 +110,7 @@ const StyledProfileIcon = styled(ProfileIcon)`
   min-height: 30px;
 `;
 
-const StyledCollapseAllIcon = styled(CollapseAllIcon)`
+const CollapseButtonIcon = styled(CollapseAllIcon)`
   position: relative;
   align-items: center;
   justify-content: center;
@@ -115,14 +121,17 @@ const StyledCollapseAllIcon = styled(CollapseAllIcon)`
 
 /* --------- STYLES: CONTAINERS --------- */
 
-const HoverBarOuterOuterContainer = styled(motion.div)`
+const HoverBarCommonContainer = styled(motion.div)`
+  display: flex;
+`;
+
+const HoverBarOuterOuterContainer = styled(HoverBarCommonContainer)`
   height: 120px;
   width: 100vw;
   position: fixed;
   bottom: 104px;
    background:
   border-radius: 10px;
-  display: flex;
   align-items: center;
   justify-content: flex-end;
   overflow: hidden;
@@ -130,47 +139,43 @@ const HoverBarOuterOuterContainer = styled(motion.div)`
   filter: backdrop-filter: blur(10px);
 `;
 
-const HoverBarOuterContainer = styled(motion.div)`
+const HoverBarOuterContainer = styled(HoverBarCommonContainer)`
   height: 100%;
   width: 100%;
   position: center;
-  display: flex;
   border-radius: 10px;
   align-items: center;
   justify-content: flex-end;
   background-color: rgba(0, 0, 0, 0);
 `;
 
-const HoverBarInnerContainerRight = styled(motion.div)`
+const HoverBarInnerContainerRight = styled(HoverBarCommonContainer)`
   height: 100%;
   position: flex-end;
-  display: flex;
   align-items: center;
   overflow: visible;
 `;
 
 const HoverBarButtonContainerCenterRight = styled(motion.div)`
-  height: 100%;
-  /*   background-color: rgba(0, 200, 200, 0); */
+  height: 55px;
+  position: center;
   align-items: center;
-  position: flex-start;
-  display: flex;
+  justify-content: center;
   flex-wrap: wrap;
+  /*   background-color: rgba(0, 200, 200, 0); */
   overflow: visible;
 `;
 
-const HoverBarButtonContainerFarRight = styled(motion.div)`
-  height: 100%;
+const HoverBarButtonContainerFarRight = styled(HoverBarCommonContainer)`
+  height: 55px;
   background-color: rgba(200, 200, 0, 0);
   align-items: center;
   justify-content: flex-end;
   position: flex-end;
-  display: flex;
   overflow: visible;
 `;
 
-const HoverBarButtonDynamicViewportContainer = styled(motion.div)`
-  display: flex;
+const HoverBarButtonDynamicViewportContainer = styled(HoverBarCommonContainer)`
   align-items: center;
   justify-content: flex-end;
   margin-right: 52px;
@@ -438,7 +443,6 @@ const SkHoverBar: React.FC = observer(() => {
   const { isExpanded } = hoverBarStore;
   const viewportWidth = useViewportWidth();
   const showSmallButtons = viewportWidth > 670;
-  const toggleTheme = () => themeStore.toggleTheme();
   const makeButtonClickHandler = isExpanded
     ? onMakeButtonClickExpanded
     : onMakeButtonClickCollapsed;
@@ -474,7 +478,7 @@ const SkHoverBar: React.FC = observer(() => {
               >
                 {/* Icon */}
                 <HoverBarButtonMakeIcon>
-                  <StyledRam314Icon />
+                  <MakeButtonIcon />
                 </HoverBarButtonMakeIcon>
               </HoverBarButtonMakeInnerLeftContainer>
               <HoverBarButtonMakeInnerRightContainer
@@ -489,26 +493,26 @@ const SkHoverBar: React.FC = observer(() => {
               {visibilityStore.isMakeCVVisible && (
                 <SkMakeCV
                   isVisible={visibilityStore.isMakeCVVisible}
-                  onClose={toggleMakeCV}
+                  onClose={toggleMakeWindow}
                 />
               )}
             </AnimatePresence>
             {/* Main Menu Button */}
             <HoverBarButtonMainMenuLarge
-              onClick={toggleToolsMenu}
+              onClick={toggleMainMenu}
               initial={isExpanded ? false : "collapsed"}
               animate={isExpanded ? "expanded" : "collapsed"}
               variants={commonVariants}
             >
               {/* Icon */}
               <HoverBarButtonMainMenuIcon>
-                <StyledSpaceDashboardIcon />
+                <MainMenuButtonIcon />
               </HoverBarButtonMainMenuIcon>
             </HoverBarButtonMainMenuLarge>
             {visibilityStore.isToolsMenuVisible && (
               <SkToolsMenu
                 isVisible={visibilityStore.isToolsMenuVisible}
-                onClose={toggleToolsMenu}
+                onClose={toggleMainMenu}
               />
             )}
           </HoverBarButtonContainerCenterRight>
@@ -534,7 +538,7 @@ const SkHoverBar: React.FC = observer(() => {
                   >
                     {/* Icon */}
                     <HoverBarButtonIcon>
-                      <StyledContrastIcon />
+                      <ThemeButtonIcon />
                     </HoverBarButtonIcon>
                   </HoverBarButtonThemeSmall>
                   {/* Settings Button */}
@@ -542,17 +546,17 @@ const SkHoverBar: React.FC = observer(() => {
                     initial={isExpanded ? false : "collapsed"}
                     animate={isExpanded ? "expanded" : "collapsed"}
                     variants={commonVariants}
-                    onClick={toggleUserSettings}
+                    onClick={toggleUserSettingsWindow}
                   >
                     {/* Icon */}
                     <HoverBarButtonIcon>
-                      <StyledSettingsIcon />
+                      <SettingsButtonIcon />
                     </HoverBarButtonIcon>
                   </HoverBarButtonSettingsSmall>
                   {visibilityStore.isUserSettingsVisible && (
                     <SkUserSettings
                       isVisible={visibilityStore.isUserSettingsVisible}
-                      onClose={toggleUserSettings}
+                      onClose={toggleUserSettingsWindow}
                     />
                   )}
                   {/* Profile Button */}
@@ -564,7 +568,7 @@ const SkHoverBar: React.FC = observer(() => {
                   >
                     {/* Icon */}
                     <HoverBarButtonIcon>
-                      <StyledProfileIcon />
+                      <ProfileButtonIcon />
                     </HoverBarButtonIcon>
                   </HoverBarButtonProfileSmall>
                 </HoverBarButtonDynamicViewportContainer>
@@ -579,7 +583,7 @@ const SkHoverBar: React.FC = observer(() => {
             >
               {/* Icon */}
               <HoverBarButtonIcon>
-                <StyledCollapseAllIcon />
+                <CollapseButtonIcon />
               </HoverBarButtonIcon>
             </HoverBarButtonMinimizeSmall>
           </HoverBarButtonContainerFarRight>
